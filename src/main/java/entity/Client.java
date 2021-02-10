@@ -2,11 +2,16 @@ package entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,17 +20,26 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int numero_client;
+	private Long numero_client;
 	private String nom;
 	private String prenom;
 	@Embedded
 	private Adresse adresse;
-	/*private List<Compte> comptes;*/
 	
-	public int getNumero_client() {
+	/*@ManyToOne(cascade = CascadeType.ALL)
+    @JoinTable(name = "client_cours",
+    joinColumns = { @JoinColumn(name = "client_id") },
+    inverseJoinColumns = { @JoinColumn(name = "compte_id") })*/
+	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+    /*@JoinTable(name = "client_compte",
+    joinColumns = { @JoinColumn(name = "numero_client") },
+    inverseJoinColumns = { @JoinColumn(name = "numero_compte") })*/
+	private List<Compte> comptes;
+	
+	public Long getNumero_client() {
 		return numero_client;
 	}
-	public void setNumero_client(int numero_client) {
+	public void setNumero_client(Long numero_client) {
 		this.numero_client = numero_client;
 	}
 	public String getNom() {
@@ -46,12 +60,12 @@ public class Client {
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	/*public List<Compte> getComptes() {
+	public List<Compte> getComptes() {
 		return comptes;
 	}
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
-	}*/
+	}
 	
 	
 	
