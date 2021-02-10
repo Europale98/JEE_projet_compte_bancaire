@@ -6,12 +6,13 @@
 
 	<persistence-unit name="persistenceUnit">
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localHost:3306/bdd_jee?serverTimezone=UTC"/>
-			<property name="javax.persistence.jdbc.user" value="java"/>
-			<property name="javax.persistence.jdbc.password" value="SdZ_eE"/>
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-			<property name="hibernate.show_sql" value="true"/>
-			<property name="hibernate.format_sql" value="true"/>
+			<property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localHost:3306/bdd_jee_projet?useSSL=false&amp;serverTimezone=UTC"/>
+            <property name="javax.persistence.jdbc.password" value="mdp"/>
+            <property name="javax.persistence.jdbc.user" value="java_projet"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 		</properties>
 	</persistence-unit>
 </persistence>
