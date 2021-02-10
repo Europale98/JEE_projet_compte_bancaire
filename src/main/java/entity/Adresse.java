@@ -1,5 +1,8 @@
 package entity;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class Adresse {
 
 	private String numero_rue;

@@ -2,10 +2,13 @@ package entity;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
 public class Client {
@@ -15,8 +18,9 @@ public class Client {
 	private int numero_client;
 	private String nom;
 	private String prenom;
-	/*private Adresse adresse;
-	private List<Compte> comptes;*/
+	@Embedded
+	private Adresse adresse;
+	/*private List<Compte> comptes;*/
 	
 	public int getNumero_client() {
 		return numero_client;
@@ -36,13 +40,13 @@ public class Client {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-	/*public Adresse getAdresse() {
+	public Adresse getAdresse() {
 		return adresse;
 	}
 	public void setAdresse(Adresse adresse) {
 		this.adresse = adresse;
 	}
-	public List<Compte> getComptes() {
+	/*public List<Compte> getComptes() {
 		return comptes;
 	}
 	public void setComptes(List<Compte> comptes) {
