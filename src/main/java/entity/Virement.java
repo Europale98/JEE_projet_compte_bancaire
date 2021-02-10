@@ -6,8 +6,8 @@ public class Virement {
 	private String date;
 	private String type;
 	private long montant;
-	private int numero_debiteur;
-	private int numero_crediteur;
+	private Compte debiteur;
+	private Compte crediteur;
 	
 	public int getNumero_virement() {
 		return numero_virement;
@@ -33,18 +33,18 @@ public class Virement {
 	public void setMontant(long montant) {
 		this.montant = montant;
 	}
-	public int getNumero_debiteur() {
-		return numero_debiteur;
-	}
-	public void setNumero_debiteur(int numero_debiteur) {
-		this.numero_debiteur = numero_debiteur;
-	}
-	public int getNumero_crediteur() {
-		return numero_crediteur;
-	}
-	public void setNumero_crediteur(int numero_crediteur) {
-		this.numero_crediteur = numero_crediteur;
-	}
+    public Compte getDebiteur() {
+        return debiteur;
+    }
+    public Compte getCrediteur() {
+        return crediteur;
+    }
+    public void setDebiteur(Compte debiteur) {
+        this.debiteur = debiteur;
+    }
+    public void setCrediteur(Compte crediteur) {
+        this.crediteur = crediteur;
+    }
 	
 	
 }
