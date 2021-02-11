@@ -20,5 +20,10 @@ public class Adresse {
 	public void setVille(String ville) {
 		this.ville = ville;
 	}
+    @Override
+    public String toString() {
+        return "Adresse [numero_rue=" + numero_rue + ", ville=" + ville + "]";
+    }
 
+	
 }

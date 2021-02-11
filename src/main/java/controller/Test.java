@@ -2,7 +2,9 @@ package controller;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import entity.Client;
 import service.ClientService;
+import service.CompteService;
 
 public class Test {
 
@@ -14,9 +16,23 @@ public class Test {
         appContext.scan("controller");
         appContext.refresh();
         
-        ClientService individuService = (ClientService)appContext.getBean("clientService");
-        individuService.test();
+        ClientService clientService = (ClientService)appContext.getBean("clientService");
+        //individuService.test();
 
+        Client c = clientService.createClient();
+        System.out.println(c);
+        
+
+        CompteService compteService = (CompteService)appContext.getBean("compteService");
+        compteService.deleteCompte(c.getComptes().get(0));
+        c = clientService.getClientbyId(c.getNumero_client());
+
+        System.out.println(c);
+        
+
+        clientService.deleteClient(c);
+        System.out.println(clientService.getAllClient());
+        
         appContext.close();
     }
 

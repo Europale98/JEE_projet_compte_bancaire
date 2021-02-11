@@ -16,9 +16,9 @@ public class Compte {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long numero_compte;
 	private double montant;
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="numero_client", nullable=false)
-	private Client client;
+	private Client client;*/
 	/*private List<Virement> historique;*/
 	public Long getNumero_compte() {
 		return numero_compte;
@@ -32,18 +32,23 @@ public class Compte {
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
-    public Client getClient() {
+    /*public Client getClient() {
         return client;
     }
     public void setClient(Client client) {
         this.client = client;
-    }
+    }*/
 	/*public List<Virement> getHistorique() {
 		return historique;
 	}
 	public void setHistorique(List<Virement> historique) {
 		this.historique = historique;
 	}*/
+    @Override
+    public String toString() {
+        return "Compte [numero_compte=" + numero_compte + ", montant=" + montant/*
+                + ", client=" + client */+ "]";
+    }
 
 	
 }

@@ -1,10 +1,12 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +32,9 @@ public class Client {
     @JoinTable(name = "client_cours",
     joinColumns = { @JoinColumn(name = "client_id") },
     inverseJoinColumns = { @JoinColumn(name = "compte_id") })*/
-	@OneToMany(mappedBy="client", cascade = CascadeType.ALL)
+	//@OneToMany(fetch = FetchType.LAZY, mappedBy="client", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name="numero_client")
     /*@JoinTable(name = "client_compte",
     joinColumns = { @JoinColumn(name = "numero_client") },
     inverseJoinColumns = { @JoinColumn(name = "numero_compte") })*/
@@ -66,6 +70,12 @@ public class Client {
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
+    @Override
+    public String toString() {
+        return "Client [numero_client=" + numero_client + ", nom=" + nom
+                + ", prenom=" + prenom + ", adresse=" + adresse + ", comptes="
+                + comptes + "]";
+    }
 	
 	
 	

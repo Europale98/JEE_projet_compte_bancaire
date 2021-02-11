@@ -45,6 +45,12 @@ public class Virement {
     public void setCrediteur(Compte crediteur) {
         this.crediteur = crediteur;
     }
+    @Override
+    public String toString() {
+        return "Virement [numero_virement=" + numero_virement + ", date=" + date
+                + ", type=" + type + ", montant=" + montant + ", debiteur="
+                + debiteur + ", crediteur=" + crediteur + "]";
+    }
 	
 	
 }
