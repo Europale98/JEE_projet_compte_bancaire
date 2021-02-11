@@ -30,13 +30,27 @@ public class Test {
         clientService.deleteClient(c);
         System.out.println(clientService.getAllClient());*/
         
+        
         c.getComptes().get(0).estCredite(10);
         c.getComptes().get(0).estDebite(20);
         c.getComptes().get(0).effectuerVirement(5, c.getComptes().get(1));
         c = clientService.update(c);
 
+        System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
         c = clientService.getClientbyId(c.getNumero_client());
+        System.out.println(c);
+        System.out.println("-----> " + c.getComptes().size());
+        c.getComptes().remove(1);
+        System.out.println(c);
+        c = clientService.update(c);
+        c = clientService.getClientbyId(c.getNumero_client());
+        System.out.println("-----> " + c.getComptes().size());
+        System.out.println(c);
+        
+        c.getComptes().get(0).getHistorique_credit().remove(0);
+        c = clientService.update(c);
+        System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
         appContext.close();
     }

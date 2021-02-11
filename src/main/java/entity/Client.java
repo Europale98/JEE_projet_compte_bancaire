@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
@@ -33,8 +35,9 @@ public class Client {
     joinColumns = { @JoinColumn(name = "client_id") },
     inverseJoinColumns = { @JoinColumn(name = "compte_id") })*/
 	//@OneToMany(fetch = FetchType.LAZY, mappedBy="client", cascade = CascadeType.ALL)
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name="numero_client")
+	@Fetch(FetchMode.SELECT)
     /*@JoinTable(name = "client_compte",
     joinColumns = { @JoinColumn(name = "numero_client") },
     inverseJoinColumns = { @JoinColumn(name = "numero_compte") })*/
