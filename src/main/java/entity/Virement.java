@@ -1,5 +1,9 @@
 package entity;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+import javax.persistence.Basic;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -18,7 +24,7 @@ public class Virement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numero_virement;
-    private String date;
+    private Timestamp date;
     @Enumerated(EnumType.STRING)
     private typeVirement type;
     private double montant;
@@ -36,7 +42,7 @@ public class Virement {
     public Virement() {
         super();
     }
-    public Virement(String date, typeVirement type, double montant, Compte compte) {
+    public Virement(Timestamp date, typeVirement type, double montant, Compte compte) {
         super();
         this.date = date;
         this.type = type;
@@ -49,7 +55,7 @@ public class Virement {
             this.crediteur = null;
         }
     }
-    public Virement(String date, double montant, Compte debiteur, Compte crediteur) {
+    public Virement(Timestamp date, double montant, Compte debiteur, Compte crediteur) {
         super();
         this.date = date;
         this.type = typeVirement.VIREMENT;
@@ -66,10 +72,10 @@ public class Virement {
     public void setNumero_virement(Long numero_virement) {
         this.numero_virement = numero_virement;
     }
-    public String getDate() {
+    public Timestamp getDate() {
         return date;
     }
-    public void setDate(String date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
     public typeVirement getType() {

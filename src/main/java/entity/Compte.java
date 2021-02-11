@@ -1,22 +1,30 @@
 package entity;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Formula;
+import org.hibernate.annotations.Where;
 
 import entity.Virement.typeVirement;
 
 @Entity
-public class Compte {
+public class Compte implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,21 +45,21 @@ public class Compte {
     
     public void estDebite(double montant) {
         this.montant -= montant;
-        historique_debit.add(new Virement("today", typeVirement.DEBIT, montant, this));
+        historique_debit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.DEBIT, montant, this));
     }
     public void estCredite(double montant) {
         this.montant += montant;
-        historique_credit.add(new Virement("today", typeVirement.CREDIT, montant, this));
+        historique_credit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
     }
     public void effectuerVirement(double montant, Compte compte) {
         this.montant -= montant;
-        Virement v = new Virement("today", montant, this, compte);
+        Virement v = new Virement(new Timestamp(System.currentTimeMillis()), montant, this, compte);
         historique_debit.add(v);
         compte.recupererVirement(v);
     }
     public void recupererVirement(Virement v) {
         this.montant += v.getMontant();
-        historique_credit.add(v);
+        historique_debit.add(v);
     }
     
 	public Long getNumero_compte() {
@@ -91,5 +99,7 @@ public class Compte {
                 + ", historique_debit=" + historique_debit
                 + ", historique_credit=" + historique_credit + "]";
     }
+	
+	
     
 }

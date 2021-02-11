@@ -36,6 +36,8 @@ public class Test {
         c = clientService.update(c);
 
         System.out.println(c);
+        c = clientService.getClientbyId(c.getNumero_client());
+        System.out.println(c);
         appContext.close();
     }
 
