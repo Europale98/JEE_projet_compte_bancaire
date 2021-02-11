@@ -18,6 +18,10 @@ public class ClientService {
     @Autowired
     private ClientRepository repository;
 
+    public Client update(Client c) {
+        return repository.save(c);
+    }
+    
     public Client createClient() {
         Client c = new Client();
         c.setNom("Nom");

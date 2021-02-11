@@ -22,17 +22,20 @@ public class Test {
         Client c = clientService.createClient();
         System.out.println(c);
         
-
-        CompteService compteService = (CompteService)appContext.getBean("compteService");
+        /*CompteService compteService = (CompteService)appContext.getBean("compteService");
         compteService.deleteCompte(c.getComptes().get(0));
         c = clientService.getClientbyId(c.getNumero_client());
-
         System.out.println(c);
-        
 
         clientService.deleteClient(c);
-        System.out.println(clientService.getAllClient());
+        System.out.println(clientService.getAllClient());*/
         
+        c.getComptes().get(0).estCredite(10);
+        c.getComptes().get(0).estDebite(20);
+        c.getComptes().get(0).effectuerVirement(5, c.getComptes().get(1));
+        c = clientService.update(c);
+
+        System.out.println(c);
         appContext.close();
     }
 

@@ -1,38 +1,89 @@
 package entity;
 
-public class Virement {
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
-	private int numero_virement;
-	private String date;
-	private String type;
-	private long montant;
-	private Compte debiteur;
-	private Compte crediteur;
-	
-	public int getNumero_virement() {
-		return numero_virement;
-	}
-	public void setNumero_virement(int numero_virement) {
-		this.numero_virement = numero_virement;
-	}
-	public String getDate() {
-		return date;
-	}
-	public void setDate(String date) {
-		this.date = date;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public long getMontant() {
-		return montant;
-	}
-	public void setMontant(long montant) {
-		this.montant = montant;
-	}
+@Entity
+public class Virement {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long numero_virement;
+    private String date;
+    @Enumerated(EnumType.STRING)
+    private typeVirement type;
+    private double montant;
+    @ManyToOne
+    private Compte debiteur;
+    @ManyToOne
+    private Compte crediteur;
+
+    public enum typeVirement {
+        DEBIT, CREDIT, VIREMENT;
+
+        typeVirement() {}
+    }
+
+    public Virement() {
+        super();
+    }
+    public Virement(String date, typeVirement type, double montant, Compte compte) {
+        super();
+        this.date = date;
+        this.type = type;
+        this.montant = montant;
+        if(type == typeVirement.CREDIT) {
+            this.crediteur = compte;
+            this.debiteur =  null;
+        } else if(type == typeVirement.DEBIT) {
+            this.debiteur = compte;
+            this.crediteur = null;
+        }
+    }
+    public Virement(String date, double montant, Compte debiteur, Compte crediteur) {
+        super();
+        this.date = date;
+        this.type = typeVirement.VIREMENT;
+        this.montant = montant;
+        this.crediteur = crediteur;
+        this.debiteur = debiteur;
+    }
+
+
+
+    public Long getNumero_virement() {
+        return numero_virement;
+    }
+    public void setNumero_virement(Long numero_virement) {
+        this.numero_virement = numero_virement;
+    }
+    public String getDate() {
+        return date;
+    }
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public typeVirement getType() {
+        return type;
+    }
+    public void setType(typeVirement type) {
+        this.type = type;
+    }
+    public double getMontant() {
+        return montant;
+    }
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
     public Compte getDebiteur() {
         return debiteur;
     }
@@ -49,8 +100,8 @@ public class Virement {
     public String toString() {
         return "Virement [numero_virement=" + numero_virement + ", date=" + date
                 + ", type=" + type + ", montant=" + montant + ", debiteur="
-                + debiteur + ", crediteur=" + crediteur + "]";
+                + ((debiteur!=null)?debiteur.getNumero_compte():"none") + ", crediteur=" + ((crediteur!=null)?crediteur.getNumero_compte():"none") + "]";
     }
-	
-	
+
+
 }
