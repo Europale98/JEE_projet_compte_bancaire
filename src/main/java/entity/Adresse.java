@@ -1,20 +1,23 @@
 package entity;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
 
-	private String numero_rue;
+    @Column(name = "numero_rue")
+	private String numeroRue;
 	private String ville;
 	
-	public String getNumero_rue() {
-		return numero_rue;
-	}
-	public void setNumero_rue(String numero_rue) {
-		this.numero_rue = numero_rue;
-	}
-	public String getVille() {
+	
+	public String getNumeroRue() {
+        return numeroRue;
+    }
+    public void setNumeroRue(String numeroRue) {
+        this.numeroRue = numeroRue;
+    }
+    public String getVille() {
 		return ville;
 	}
 	public void setVille(String ville) {
@@ -22,7 +25,7 @@ public class Adresse {
 	}
     @Override
     public String toString() {
-        return "Adresse [numero_rue=" + numero_rue + ", ville=" + ville + "]";
+        return "Adresse [numero_rue=" + numeroRue + ", ville=" + ville + "]";
     }
 
 	

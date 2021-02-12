@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -23,7 +24,8 @@ import javax.persistence.UniqueConstraint;
 public class Virement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long numero_virement;
+    @Column(name = "numero_virement")
+    private Long numeroVirement;
     private Timestamp date;
     @Enumerated(EnumType.STRING)
     private typeVirement type;
@@ -66,11 +68,12 @@ public class Virement {
 
 
 
-    public Long getNumero_virement() {
-        return numero_virement;
+    
+    public Long getNumeroVirement() {
+        return numeroVirement;
     }
-    public void setNumero_virement(Long numero_virement) {
-        this.numero_virement = numero_virement;
+    public void setNumeroVirement(Long numeroVirement) {
+        this.numeroVirement = numeroVirement;
     }
     public Timestamp getDate() {
         return date;
@@ -104,9 +107,9 @@ public class Virement {
     }
     @Override
     public String toString() {
-        return "Virement [numero_virement=" + numero_virement + ", date=" + date
+        return "Virement [numero_virement=" + numeroVirement + ", date=" + date
                 + ", type=" + type + ", montant=" + montant + ", debiteur="
-                + ((debiteur!=null)?debiteur.getNumero_compte():"none") + ", crediteur=" + ((crediteur!=null)?crediteur.getNumero_compte():"none") + "]";
+                + ((debiteur!=null)?debiteur.getNumeroCompte():"none") + ", crediteur=" + ((crediteur!=null)?crediteur.getNumeroCompte():"none") + "]";
     }
 
 

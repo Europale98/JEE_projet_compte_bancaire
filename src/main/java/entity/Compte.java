@@ -30,47 +30,53 @@ public class Compte implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long numero_compte;
+    @Column(name = "numero_compte")
+	private Long numeroCompte;
 	private double montant;
 	/*@ManyToOne
 	@JoinColumn(name="numero_client", nullable=false)
 	private Client client;*/
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "debiteur", cascade = CascadeType.ALL, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
-    private List<Virement> historique_debit;
+    private List<Virement> historiqueDebit;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "crediteur", cascade = CascadeType.ALL, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
-	private List<Virement> historique_credit;
+	private List<Virement> historiqueCredit;
     
     public Compte() {
-        historique_credit = new ArrayList<Virement>();
-        historique_debit = new ArrayList<Virement>();
+        historiqueCredit = new ArrayList<Virement>();
+        historiqueDebit = new ArrayList<Virement>();
     }
     
-    public void estDebite(double montant) {
+    public void effectuerDebit(double montant) {
         this.montant -= montant;
-        historique_debit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.DEBIT, montant, this));
+        historiqueDebit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.DEBIT, montant, this));
     }
-    public void estCredite(double montant) {
+    public void effectuerCredit(double montant) {
         this.montant += montant;
-        historique_credit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
+        historiqueCredit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
     }
     public void effectuerVirement(double montant, Compte compte) {
         this.montant -= montant;
         Virement v = new Virement(new Timestamp(System.currentTimeMillis()), montant, this, compte);
-        historique_debit.add(v);
+        historiqueDebit.add(v);
         compte.recupererVirement(v);
     }
     public void recupererVirement(Virement v) {
         this.montant += v.getMontant();
-        historique_debit.add(v);
+        historiqueDebit.add(v);
     }
     
-	public Long getNumero_compte() {
-		return numero_compte;
+    public void supprimerHistorique() {
+        historiqueCredit.clear();
+        historiqueDebit.clear();
+    }
+    
+	public Long getNumeroCompte() {
+		return numeroCompte;
 	}
-	public void setNumero_compte(Long numero_compte) {
-		this.numero_compte = numero_compte;
+	public void setNumeroCompte(Long numeroCompte) {
+		this.numeroCompte = numeroCompte;
 	}
 	public double getMontant() {
 		return montant;
@@ -85,23 +91,23 @@ public class Compte implements Serializable {
         this.client = client;
     }*/
 	
-    public List<Virement> getHistorique_debit() {
-        return historique_debit;
+    public List<Virement> getHistoriqueDebit() {
+        return historiqueDebit;
     }
-    public List<Virement> getHistorique_credit() {
-        return historique_credit;
+    public List<Virement> getHistoriqueCredit() {
+        return historiqueCredit;
     }
-    public void setHistorique_debit(List<Virement> historique_debit) {
-        this.historique_debit = historique_debit;
+    public void setHistoriqueDebit(List<Virement> historiqueDebit) {
+        this.historiqueDebit = historiqueDebit;
     }
-    public void setHistorique_credit(List<Virement> historique_credit) {
-        this.historique_credit = historique_credit;
+    public void setHistoriqueCredit(List<Virement> historiqueCredit) {
+        this.historiqueCredit = historiqueCredit;
     }
     @Override
     public String toString() {
-        return "Compte [numero_compte=" + numero_compte + ", montant=" + montant
-                + ", historique_debit=" + historique_debit
-                + ", historique_credit=" + historique_credit + "]";
+        return "Compte [numero_compte=" + numeroCompte + ", montant=" + montant
+                + ", historique_debit=" + historiqueDebit
+                + ", historique_credit=" + historiqueCredit + "]";
     }
 	
 	

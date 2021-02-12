@@ -19,39 +19,41 @@ public class Test {
         ClientService clientService = (ClientService)appContext.getBean("clientService");
         //individuService.test();
 
-        Client c = clientService.createClient();
+        Client c = clientService.createClient("Nom", "Prenom", "rue rue", "ville", 100);
         System.out.println(c);
         
-        /*CompteService compteService = (CompteService)appContext.getBean("compteService");
-        compteService.deleteCompte(c.getComptes().get(0));
-        c = clientService.getClientbyId(c.getNumero_client());
+        c =  clientService.creerCompteClient(c, 300);
         System.out.println(c);
-
-        clientService.deleteClient(c);
+        
+        /*c = clientService.fermerCompteClient(c, c.getComptes().get(0));
+        System.out.println(c);
+        
+        c = clientService.fermerCompteClient(c, c.getComptes().get(0));
+        System.out.println(c);
         System.out.println(clientService.getAllClient());*/
         
-        
-        c.getComptes().get(0).estCredite(10);
-        c.getComptes().get(0).estDebite(20);
-        c.getComptes().get(0).effectuerVirement(5, c.getComptes().get(1));
-        c = clientService.update(c);
+        /*clientService.deleteClient(c);
+        System.out.println(clientService.getAllClient());*/
+
+        //CompteService compteService = (CompteService)appContext.getBean("compteService");
+        c = clientService.effectuerCreditCompte(c, c.getComptes().get(0), 10);
+        c = clientService.effectuerDebitCompte(c, c.getComptes().get(0), 30);
+        c = clientService.effectuerVirementCompte(c, c.getComptes().get(0),c.getComptes().get(1).getNumeroCompte(), 5);
 
         System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
-        c = clientService.getClientbyId(c.getNumero_client());
+        
+        c = clientService.fermerCompteClient(c, c.getComptes().get(1));
         System.out.println(c);
-        System.out.println("-----> " + c.getComptes().size());
-        c.getComptes().remove(1);
-        System.out.println(c);
-        c = clientService.update(c);
-        c = clientService.getClientbyId(c.getNumero_client());
+        
+        c = clientService.suppressionHistoriqueVirement(c, c.getComptes().get(0));
         System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
         
-        c.getComptes().get(0).getHistorique_credit().remove(0);
-        c = clientService.update(c);
+        c = clientService.updateClient(c, "Nom2", c.getPrenom(), "rue rue2", c.getAdresse().getVille());
         System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
+        
         appContext.close();
     }
 

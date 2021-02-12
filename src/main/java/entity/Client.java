@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -24,7 +25,8 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long numero_client;
+    @Column(name = "numero_client")
+	private Long numeroClient;
 	private String nom;
 	private String prenom;
 	@Embedded
@@ -43,13 +45,25 @@ public class Client {
     inverseJoinColumns = { @JoinColumn(name = "numero_compte") })*/
 	private List<Compte> comptes;
 	
-	public Long getNumero_client() {
-		return numero_client;
+	public void addCompte(Compte c) {
+	    if(this.comptes == null) {
+	        this.comptes = new ArrayList<>();
+	    }
+	    this.comptes.add(c);
 	}
-	public void setNumero_client(Long numero_client) {
-		this.numero_client = numero_client;
-	}
-	public String getNom() {
+	
+	public void fermeCompte(Compte c) {
+	    if(this.comptes!=null)
+	        this.comptes.remove(c);
+    }
+	
+	public Long getNumeroClient() {
+        return numeroClient;
+    }
+    public void setNumeroClient(Long numeroClient) {
+        this.numeroClient = numeroClient;
+    }
+    public String getNom() {
 		return nom;
 	}
 	public void setNom(String nom) {
@@ -75,7 +89,7 @@ public class Client {
 	}
     @Override
     public String toString() {
-        return "Client [numero_client=" + numero_client + ", nom=" + nom
+        return "Client [numero_client=" + numeroClient + ", nom=" + nom
                 + ", prenom=" + prenom + ", adresse=" + adresse + ", comptes="
                 + comptes + "]";
     }

@@ -1,18 +1,15 @@
 package service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import dao.CompteRepository;
 import entity.Compte;
 
-
-@Service("compteService")
-public class CompteService {
-    @Autowired
-    private CompteRepository repository;
+public interface CompteService {
+    Compte getCompteByNumero(Long numeroCompte);
     
-    public void deleteCompte(Compte c) {
-        repository.delete(c);
-    }
+    void effectuerCreditCompte(Compte c, double montant);
+    
+    void effectuerDebitCompte(Compte c, double montant);
+    
+    void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant);
+    
+    void suppressionHistoriqueVirement(Compte c);
 }
