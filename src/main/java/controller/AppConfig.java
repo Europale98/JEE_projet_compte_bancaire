@@ -10,7 +10,7 @@ import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"entity","dao","service"})
+@EnableJpaRepositories(basePackages = { "entity", "dao", "service" })
 public class AppConfig {
 
     @Bean
@@ -22,9 +22,9 @@ public class AppConfig {
 
     @Bean
     public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-        JpaTransactionManager transactionManager =  new JpaTransactionManager();
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         return transactionManager;
-    } 
+    }
 
 }

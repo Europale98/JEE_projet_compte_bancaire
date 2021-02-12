@@ -13,12 +13,12 @@ public class CompteServiceImpl implements CompteService {
     private static CompteServiceImpl serviceInstance = null;
     @Autowired
     private CompteRepository repository;
-    
+
     private CompteServiceImpl() {
     }
-    
+
     public static CompteServiceImpl getInstance() {
-        if(serviceInstance == null) {
+        if (serviceInstance == null) {
             serviceInstance = new CompteServiceImpl();
         }
         return serviceInstance;
@@ -27,7 +27,7 @@ public class CompteServiceImpl implements CompteService {
     @Override
     public Compte getCompteByNumero(Long numeroCompte) {
         Optional<Compte> c = repository.findById(numeroCompte);
-        if(c.isPresent())
+        if (c.isPresent())
             return c.get();
         else
             return null;
@@ -47,8 +47,7 @@ public class CompteServiceImpl implements CompteService {
     }
 
     @Override
-    public void effectuerVirementCompte(Compte c, Long numeroCompte2,
-            double montant) {
+    public void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant) {
         Compte c2 = this.getCompteByNumero(numeroCompte2);
         c.effectuerVirement(montant, c2);
         repository.save(c);
@@ -60,7 +59,4 @@ public class CompteServiceImpl implements CompteService {
         repository.save(c);
     }
 
-    
-    
-    
 }

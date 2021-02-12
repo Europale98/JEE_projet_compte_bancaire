@@ -38,25 +38,28 @@ public class Virement {
     public enum typeVirement {
         DEBIT, CREDIT, VIREMENT;
 
-        typeVirement() {}
+        typeVirement() {
+        }
     }
 
     public Virement() {
         super();
     }
+
     public Virement(Timestamp date, typeVirement type, double montant, Compte compte) {
         super();
         this.date = date;
         this.type = type;
         this.montant = montant;
-        if(type == typeVirement.CREDIT) {
+        if (type == typeVirement.CREDIT) {
             this.crediteur = compte;
-            this.debiteur =  null;
-        } else if(type == typeVirement.DEBIT) {
+            this.debiteur = null;
+        } else if (type == typeVirement.DEBIT) {
             this.debiteur = compte;
             this.crediteur = null;
         }
     }
+
     public Virement(Timestamp date, double montant, Compte debiteur, Compte crediteur) {
         super();
         this.date = date;
@@ -66,51 +69,59 @@ public class Virement {
         this.debiteur = debiteur;
     }
 
-
-
-    
     public Long getNumeroVirement() {
         return numeroVirement;
     }
+
     public void setNumeroVirement(Long numeroVirement) {
         this.numeroVirement = numeroVirement;
     }
+
     public Timestamp getDate() {
         return date;
     }
+
     public void setDate(Timestamp date) {
         this.date = date;
     }
+
     public typeVirement getType() {
         return type;
     }
+
     public void setType(typeVirement type) {
         this.type = type;
     }
+
     public double getMontant() {
         return montant;
     }
+
     public void setMontant(double montant) {
         this.montant = montant;
     }
+
     public Compte getDebiteur() {
         return debiteur;
     }
+
     public Compte getCrediteur() {
         return crediteur;
     }
+
     public void setDebiteur(Compte debiteur) {
         this.debiteur = debiteur;
     }
+
     public void setCrediteur(Compte crediteur) {
         this.crediteur = crediteur;
     }
+
     @Override
     public String toString() {
-        return "Virement [numero_virement=" + numeroVirement + ", date=" + date
-                + ", type=" + type + ", montant=" + montant + ", debiteur="
-                + ((debiteur!=null)?debiteur.getNumeroCompte():"none") + ", crediteur=" + ((crediteur!=null)?crediteur.getNumeroCompte():"none") + "]";
+        return "Virement [numero_virement=" + numeroVirement + ", date=" + date + ", type=" + type + ", montant="
+                + montant + ", debiteur=" + ((debiteur != null) ? debiteur.getNumeroCompte() : "none") + ", crediteur="
+                + ((crediteur != null) ? crediteur.getNumeroCompte() : "none") + "]";
     }
-
 
 }

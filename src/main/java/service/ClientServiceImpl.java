@@ -13,8 +13,6 @@ import entity.Adresse;
 import entity.Client;
 import entity.Compte;
 
-
-
 @Service("clientService")
 public class ClientServiceImpl implements ClientService {
     private static ClientServiceImpl serviceInstance = null;
@@ -22,43 +20,50 @@ public class ClientServiceImpl implements ClientService {
     private ClientRepository repository;
     @Autowired
     private CompteService compteService;
-    
+
     private ClientServiceImpl() {
     }
-    
+
     public static ClientServiceImpl getInstance() {
-        if(serviceInstance == null) {
+        if (serviceInstance == null) {
             serviceInstance = new ClientServiceImpl();
         }
         return serviceInstance;
     }
-    
+
     @Override
     public Client getClientByNumero(Long numeroClient) {
         Optional<Client> c = repository.findById(numeroClient);
-        if(c.isPresent())
+        if (c.isPresent())
             return c.get();
         else
             return null;
     }
-    
+
     @Override
     public List<Client> getAllClient() {
         return (List<Client>) repository.findAll();
     }
 
     @Override
-    public Client createClient(String nom, String prenom, String numeroRue,
-            String ville, double montant) {
+    public boolean verificationMotDePasse(Long numeroClient, String motDePasse) {
+        List<Client> list = repository.findByNumeroClientAndMotDePasse(numeroClient, motDePasse);
+        return !list.isEmpty();
+    }
+
+    @Override
+    public Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville,
+            double montant) {
         Client c = new Client();
         c.setNom(nom);
         c.setPrenom(prenom);
-        
+        c.setMotDePasse(motDePasse);
+
         Adresse a = new Adresse();
         a.setNumeroRue(numeroRue);
         a.setVille(ville);
         c.setAdresse(a);
-        
+
         Compte cm = new Compte();
         cm.setMontant(montant);
         c.addCompte(cm);
@@ -67,22 +72,28 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client updateClient(Client c, String nom, String prenom, String numeroRue, String ville) {
-        c.setNom(nom);
-        c.setPrenom(prenom);
+    public Client updateClient(Client c, String nom, String prenom, String motDePasse, String numeroRue, String ville) {
+        if (nom != null)
+            c.setNom(nom);
+        if (prenom != null)
+            c.setPrenom(prenom);
+        if (motDePasse != null)
+            c.setMotDePasse(motDePasse);
         Adresse a = c.getAdresse();
-        a.setNumeroRue(numeroRue);
-        a.setVille(ville);
+        if (numeroRue != null)
+            a.setNumeroRue(numeroRue);
+        if (ville != null)
+            a.setVille(ville);
         c.setAdresse(a);
         c = repository.save(c);
         return this.getClientByNumero(c.getNumeroClient());
     }
-    
+
     @Override
     public void deleteClient(Client c) {
         repository.delete(c);
     }
-    
+
     @Override
     public void deleteClientByNumero(Long numeroClient) {
         repository.deleteById(numeroClient);
@@ -100,7 +111,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client fermerCompteClient(Client c, Compte compte) {
         c.fermeCompte(compte);
-        if(c.getComptes().isEmpty()) {
+        if (c.getComptes().isEmpty()) {
             this.deleteClientByNumero(c.getNumeroClient());
             return null;
         }
@@ -127,8 +138,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client effectuerVirementCompte(Client c, Compte cm,
-            Long numeroCompte2, double montant) {
+    public Client effectuerVirementCompte(Client c, Compte cm, Long numeroCompte2, double montant) {
         if (c.getComptes().contains(cm)) {
             compteService.effectuerVirementCompte(cm, numeroCompte2, montant);
             c = this.getClientByNumero(c.getNumeroClient());

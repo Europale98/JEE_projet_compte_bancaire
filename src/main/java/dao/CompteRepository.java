@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 import entity.Compte;
 
 @Repository
-public interface CompteRepository extends CrudRepository<Compte, Long>{
+public interface CompteRepository extends CrudRepository<Compte, Long> {
 }
