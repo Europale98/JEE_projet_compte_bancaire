@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Inscription</title>
+<title>Modification informations</title>
 </head>
 <body>
-	<form action="inscription" method="post">
+	<form action="update" method="post">
 		Nom : <input type="text" name="nom"/>
 		<br>
 		Prénom : <input type="text" name="prenom"/>
@@ -16,8 +16,6 @@
 		Numéro, rue : <input type="text" name="numeroRue"/>
 		<br>
 		Ville : <input type="text" name="ville"/>
-		<br>
-		Montant initial du compte : <input type="text" name="montant"/>
 		<br>
 		<input type="submit" value="Entrer"/>
 	</form>
