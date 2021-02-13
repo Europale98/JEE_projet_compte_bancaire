@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import entity.Client;
 import service.ClientService;
-import service.ClientServiceImpl;
 
 /**
  * Servlet implementation class Update
@@ -39,7 +40,13 @@ public class Update extends HttpServlet {
 		String numeroRue = request.getParameter("numeroRue");
 		String ville = request.getParameter("ville");
 		
-		ClientService cs = ClientServiceImpl.getInstance();
+		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("service");
+        appContext.scan("dao");
+        appContext.scan("entity");
+        appContext.scan("controller");
+        appContext.refresh();
+		ClientService cs = (ClientService) appContext.getBean("clientService");
 		
 		HttpSession session = request.getSession();
 			

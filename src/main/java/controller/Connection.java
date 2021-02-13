@@ -33,10 +33,8 @@ public class Connection extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String num = request.getParameter("numeroClient");
+		Long num = Long.parseLong(request.getParameter("numeroClient"));
 		String mdp = request.getParameter("motDePasse");
-		System.out.println(num);
-		System.out.println(mdp);
 		
 		String suite = ""; 
 		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
@@ -47,11 +45,11 @@ public class Connection extends HttpServlet {
         appContext.refresh();
         
 		ClientService cs = (ClientService) appContext.getBean("clientService");
-		if(cs.verificationMotDePasse(Long.getLong(num), mdp)) {
+		if(cs.verificationMotDePasse(num, mdp)) {
 			suite = "/accueil.jsp";
 			HttpSession session = request.getSession();
 			
-			Client client = cs.getClientByNumero(Long.getLong(num));
+			Client client = cs.getClientByNumero(num);
 			
 			session.setAttribute("client", client);
 		}
