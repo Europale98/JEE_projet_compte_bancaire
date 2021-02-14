@@ -12,6 +12,7 @@
 	out.println("Compte(s) de " + client.getNom() + " " + client.getPrenom());
 	%>
 	<br>
+	<br>
 	<%
 	for (Compte c : client.getComptes()) {
 		out.println("Numéro du compte : " + c.getNumeroCompte() + " Solde : " + c.getMontant() + "\n");

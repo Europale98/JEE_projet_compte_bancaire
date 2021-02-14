@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableJpaRepositories(basePackages = { "entity", "dao", "service" })
+@EnableTransactionManagement
 public class AppConfig {
 
     @Bean

@@ -12,7 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entity.Client;
-import entity.Compte;
+import exception.CompteInexistantException;
+import exception.DeficitImpossibleException;
 import service.ClientService;
 
 /**
@@ -47,14 +48,29 @@ public class Virement extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		String type = request.getParameter("type");
-		Client client;
+		Client client = null;
 		if(type.equals("debit")) {
-			client = cs.effectuerDebitCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), montant);
+			try {
+				client = cs.effectuerDebitCompte((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")), montant);
+			} catch (NumberFormatException | DeficitImpossibleException | CompteInexistantException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(type.equals("credit")) {
-			client = cs.effectuerCreditCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), montant);
+			try {
+				client = cs.effectuerCreditCompte((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")), montant);
+			} catch (NumberFormatException | CompteInexistantException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} else {
-			String cpte = request.getParameter("compte");
-			client = cs.effectuerVirementCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), cpte, montant);
+			Long numeroCompteCredite = Long.parseLong(request.getParameter("compteCredite"));
+			try {
+				client = cs.effectuerVirementCompte((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")), numeroCompteCredite, montant);
+			} catch (NumberFormatException | DeficitImpossibleException | CompteInexistantException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		session.setAttribute("client", client);

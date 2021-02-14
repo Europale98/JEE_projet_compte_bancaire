@@ -12,13 +12,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import exception.AuMoinsUnCompteException;
+import exception.CompteInexistantException;
 
 @Entity
 public class Client {
@@ -54,14 +54,19 @@ public class Client {
 
     public void addCompte(Compte c) {
         if (this.comptes == null) {
-            this.comptes = new ArrayList<>();
+            this.comptes = new ArrayList<Compte>();
         }
         this.comptes.add(c);
     }
 
-    public void fermeCompte(Compte c) {
-        if (this.comptes != null)
-            this.comptes.remove(c);
+    public void fermeCompte(Compte c) throws CompteInexistantException, AuMoinsUnCompteException {
+        if (this.comptes != null && this.comptes.size()>1) {
+            if(!this.comptes.remove(c)) {
+                throw new CompteInexistantException();
+            }
+        } else {
+            throw new AuMoinsUnCompteException();
+        }
     }
 
     public Long getNumeroClient() {
@@ -106,6 +111,15 @@ public class Client {
 
     public List<Compte> getComptes() {
         return comptes;
+    }
+    
+    public Compte getCompte(Long numeroCompte) throws CompteInexistantException {
+        for(Compte c : this.comptes) {
+            if (c.getNumeroCompte().equals(numeroCompte)) {
+                return c;
+            }
+        }
+        throw new CompteInexistantException();
     }
 
     public void setComptes(List<Compte> comptes) {

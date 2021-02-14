@@ -20,10 +20,10 @@
 	<% }else {
 		out.println("Bienvenue");
 		%>
-		<a href="connection.jsp"><input type="button" value="Connection"></a>
-		<a href="inscription.jsp"><input type="button" value="Inscription"></a>
+	<a href="connection.jsp"><input type="button" value="Connection"></a>
+	<a href="inscription.jsp"><input type="button" value="Inscription"></a>
 	<%}
 	%>
-	
+
 </body>
 </html>

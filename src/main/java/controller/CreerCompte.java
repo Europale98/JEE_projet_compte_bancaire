@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entity.Client;
+import exception.DeficitImpossibleException;
 import service.ClientService;
 
 /**
@@ -46,10 +47,16 @@ public class CreerCompte extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = cs.creerCompteClient((Client) session.getAttribute("client"), montant);
+		Client client = null;
+		try {
+			client = cs.creerCompteClient((Client) session.getAttribute("client"), montant);
+		} catch (DeficitImpossibleException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		session.setAttribute("client", client);
 			
-		response.sendRedirect(request.getContextPath() + "/accueil.jsp");
+		response.sendRedirect(request.getContextPath() + "/comptes.jsp");
 	}
 }

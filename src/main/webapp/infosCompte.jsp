@@ -1,5 +1,6 @@
 <%@ page import="entity.Client"%>
 <%@ page import="entity.Compte"%>
+<%@ page import="entity.Virement"%>
 <%@ page import="service.CompteService"%>
 <%@ page import="org.springframework.context.annotation.AnnotationConfigApplicationContext"%>
 
@@ -17,6 +18,7 @@
 	
 	%>
 	<br>
+	<br>
 	<%
 	AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
     appContext.scan("service");
@@ -28,6 +30,22 @@
 	Compte c = cs.getCompteByNumero(numeroCompte);
 	out.println("Solde : " + c.getMontant());
 	%>
+	<br>
+	<br>
+	<%
+	out.println("Historique des transactions : ");
+	%>
+	<br>
+	<%
+	for (Virement v : c.getHistoriqueCredit()) {
+		out.println(v.getDate() + " " + v.getMontant() + " " + v.getCrediteur() + " " + v.getDebiteur());
+	}	
+	%>
+	<br>
+	<form action="suppressionHistorique" method="post">
+		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+		<input type="submit" value="Supprimer l'historique"/>
+	</form>
 	<br>
 	<br>
 	<%
@@ -49,7 +67,7 @@
 	<br>
 	<form action="virement" method="post">
 		Montant : <input type="number" name="montant"/>
-		Numéro du compte à crédité : <input type="text" name="compte"/>
+		Numéro du compte à crédité : <input type="text" name="compteCredite"/>
 		<input type="hidden" name="type" value="virement" />
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Virement"/>

@@ -4,11 +4,16 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompteRepository;
 import entity.Compte;
+import entity.Virement;
+import exception.CompteInexistantException;
+import exception.DeficitImpossibleException;
 
 @Service("compteService")
+@Transactional
 public class CompteServiceImpl implements CompteService {
     private static CompteServiceImpl serviceInstance = null;
     @Autowired
@@ -25,32 +30,35 @@ public class CompteServiceImpl implements CompteService {
     }
 
     @Override
-    public Compte getCompteByNumero(Long numeroCompte) {
+    public Compte getCompteByNumero(Long numeroCompte) throws CompteInexistantException {
         Optional<Compte> c = repository.findById(numeroCompte);
         if (c.isPresent())
             return c.get();
         else
-            return null;
+            throw new CompteInexistantException();
     }
 
     @Override
     public void effectuerCreditCompte(Compte c, double montant) {
         c.effectuerCredit(montant);
-        System.out.println("COmptes -->" + c);
         repository.save(c);
     }
 
     @Override
-    public void effectuerDebitCompte(Compte c, double montant) {
+    public void effectuerDebitCompte(Compte c, double montant) throws DeficitImpossibleException {
         c.effectuerDebit(montant);
         repository.save(c);
     }
 
     @Override
-    public void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant) {
+    public void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant)
+            throws DeficitImpossibleException, CompteInexistantException {
         Compte c2 = this.getCompteByNumero(numeroCompte2);
-        c.effectuerVirement(montant, c2);
-        repository.save(c);
+        Virement v = c.effectuerVirement(montant, c2);
+        c = repository.save(c);
+        v = c.getVirementDebit(v);
+        c2.updateVirementCredit(v);
+        c2 = repository.save(c2);
     }
 
     @Override

@@ -2,19 +2,21 @@ package service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import entity.Client;
 import entity.Compte;
+import exception.AuMoinsUnCompteException;
+import exception.ClientInexistantException;
+import exception.CompteInexistantException;
+import exception.DeficitImpossibleException;
 
 public interface ClientService {
-    Client getClientByNumero(Long numeroClient);
+    Client getClientByNumero(Long numeroClient) throws ClientInexistantException;
 
     List<Client> getAllClient();
 
     boolean verificationMotDePasse(Long numeroClient, String motDePasse);
 
-    Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville, double montant);
+    Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville, double montant) throws DeficitImpossibleException;
 
     Client updateClient(Client c, String nom, String prenom, String motDePasse, String numeroRue, String ville);
 
@@ -22,15 +24,15 @@ public interface ClientService {
 
     void deleteClientByNumero(Long numeroClient);
 
-    Client creerCompteClient(Client c, double montant);
+    Client creerCompteClient(Client c, double montant) throws DeficitImpossibleException;
 
-    Client fermerCompteClient(Client c, Compte compte);
+    Client fermerCompteClient(Client c, Long numeroCompte) throws CompteInexistantException, AuMoinsUnCompteException;
 
-    Client effectuerCreditCompte(Client c, Compte cm, double montant);
+    Client effectuerCreditCompte(Client c, Long numeroCompte, double montant) throws CompteInexistantException;
 
-    Client effectuerDebitCompte(Client c, Compte cm, double montant);
+    Client effectuerDebitCompte(Client c, Long numeroCompte, double montant) throws DeficitImpossibleException, CompteInexistantException;
 
-    Client effectuerVirementCompte(Client c, Compte cm, Long numeroCompte2, double montant);
+    Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException;
 
-    Client suppressionHistoriqueVirement(Client c, Compte cm);
+    Client suppressionHistoriqueVirement(Client c, Long numeroCompte) throws CompteInexistantException;
 }

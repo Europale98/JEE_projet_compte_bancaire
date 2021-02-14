@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entity.Client;
-import entity.Compte;
+import exception.CompteInexistantException;
 import service.ClientService;
 
 /**
@@ -45,7 +45,13 @@ public class SuppressionHistorique extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = cs.suppressionHistoriqueVirement((Client) session.getAttribute("client"), request.getParameter("numeroCompte"));
+		Client client = null;
+		try {
+			client = cs.suppressionHistoriqueVirement((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")));
+		} catch (NumberFormatException | CompteInexistantException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		session.setAttribute("client", client);
 			
