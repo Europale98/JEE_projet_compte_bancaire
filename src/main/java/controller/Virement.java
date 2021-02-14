@@ -75,6 +75,6 @@ public class Virement extends HttpServlet {
 		
 		session.setAttribute("client", client);
 			
-		response.sendRedirect(request.getContextPath() + "/infosCompte.jsp");
+		response.sendRedirect(request.getContextPath() + "/comptes.jsp");
 	}
 }

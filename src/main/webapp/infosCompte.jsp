@@ -37,8 +37,21 @@
 	%>
 	<br>
 	<%
-	for (Virement v : c.getHistoriqueCredit()) {
-		out.println(v.getDate() + " " + v.getMontant() + " " + v.getCrediteur() + " " + v.getDebiteur());
+	for (Virement v : c.getHistoriqueVirement()) {
+		out.println(v.getDate() + " " + v.getMontant() + " " );
+		if(v.getDebiteur() != null) {
+			out.println(v.getDebiteur().getNumeroCompte() + " " );
+		} else {
+			out.println("null ");
+		}
+		if(v.getCrediteur() != null) {
+			out.println(v.getCrediteur().getNumeroCompte());
+		}else {
+			out.println("null");
+		}
+		%>
+		<br>
+		<%
 	}	
 	%>
 	<br>
