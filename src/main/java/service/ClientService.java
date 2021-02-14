@@ -26,13 +26,13 @@ public interface ClientService {
 
     Client creerCompteClient(Client c, double montant) throws DeficitImpossibleException;
 
-    Client fermerCompteClient(Client c, Compte compte) throws CompteInexistantException, AuMoinsUnCompteException;
+    Client fermerCompteClient(Client c, Long numeroCompte) throws CompteInexistantException, AuMoinsUnCompteException;
 
-    Client effectuerCreditCompte(Client c, Compte cm, double montant) throws CompteInexistantException;
+    Client effectuerCreditCompte(Client c, Long numeroCompte, double montant) throws CompteInexistantException;
 
-    Client effectuerDebitCompte(Client c, Compte cm, double montant) throws DeficitImpossibleException, CompteInexistantException;
+    Client effectuerDebitCompte(Client c, Long numeroCompte, double montant) throws DeficitImpossibleException, CompteInexistantException;
 
-    Client effectuerVirementCompte(Client c, Compte cm, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException;
+    Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException;
 
-    Client suppressionHistoriqueVirement(Client c, Compte cm) throws CompteInexistantException;
+    Client suppressionHistoriqueVirement(Client c, Long numeroCompte) throws CompteInexistantException;
 }

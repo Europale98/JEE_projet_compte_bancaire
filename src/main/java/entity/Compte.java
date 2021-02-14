@@ -53,7 +53,7 @@ public class Compte implements Serializable {
     }
 
     public void effectuerDebit(double montant) throws DeficitImpossibleException {
-        if (this.montant<montant) {
+        if (this.montant < montant) {
             throw new DeficitImpossibleException();
         }
         this.montant -= montant;
@@ -66,19 +66,20 @@ public class Compte implements Serializable {
                 .add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
     }
 
-    public void effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException {
-        if (this.montant<montant) {
+    public Virement effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException {
+        if (this.montant < montant) {
             throw new DeficitImpossibleException();
         }
         this.montant -= montant;
         Virement v = new Virement(new Timestamp(System.currentTimeMillis()), montant, this, compte);
         historiqueDebit.add(v);
         compte.recupererVirement(v);
+        return v;
     }
 
     public void recupererVirement(Virement v) {
         this.montant += v.getMontant();
-        historiqueDebit.add(v);
+        historiqueCredit.add(v);
     }
 
     public void supprimerHistorique() {
@@ -99,7 +100,7 @@ public class Compte implements Serializable {
     }
 
     public void setMontant(double montant) throws DeficitImpossibleException {
-        if(montant < 0)
+        if (montant < 0)
             throw new DeficitImpossibleException();
         this.montant = montant;
     }
@@ -118,6 +119,29 @@ public class Compte implements Serializable {
 
     public List<Virement> getHistoriqueCredit() {
         return historiqueCredit;
+    }
+    
+    public Virement getVirementDebit(Virement d) {
+        for (Virement v : this.historiqueDebit) {
+            if (v.getDate().equals(d.getDate())
+                    && v.getCrediteur().getNumeroCompte().equals(d.getCrediteur().getNumeroCompte())
+                    && v.getDebiteur().getNumeroCompte().equals(d.getDebiteur().getNumeroCompte())) {
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public void updateVirementCredit(Virement d) {
+        if(d==null)
+            return;
+        for (Virement v : this.historiqueCredit) {
+            if (v.getDate().equals(d.getDate())
+                    && v.getCrediteur().getNumeroCompte().equals(d.getCrediteur().getNumeroCompte())
+                    && v.getDebiteur().getNumeroCompte().equals(d.getDebiteur().getNumeroCompte())) {
+                v.setNumeroVirement(d.getNumeroVirement());
+            }
+        }
     }
 
     public void setHistoriqueDebit(List<Virement> historiqueDebit) {

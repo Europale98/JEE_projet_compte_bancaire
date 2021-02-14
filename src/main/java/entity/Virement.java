@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"date", "crediteur_numero_compte", "debiteur_numero_compte"}))
 public class Virement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -116,7 +117,7 @@ public class Virement {
     public void setCrediteur(Compte crediteur) {
         this.crediteur = crediteur;
     }
-
+    
     @Override
     public String toString() {
         return "Virement [numero_virement=" + numeroVirement + ", date=" + date + ", type=" + type + ", montant="

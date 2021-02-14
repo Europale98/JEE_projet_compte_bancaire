@@ -54,7 +54,7 @@ public class Client {
 
     public void addCompte(Compte c) {
         if (this.comptes == null) {
-            this.comptes = new ArrayList<>();
+            this.comptes = new ArrayList<Compte>();
         }
         this.comptes.add(c);
     }
@@ -111,6 +111,15 @@ public class Client {
 
     public List<Compte> getComptes() {
         return comptes;
+    }
+    
+    public Compte getCompte(Long numeroCompte) throws CompteInexistantException {
+        for(Compte c : this.comptes) {
+            if (c.getNumeroCompte().equals(numeroCompte)) {
+                return c;
+            }
+        }
+        throw new CompteInexistantException();
     }
 
     public void setComptes(List<Compte> comptes) {

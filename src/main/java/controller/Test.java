@@ -55,16 +55,16 @@ public class Test {
         // CompteService compteService =
         // (CompteService)appContext.getBean("compteService");
         try {
-            c = clientService.effectuerCreditCompte(c, c.getComptes().get(0), 10);
+            c = clientService.effectuerCreditCompte(c, c.getComptes().get(0).getNumeroCompte(), 10);
         } catch (CompteInexistantException e1) {
         }
         try {
-            c = clientService.effectuerDebitCompte(c, c.getComptes().get(0), 30);
+            c = clientService.effectuerDebitCompte(c, c.getComptes().get(0).getNumeroCompte(), 30);
         } catch (DeficitImpossibleException | CompteInexistantException e) {
             System.out.println(e.getMessage());
         }
         try {
-            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0), c.getComptes().get(1).getNumeroCompte(), 5);
+            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
         } catch (DeficitImpossibleException | CompteInexistantException e) {
             System.out.println(e.getMessage());
         }
