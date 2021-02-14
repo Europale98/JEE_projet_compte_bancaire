@@ -45,7 +45,7 @@ public class SuppressionHistorique extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = cs.suppressionHistoriqueVirement((Client) session.getAttribute("client"), (Compte) session.getAttribute("compte"));
+		Client client = cs.suppressionHistoriqueVirement((Client) session.getAttribute("client"), request.getParameter("numeroCompte"));
 		
 		session.setAttribute("client", client);
 			

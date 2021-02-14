@@ -46,11 +46,19 @@ public class Virement extends HttpServlet {
 		ClientService cs = (ClientService) appContext.getBean("clientService");
 		
 		HttpSession session = request.getSession();
-			
-		Client client = cs.effectuerCreditCompte((Client) session.getAttribute("client"), (Compte) session.getAttribute("compte"), montant);
+		String type = request.getParameter("type");
+		Client client;
+		if(type.equals("debit")) {
+			client = cs.effectuerDebitCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), montant);
+		}else if(type.equals("credit")) {
+			client = cs.effectuerCreditCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), montant);
+		} else {
+			String cpte = request.getParameter("compte");
+			client = cs.effectuerVirementCompte((Client) session.getAttribute("client"), request.getParameter("numeroCompte"), cpte, montant);
+		}
 		
 		session.setAttribute("client", client);
 			
-		response.sendRedirect(request.getContextPath() + "/accueil.jsp");
+		response.sendRedirect(request.getContextPath() + "/infosCompte.jsp");
 	}
 }

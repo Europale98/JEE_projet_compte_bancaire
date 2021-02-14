@@ -26,13 +26,38 @@
     appContext.refresh();
 	CompteService cs = (CompteService) appContext.getBean("compteService");
 	Compte c = cs.getCompteByNumero(numeroCompte);
-	out.println("Solde : " + c.getMontant() + "\n");
+	out.println("Solde : " + c.getMontant());
 	%>
+	<br>
+	<br>
+	<%
+	out.println("Effectuer un mouvement bancaire :");%>
+	<br>
 	<form action="virement" method="post">
 		Montant : <input type="number" name="montant"/>
-		<input type="submit" value="Effectuer un mouvement bancaire"/>
+		<input type="hidden" name="type" value="debit" />
+		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+		<input type="submit" value="Debit"/>
 	</form>
+	<br>
+	<form action="virement" method="post">
+		Montant : <input type="number" name="montant"/>
+		<input type="hidden" name="type" value="credit" />
+		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+		<input type="submit" value="Credit"/>
+	</form>
+	<br>
+	<form action="virement" method="post">
+		Montant : <input type="number" name="montant"/>
+		Numéro du compte à crédité : <input type="text" name="compte"/>
+		<input type="hidden" name="type" value="virement" />
+		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+		<input type="submit" value="Virement"/>
+	</form>
+	<br>
+	<br>
 	<form action="fermerCompte" method="post">
+		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Fermer ce compte"/>
 	</form>
 	<br>
