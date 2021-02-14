@@ -12,7 +12,8 @@
 		out.println("Bienvenue " + client.getNom() + " " + client.getPrenom());
 		%>
 		<br>
-		<a href="update.jsp"><input type="button" value="Modification infos"></a>
+		<a href="update.jsp"><input type="button" value="Modification infos client"></a>
+		<a href="comptes.jsp"><input type="button" value="Infos compte(s)"></a>
 		<form action="deconnection" method="post">
 			<input type="submit" value="Deconnection"/>
 		</form>

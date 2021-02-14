@@ -9,17 +9,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import entity.Client;
+import service.ClientService;
+
 /**
- * Servlet implementation class Deconnection
+ * Servlet implementation class CreerCompte
  */
-@WebServlet("/deconnection")
-public class Deconnection extends HttpServlet {
+@WebServlet("/creerCompte")
+public class CreerCompte extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Deconnection() {
+    public CreerCompte() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,11 +34,22 @@ public class Deconnection extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		double montant = Double.parseDouble(request.getParameter("montant"));
+		
+		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext.scan("service");
+        appContext.scan("dao");
+        appContext.scan("entity");
+        appContext.scan("controller");
+        appContext.refresh();
+		ClientService cs = (ClientService) appContext.getBean("clientService");
 		
 		HttpSession session = request.getSession();
 			
-		session.setAttribute("client", null);
+		Client client = cs.creerCompteClient((Client) session.getAttribute("client"), montant);
+		
+		session.setAttribute("client", client);
+			
 		response.sendRedirect(request.getContextPath() + "/accueil.jsp");
 	}
-
 }

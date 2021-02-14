@@ -17,7 +17,7 @@
 		<br>
 		Ville : <input type="text" name="ville"/>
 		<br>
-		Montant initial du compte : <input type="text" name="montant"/>
+		Montant initial du compte : <input type="number" name="montant"/>
 		<br>
 		<input type="submit" value="Entrer"/>
 	</form>
