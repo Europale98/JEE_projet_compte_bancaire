@@ -12,6 +12,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import entity.Client;
 import service.ClientService;
+import exception.ClientInexistantException;
 
 /**
  * Servlet implementation class Connection
@@ -49,7 +50,12 @@ public class Connection extends HttpServlet {
 			suite = "/accueil.jsp";
 			HttpSession session = request.getSession();
 			
-			Client client = cs.getClientByNumero(num);
+			Client client = null;
+            try {
+                client = cs.getClientByNumero(num);
+            } catch (ClientInexistantException e) {
+                System.out.println(e.getMessage());
+            }
 			
 			session.setAttribute("client", client);
 		}

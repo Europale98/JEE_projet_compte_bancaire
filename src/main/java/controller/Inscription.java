@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entity.Client;
+import exception.DeficitImpossibleException;
 import service.ClientService;
 
 /**
@@ -51,7 +52,12 @@ public class Inscription extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = cs.createClient(nom, prenom, mdp, numeroRue, ville, montant);
+		Client client = null;
+        try {
+            client = cs.createClient(nom, prenom, mdp, numeroRue, ville, montant);
+        } catch (DeficitImpossibleException e) {
+            System.out.println(e.getMessage());
+        }
 			
 		session.setAttribute("client", client);
 			

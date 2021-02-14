@@ -12,6 +12,10 @@ import dao.ClientRepository;
 import entity.Adresse;
 import entity.Client;
 import entity.Compte;
+import exception.AuMoinsUnCompteException;
+import exception.DeficitImpossibleException;
+import exception.ClientInexistantException;
+import exception.CompteInexistantException;
 
 @Service("clientService")
 public class ClientServiceImpl implements ClientService {
@@ -32,12 +36,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client getClientByNumero(Long numeroClient) {
+    public Client getClientByNumero(Long numeroClient) throws ClientInexistantException {
         Optional<Client> c = repository.findById(numeroClient);
         if (c.isPresent())
             return c.get();
         else
-            return null;
+            throw new ClientInexistantException();
     }
 
     @Override
@@ -53,7 +57,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville,
-            double montant) {
+            double montant) throws DeficitImpossibleException {
         Client c = new Client();
         c.setNom(nom);
         c.setPrenom(prenom);
@@ -68,25 +72,33 @@ public class ClientServiceImpl implements ClientService {
         cm.setMontant(montant);
         c.addCompte(cm);
         c = repository.save(c);
-        return this.getClientByNumero(c.getNumeroClient());
+        try {
+            c = this.getClientByNumero(c.getNumeroClient());
+        } catch (ClientInexistantException e) {
+        }
+        return c;
     }
 
     @Override
     public Client updateClient(Client c, String nom, String prenom, String motDePasse, String numeroRue, String ville) {
-        if (nom != null)
+        if (nom != null && !nom.isEmpty())
             c.setNom(nom);
-        if (prenom != null)
+        if (prenom != null && !prenom.isEmpty())
             c.setPrenom(prenom);
-        if (motDePasse != null)
+        if (motDePasse != null && !motDePasse.isEmpty())
             c.setMotDePasse(motDePasse);
         Adresse a = c.getAdresse();
-        if (numeroRue != null)
+        if (numeroRue != null && !numeroRue.isEmpty())
             a.setNumeroRue(numeroRue);
-        if (ville != null)
+        if (ville != null && !ville.isEmpty())
             a.setVille(ville);
         c.setAdresse(a);
         c = repository.save(c);
-        return this.getClientByNumero(c.getNumeroClient());
+        try {
+            c = this.getClientByNumero(c.getNumeroClient());
+        } catch (ClientInexistantException e) {
+        }
+        return c;
     }
 
     @Override
@@ -100,57 +112,83 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client creerCompteClient(Client c, double montant) {
+    public Client creerCompteClient(Client c, double montant) throws DeficitImpossibleException {
         Compte cm = new Compte();
         cm.setMontant(montant);
         c.addCompte(cm);
         c = repository.save(c);
-        return this.getClientByNumero(c.getNumeroClient());
-    }
-
-    @Override
-    public Client fermerCompteClient(Client c, Compte compte) {
-        c.fermeCompte(compte);
-        if (c.getComptes().isEmpty()) {
-            this.deleteClientByNumero(c.getNumeroClient());
-            return null;
+        try {
+            c = this.getClientByNumero(c.getNumeroClient());
+        } catch (ClientInexistantException e) {
         }
-        c = repository.save(c);
-        return this.getClientByNumero(c.getNumeroClient());
+        return c;
     }
 
     @Override
-    public Client effectuerCreditCompte(Client c, Compte cm, double montant) {
+    public Client fermerCompteClient(Client c, Compte compte)
+            throws CompteInexistantException, AuMoinsUnCompteException {
+        c.fermeCompte(compte);
+        c = repository.save(c);
+        try {
+            c = this.getClientByNumero(c.getNumeroClient());
+        } catch (ClientInexistantException e) {
+        }
+        return c;
+    }
+
+    @Override
+    public Client effectuerCreditCompte(Client c, Compte cm, double montant) throws CompteInexistantException {
         if (c.getComptes().contains(cm)) {
             compteService.effectuerCreditCompte(cm, montant);
-            c = this.getClientByNumero(c.getNumeroClient());
+            try {
+                c = this.getClientByNumero(c.getNumeroClient());
+            } catch (ClientInexistantException e) {
+            }
+        } else {
+            throw new CompteInexistantException();
         }
         return c;
     }
 
     @Override
-    public Client effectuerDebitCompte(Client c, Compte cm, double montant) {
+    public Client effectuerDebitCompte(Client c, Compte cm, double montant) throws DeficitImpossibleException, CompteInexistantException {
         if (c.getComptes().contains(cm)) {
             compteService.effectuerDebitCompte(cm, montant);
-            c = this.getClientByNumero(c.getNumeroClient());
+            try {
+                c = this.getClientByNumero(c.getNumeroClient());
+            } catch (ClientInexistantException e) {
+            }
+        } else {
+            throw new CompteInexistantException();
         }
         return c;
     }
 
     @Override
-    public Client effectuerVirementCompte(Client c, Compte cm, Long numeroCompte2, double montant) {
+    public Client effectuerVirementCompte(Client c, Compte cm, Long numeroCompte2, double montant)
+            throws DeficitImpossibleException, CompteInexistantException {
         if (c.getComptes().contains(cm)) {
             compteService.effectuerVirementCompte(cm, numeroCompte2, montant);
-            c = this.getClientByNumero(c.getNumeroClient());
+            try {
+                c = this.getClientByNumero(c.getNumeroClient());
+            } catch (ClientInexistantException e) {
+            }
+        } else {
+            throw new CompteInexistantException();
         }
         return c;
     }
 
     @Override
-    public Client suppressionHistoriqueVirement(Client c, Compte cm) {
+    public Client suppressionHistoriqueVirement(Client c, Compte cm) throws CompteInexistantException {
         if (c.getComptes().contains(cm)) {
             compteService.suppressionHistoriqueVirement(cm);
-            c = this.getClientByNumero(c.getNumeroClient());
+            try {
+                c = this.getClientByNumero(c.getNumeroClient());
+            } catch (ClientInexistantException e) {
+            }
+        } else {
+            throw new CompteInexistantException();
         }
         return c;
     }
