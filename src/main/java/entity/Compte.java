@@ -3,6 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -119,6 +120,19 @@ public class Compte implements Serializable {
 
     public List<Virement> getHistoriqueCredit() {
         return historiqueCredit;
+    }
+    
+    public List<Virement> getHistoriqueVirement() {
+        List<Virement> virementListe = new ArrayList<Virement>();
+        virementListe.addAll(this.historiqueCredit);
+        virementListe.addAll(this.historiqueDebit);
+        virementListe.sort(new Comparator<Virement>() {
+            @Override
+            public int compare(Virement o1, Virement o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+        return virementListe;
     }
     
     public Virement getVirementDebit(Virement d) {

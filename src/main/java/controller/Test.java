@@ -5,19 +5,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import entity.Client;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import service.ApplicationContexte;
 import service.ClientService;
 
 public class Test {
 
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.scan("service");
-        appContext.scan("dao");
-        appContext.scan("entity");
-        appContext.scan("controller");
-        appContext.refresh();
+        ApplicationContexte appContext = ApplicationContexte.getInstance();
 
-        ClientService clientService = (ClientService) appContext.getBean("clientService");
+        ClientService clientService = appContext.getClientService();
         // individuService.test();
 
         Client c = null;
@@ -71,6 +67,8 @@ public class Test {
 
         System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
+        
+        System.out.println(c.getComptes().get(0).getHistoriqueVirement());
 
         /*c = clientService.fermerCompteClient(c, c.getComptes().get(1));
         System.out.println(c);
@@ -85,7 +83,6 @@ public class Test {
         c = clientService.fermerCompteClient(c, c.getComptes().get(0));
         System.out.println(c);*/
         
-        appContext.close();
     }
 
 }
