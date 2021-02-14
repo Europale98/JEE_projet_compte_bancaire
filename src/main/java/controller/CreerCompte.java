@@ -9,10 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import entity.Client;
 import exception.DeficitImpossibleException;
+import service.ApplicationContexte;
 import service.ClientService;
 
 /**
@@ -37,13 +36,9 @@ public class CreerCompte extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		double montant = Double.parseDouble(request.getParameter("montant"));
 		
-		AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-        appContext.scan("service");
-        appContext.scan("dao");
-        appContext.scan("entity");
-        appContext.scan("controller");
-        appContext.refresh();
-		ClientService cs = (ClientService) appContext.getBean("clientService");
+		ApplicationContexte appContext = ApplicationContexte.getInstance();
+
+        ClientService cs = appContext.getClientService();
 		
 		HttpSession session = request.getSession();
 			

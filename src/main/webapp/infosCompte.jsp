@@ -20,14 +20,7 @@
 	<br>
 	<br>
 	<%
-	AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
-    appContext.scan("service");
-    appContext.scan("dao");
-    appContext.scan("entity");
-    appContext.scan("controller");
-    appContext.refresh();
-	CompteService cs = (CompteService) appContext.getBean("compteService");
-	Compte c = cs.getCompteByNumero(numeroCompte);
+	Compte c = client.getCompte(numeroCompte);
 	out.println("Solde : " + c.getMontant());
 	%>
 	<br>
@@ -90,6 +83,10 @@
 	<form action="fermerCompte" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Fermer ce compte"/>
+	</form>
+	<br>
+	<form action="comptes.jsp" method="get">
+		<input type="submit" value="Retour aux comptes"/>
 	</form>
 	<br>
 	<form action="deconnection" method="post">
