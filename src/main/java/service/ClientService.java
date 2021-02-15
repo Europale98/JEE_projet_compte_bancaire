@@ -8,6 +8,7 @@ import exception.AuMoinsUnCompteException;
 import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MontantImpossibleException;
 
 public interface ClientService {
     Client getClientByNumero(Long numeroClient) throws ClientInexistantException;
@@ -16,7 +17,8 @@ public interface ClientService {
 
     boolean verificationMotDePasse(Long numeroClient, String motDePasse);
 
-    Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville, double montant) throws DeficitImpossibleException;
+    Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville, double montant)
+            throws DeficitImpossibleException;
 
     Client updateClient(Client c, String nom, String prenom, String motDePasse, String numeroRue, String ville);
 
@@ -28,11 +30,14 @@ public interface ClientService {
 
     Client fermerCompteClient(Client c, Long numeroCompte) throws CompteInexistantException, AuMoinsUnCompteException;
 
-    Client effectuerCreditCompte(Client c, Long numeroCompte, double montant) throws CompteInexistantException;
+    Client effectuerCreditCompte(Client c, Long numeroCompte, double montant)
+            throws CompteInexistantException, MontantImpossibleException;
 
-    Client effectuerDebitCompte(Client c, Long numeroCompte, double montant) throws DeficitImpossibleException, CompteInexistantException;
+    Client effectuerDebitCompte(Client c, Long numeroCompte, double montant)
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
 
-    Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException;
+    Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant)
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
 
     Client suppressionHistoriqueVirement(Client c, Long numeroCompte) throws CompteInexistantException;
 }

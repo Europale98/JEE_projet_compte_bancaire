@@ -40,13 +40,10 @@ public class Update extends HttpServlet {
 		String ville = request.getParameter("ville");
 		
 		ApplicationContexte appContext = ApplicationContexte.getInstance();
-
         ClientService cs = appContext.getClientService();
 		
 		HttpSession session = request.getSession();
-			
 		Client client = cs.updateClient((Client) session.getAttribute("client"), nom, prenom, mdp, numeroRue, ville);
-			
 		session.setAttribute("client", client);
 			
 		response.sendRedirect(request.getContextPath() + "/accueil.jsp");

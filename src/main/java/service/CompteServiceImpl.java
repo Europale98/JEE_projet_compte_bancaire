@@ -11,6 +11,7 @@ import entity.Compte;
 import entity.Virement;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MontantImpossibleException;
 
 @Service("compteService")
 @Transactional
@@ -39,20 +40,20 @@ public class CompteServiceImpl implements CompteService {
     }
 
     @Override
-    public void effectuerCreditCompte(Compte c, double montant) {
+    public void effectuerCreditCompte(Compte c, double montant) throws MontantImpossibleException {
         c.effectuerCredit(montant);
         repository.save(c);
     }
 
     @Override
-    public void effectuerDebitCompte(Compte c, double montant) throws DeficitImpossibleException {
+    public void effectuerDebitCompte(Compte c, double montant) throws DeficitImpossibleException, MontantImpossibleException {
         c.effectuerDebit(montant);
         repository.save(c);
     }
 
     @Override
     public void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant)
-            throws DeficitImpossibleException, CompteInexistantException {
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
         Compte c2 = this.getCompteByNumero(numeroCompte2);
         Virement v = c.effectuerVirement(montant, c2);
         c = repository.save(c);

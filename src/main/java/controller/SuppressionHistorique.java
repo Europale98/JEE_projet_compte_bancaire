@@ -19,8 +19,8 @@ import service.ClientService;
  */
 @WebServlet("/suppressionHistorique")
 public class SuppressionHistorique extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -28,29 +28,35 @@ public class SuppressionHistorique extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ApplicationContexte appContext = ApplicationContexte.getInstance();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ClientService cs = appContext.getClientService();
-		
-		HttpSession session = request.getSession();
-			
-		Client client = (Client) session.getAttribute("client");
-		Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
-		try {
-			client = cs.suppressionHistoriqueVirement(client, numeroCompte);
-		} catch (NumberFormatException | CompteInexistantException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		session.setAttribute("client", client);
-			
-		response.sendRedirect(request.getContextPath() + "/infosCompte.jsp?numeroCompte=" + numeroCompte);
-	}
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String erreur = null;
+        Client client = (Client) session.getAttribute("client");
+        Long numeroCompte = null;
+        try {
+            numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
+        } catch (NumberFormatException e1) {
+            erreur = e1.getMessage();
+        }
+
+        if(erreur==null) {
+            ApplicationContexte appContext = ApplicationContexte.getInstance();
+            ClientService cs = appContext.getClientService();
+
+            try {
+                client = cs.suppressionHistoriqueVirement(client, numeroCompte);
+            } catch (CompteInexistantException e) {
+                erreur = e.getMessage();
+            }
+
+            session.setAttribute("client", client);
+        }
+        request.setAttribute("erreur", erreur);
+        getServletContext().getRequestDispatcher("/infosCompte.jsp").forward(request, response);
+    }
 }

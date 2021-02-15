@@ -1,3 +1,4 @@
+<%@page import="exception.CompteInexistantException"%>
 <%@ page import="entity.Client"%>
 <%@ page import="entity.Compte"%>
 <%@ page import="entity.Virement"%>
@@ -5,46 +6,60 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Informations compte</title>
+	<meta charset="ISO-8859-1">
+	<title>Informations compte</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 	<%@include file="banniere.jsp" %>
 	<%
 	Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
-	out.println("Compte " + numeroCompte + " de " + client.getNom() + " " + client.getPrenom() + "\n");
+	boolean aVous = true;
+	Compte c = null;
+	try {
+	    c = client.getCompte(numeroCompte);
+	} catch (CompteInexistantException e) {
+	    aVous = false;
+	%>
+	<p class="error">
+		Vous ne possédez pas un tel compte.
+	</p>
+	<%
+	}
+	if (aVous) {
+		out.println("Compte " + numeroCompte + " de " + client.getNom() + " " + client.getPrenom() + "\n");
 	
 	%>
 	<br>
 	<br>
+	
 	<%
-	Compte c = client.getCompte(numeroCompte);
-	out.println("Solde : " + c.getMontant());
+		out.println("Solde : " + c.getMontant());
 	%>
 	<br>
 	<br>
 	<%
-	out.println("Historique des transactions : ");
+		out.println("Historique des transactions : ");
 	%>
 	<br>
 	<%
-	for (Virement v : c.getHistoriqueVirement()) {
-		out.println(v.getDate() + " " + v.getMontant() + " " );
-		if(v.getDebiteur() != null) {
-			out.println(v.getDebiteur().getNumeroCompte() + " " );
-		} else {
-			out.println("null ");
-		}
-		if(v.getCrediteur() != null) {
-			out.println(v.getCrediteur().getNumeroCompte());
-		}else {
-			out.println("null");
-		}
+		for (Virement v : c.getHistoriqueVirement()) {
+			out.println(v.getType() + " " + v.getDate() + " " + v.getMontant() + " " );
+			if(v.getDebiteur() != null) {
+				out.println(v.getDebiteur().getNumeroCompte() + " " );
+			} else {
+				out.println("null ");
+			}
+			if(v.getCrediteur() != null) {
+				out.println(v.getCrediteur().getNumeroCompte());
+			}else {
+				out.println("null");
+			}
 		%>
 		<br>
 		<%
-	}	
+		}	
 	%>
 	<br>
 	<form action="suppressionHistorique" method="post">
@@ -91,6 +106,15 @@
 	<form action="deconnection" method="post">
 		<input type="submit" value="Deconnection"/>
 	</form>
-	
+	<%
+		if (erreur != null) {
+	%>
+	<p class="error">
+		<%=erreur %>
+	</p>
+	<%
+	    }
+	}
+	%>
 </body>
 </html>

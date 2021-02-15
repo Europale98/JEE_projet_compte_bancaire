@@ -14,6 +14,7 @@ import entity.Client;
 import entity.Compte;
 import exception.AuMoinsUnCompteException;
 import exception.DeficitImpossibleException;
+import exception.MontantImpossibleException;
 import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 
@@ -139,7 +140,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client effectuerCreditCompte(Client c, Long numeroCompte, double montant) throws CompteInexistantException {
+    public Client effectuerCreditCompte(Client c, Long numeroCompte, double montant) throws CompteInexistantException, MontantImpossibleException {
         Compte compte = c.getCompte(numeroCompte);
         compteService.effectuerCreditCompte(compte, montant);
         try {
@@ -151,7 +152,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client effectuerDebitCompte(Client c, Long numeroCompte, double montant)
-            throws DeficitImpossibleException, CompteInexistantException {
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
         Compte compte = c.getCompte(numeroCompte);
 
         compteService.effectuerDebitCompte(compte, montant);
@@ -164,7 +165,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant)
-            throws DeficitImpossibleException, CompteInexistantException {
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
         Compte compte = c.getCompte(numeroCompte);
         compteService.effectuerVirementCompte(compte, numeroCompte2, montant);
         try {

@@ -3,8 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Comptes client</title>
+	<meta charset="ISO-8859-1">
+	<title>Comptes client</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -35,6 +36,14 @@
 	<form action="deconnection" method="post">
 		<input type="submit" value="Deconnection"/>
 	</form>
-	
+	<%
+		if (erreur != null) {
+	%>
+	<p class="error">
+		<%=erreur %>
+	</p>
+	<%
+	    }
+	%>
 </body>
 </html>

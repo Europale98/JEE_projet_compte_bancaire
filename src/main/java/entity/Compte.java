@@ -26,6 +26,7 @@ import org.hibernate.annotations.Where;
 
 import entity.Virement.typeVirement;
 import exception.DeficitImpossibleException;
+import exception.MontantImpossibleException;
 
 @Entity
 public class Compte implements Serializable {
@@ -53,7 +54,10 @@ public class Compte implements Serializable {
         historiqueDebit = new ArrayList<Virement>();
     }
 
-    public void effectuerDebit(double montant) throws DeficitImpossibleException {
+    public void effectuerDebit(double montant) throws DeficitImpossibleException, MontantImpossibleException {
+        if (montant < 0) {
+            throw new MontantImpossibleException();
+        }
         if (this.montant < montant) {
             throw new DeficitImpossibleException();
         }
@@ -61,13 +65,19 @@ public class Compte implements Serializable {
         historiqueDebit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.DEBIT, montant, this));
     }
 
-    public void effectuerCredit(double montant) {
+    public void effectuerCredit(double montant) throws MontantImpossibleException {
+        if (montant < 0) {
+            throw new MontantImpossibleException();
+        }
         this.montant += montant;
         historiqueCredit
                 .add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
     }
 
-    public Virement effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException {
+    public Virement effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException, MontantImpossibleException {
+        if (montant < 0) {
+            throw new MontantImpossibleException();
+        }
         if (this.montant < montant) {
             throw new DeficitImpossibleException();
         }
@@ -136,6 +146,8 @@ public class Compte implements Serializable {
     }
     
     public Virement getVirementDebit(Virement d) {
+        if(d==null)
+            return null;
         for (Virement v : this.historiqueDebit) {
             if (v.getDate().equals(d.getDate())
                     && v.getCrediteur().getNumeroCompte().equals(d.getCrediteur().getNumeroCompte())

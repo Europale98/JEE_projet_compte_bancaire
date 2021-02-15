@@ -3,6 +3,7 @@
 <html>
 <%
     Client client = (Client) session.getAttribute("client");
+	String erreur = (String) request.getAttribute("erreur");
 %>
 <ul>
 	<li><a href="accueil.jsp">Accueil</a></li>

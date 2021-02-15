@@ -34,24 +34,29 @@ public class CreerCompte extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		double montant = Double.parseDouble(request.getParameter("montant"));
-		
-		ApplicationContexte appContext = ApplicationContexte.getInstance();
-
-        ClientService cs = appContext.getClientService();
-		
-		HttpSession session = request.getSession();
-			
-		Client client = (Client) session.getAttribute("client");
+	    String erreur = null;
+        HttpSession session = request.getSession();
+        Client client = (Client) session.getAttribute("client");
+        double montant = 0;
 		try {
-			client = cs.creerCompteClient(client, montant);
-		} catch (DeficitImpossibleException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		    montant = Double.parseDouble(request.getParameter("montant"));
+		} catch(NumberFormatException e) {
+		    erreur = e.getMessage();
+		}
+		if (erreur == null) {
+    		ApplicationContexte appContext = ApplicationContexte.getInstance();
+            ClientService cs = appContext.getClientService();
+            
+    		try {
+    			client = cs.creerCompteClient(client, montant);
+    		} catch (DeficitImpossibleException e) {
+    		    erreur = e.getMessage();
+    		}
 		}
 		
 		session.setAttribute("client", client);
-			
-		response.sendRedirect(request.getContextPath() + "/comptes.jsp");
+		request.setAttribute("erreur", erreur);
+
+        getServletContext().getRequestDispatcher("/comptes.jsp").forward(request, response);
 	}
 }

@@ -5,6 +5,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import entity.Client;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MontantImpossibleException;
 import service.ApplicationContexte;
 import service.ClientService;
 
@@ -52,16 +53,16 @@ public class Test {
         // (CompteService)appContext.getBean("compteService");
         try {
             c = clientService.effectuerCreditCompte(c, c.getComptes().get(0).getNumeroCompte(), 10);
-        } catch (CompteInexistantException e1) {
+        } catch (CompteInexistantException | MontantImpossibleException e1) {
         }
         try {
             c = clientService.effectuerDebitCompte(c, c.getComptes().get(0).getNumeroCompte(), 30);
-        } catch (DeficitImpossibleException | CompteInexistantException e) {
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
             System.out.println(e.getMessage());
         }
         try {
             c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
-        } catch (DeficitImpossibleException | CompteInexistantException e) {
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
             System.out.println(e.getMessage());
         }
 

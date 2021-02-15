@@ -18,8 +18,8 @@ import exception.ClientInexistantException;
  */
 @WebServlet("/connection")
 public class Connection extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,37 +27,50 @@ public class Connection extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Long num = Long.parseLong(request.getParameter("numeroClient"));
-		String mdp = request.getParameter("motDePasse");
-		
-		String suite = ""; 
-		ApplicationContexte appContext = ApplicationContexte.getInstance();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        ClientService cs = appContext.getClientService();
-		if(cs.verificationMotDePasse(num, mdp)) {
-			suite = "/accueil.jsp";
-			HttpSession session = request.getSession();
-			
-			Client client = null;
-            try {
-                client = cs.getClientByNumero(num);
-            } catch (ClientInexistantException e) {
-                System.out.println(e.getMessage());
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String suite = "/accueil.jsp";
+        String erreur = null;
+        Long num = null;
+        try {
+            num = Long.parseLong(request.getParameter("numeroClient"));
+        } catch(NumberFormatException e) {
+            ClientInexistantException eC = new ClientInexistantException();
+            erreur = eC.getMessage();
+        }
+        String mdp = request.getParameter("motDePasse");
+
+        if(erreur == null) {
+            ApplicationContexte appContext = ApplicationContexte.getInstance();
+
+            ClientService cs = appContext.getClientService();
+            if(cs.verificationMotDePasse(num, mdp)) {
+                HttpSession session = request.getSession();
+
+                Client client = null;
+                try {
+                    client = cs.getClientByNumero(num);
+                    session.setAttribute("client", client);
+                } catch (ClientInexistantException e) {
+                    erreur = e.getMessage();
+                }
             }
-			
-			session.setAttribute("client", client);
-		}
-		else {
-			suite = "/loginIncorrect.jsp";
-		}
-		//getServletContext().getRequestDispatcher(suite).forward(request, response);
-		response.sendRedirect(request.getContextPath() + suite);
-	}
+            else {
+                ClientInexistantException eC = new ClientInexistantException();
+                erreur = eC.getMessage();
+            }
+        }
+        if (erreur != null) {
+            request.setAttribute("erreur", erreur);
+            suite = "/connection.jsp";
+            getServletContext().getRequestDispatcher(suite).forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + suite);
+        }
+    }
 
 }
