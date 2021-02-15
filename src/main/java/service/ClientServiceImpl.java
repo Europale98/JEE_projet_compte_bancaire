@@ -150,7 +150,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client effectuerDebitCompte(Client c, Long numeroCompte, double montant) throws DeficitImpossibleException, CompteInexistantException {
+    public Client effectuerDebitCompte(Client c, Long numeroCompte, double montant)
+            throws DeficitImpossibleException, CompteInexistantException {
         Compte compte = c.getCompte(numeroCompte);
 
         compteService.effectuerDebitCompte(compte, montant);

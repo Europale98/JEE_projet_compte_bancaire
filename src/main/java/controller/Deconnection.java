@@ -25,7 +25,10 @@ public class Deconnection extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	    HttpSession session = request.getSession();
+        
+        session.setAttribute("client", null);
+        response.sendRedirect(request.getContextPath() + "/accueil.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

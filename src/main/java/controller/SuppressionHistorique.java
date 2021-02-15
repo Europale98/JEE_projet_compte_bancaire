@@ -40,9 +40,10 @@ public class SuppressionHistorique extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = null;
+		Client client = (Client) session.getAttribute("client");
+		Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
 		try {
-			client = cs.suppressionHistoriqueVirement((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")));
+			client = cs.suppressionHistoriqueVirement(client, numeroCompte);
 		} catch (NumberFormatException | CompteInexistantException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -50,6 +51,6 @@ public class SuppressionHistorique extends HttpServlet {
 		
 		session.setAttribute("client", client);
 			
-		response.sendRedirect(request.getContextPath() + "/accueil.jsp");
+		response.sendRedirect(request.getContextPath() + "/infosCompte.jsp?numeroCompte=" + numeroCompte);
 	}
 }

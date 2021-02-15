@@ -6,12 +6,13 @@
 <title>Inscription</title>
 </head>
 <body>
+	<%@include file="banniere.jsp" %>
 	<form action="inscription" method="post">
 		Nom : <input type="text" name="nom"/>
 		<br>
 		Prénom : <input type="text" name="prenom"/>
 		<br>
-		Mot de passe : <input type="text" name="motDePasse"/>
+		Mot de passe : <input type="password" name="motDePasse"/>
 		<br>
 		Numéro, rue : <input type="text" name="numeroRue"/>
 		<br>

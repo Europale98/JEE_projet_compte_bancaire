@@ -42,9 +42,10 @@ public class FermerCompte extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = null;
+		Client client = (Client) session.getAttribute("client");
+		Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
 		try {
-			client = cs.fermerCompteClient((Client) session.getAttribute("client"), Long.parseLong(request.getParameter("numeroCompte")));
+			client = cs.fermerCompteClient(client, numeroCompte);
 		} catch (NumberFormatException | CompteInexistantException | AuMoinsUnCompteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

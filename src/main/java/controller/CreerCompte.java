@@ -42,9 +42,9 @@ public class CreerCompte extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 			
-		Client client = null;
+		Client client = (Client) session.getAttribute("client");
 		try {
-			client = cs.creerCompteClient((Client) session.getAttribute("client"), montant);
+			client = cs.creerCompteClient(client, montant);
 		} catch (DeficitImpossibleException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

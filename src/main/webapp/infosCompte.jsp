@@ -1,8 +1,6 @@
 <%@ page import="entity.Client"%>
 <%@ page import="entity.Compte"%>
 <%@ page import="entity.Virement"%>
-<%@ page import="service.CompteService"%>
-<%@ page import="org.springframework.context.annotation.AnnotationConfigApplicationContext"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,7 +10,8 @@
 </head>
 <body>
 
-	<% Client client = (Client) session.getAttribute("client");
+	<%@include file="banniere.jsp" %>
+	<%
 	Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
 	out.println("Compte " + numeroCompte + " de " + client.getNom() + " " + client.getPrenom() + "\n");
 	

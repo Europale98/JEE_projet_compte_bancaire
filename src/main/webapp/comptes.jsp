@@ -8,7 +8,8 @@
 </head>
 <body>
 
-	<% Client client = (Client) session.getAttribute("client");
+	<%@include file="banniere.jsp" %>
+	<%
 	out.println("Compte(s) de " + client.getNom() + " " + client.getPrenom());
 	%>
 	<br>
