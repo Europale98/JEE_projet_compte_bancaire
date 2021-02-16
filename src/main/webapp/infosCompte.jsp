@@ -81,11 +81,10 @@
 				<label for="female">Crédit</label><br>
 				
 				Montant : <input type="number" name="montant" step=0.01 min="0"/>
-				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-			</form>
-		<br>
-		<input type="submit" value="Entrer">
-		</fieldset>
+				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> /><br>
+				<input type="submit" value="Entrer">
+				</form>
+			</fieldset>
 		<br>
 		<fieldset>
 			<legend>Transaction entre comptes</legend>
@@ -94,7 +93,7 @@
 				Numéro du compte à crédité : <input type="text" name="compteCredite"/>
 				<input type="hidden" name="type" value="virement" />
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-				<br><br>
+				<br>
 				<input type="submit" value="Entrer">
 			</form>
 		</fieldset>
