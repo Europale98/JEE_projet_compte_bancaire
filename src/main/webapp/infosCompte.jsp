@@ -33,16 +33,12 @@
 	</p>
 	<%
 	}
-	if (aVous) {
-		out.println("Compte " + numeroCompte + " de " + client.getNom() + " " + client.getPrenom() + "\n");
+	if (aVous) {%>
 	
-	%>
+	Compte <%=numeroCompte%> de <%=client.getNom()%> <%=client.getPrenom()%>
 	<br>
 	<br>
-	
-	<%
-		out.println("Solde : " + c.getMontant());
-	%>
+	Solde : <%=c.getMontant()%>
 	<br>
 	<br>
 	<table style="width:100%">
