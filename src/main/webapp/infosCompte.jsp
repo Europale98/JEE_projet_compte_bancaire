@@ -7,9 +7,10 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Informations compte</title>
-	<link rel="stylesheet" href="styles.css">
+	<title>Détails compte</title>
+
 	<link rel="stylesheet" href="styleBanniere.css">
+
 </head>
 <body>
 
@@ -28,40 +29,49 @@
 	</p>
 	<%
 	}
-	if (aVous) {
-		out.println("Compte " + numeroCompte + " de " + client.getNom() + " " + client.getPrenom() + "\n");
+	if (aVous) {%>
 	
-	%>
+	Compte <%=numeroCompte%> de <%=client.getNom()%> <%=client.getPrenom()%>
 	<br>
 	<br>
-	
-	<%
-		out.println("Solde : " + c.getMontant());
-	%>
+	Solde : <%=c.getMontant()%>
 	<br>
 	<br>
-	<%
-		out.println("Historique des transactions : ");
-	%>
-	<br>
+	<table style="width:100%">
+		<caption><b>Historique des transactions</b></caption>
+		<tr>
+		<th>Type</th>
+		<th>Date</th> 
+		<th>Montant</th>
+		<th>Compte débiteur</th>
+		<th>Compte créditeur</th>
+		</tr>
 	<%
 		for (Virement v : c.getHistoriqueVirement()) {
-			out.println(v.getType() + " " + v.getDate() + " " + v.getMontant() + " " );
-			if(v.getDebiteur() != null) {
-				out.println(v.getDebiteur().getNumeroCompte() + " " );
-			} else {
-				out.println("null ");
-			}
-			if(v.getCrediteur() != null) {
-				out.println(v.getCrediteur().getNumeroCompte());
-			}else {
-				out.println("null");
-			}
-		%>
-		<br>
+			%>
+			<tr>
+			<td><%=v.getType()%></td>
+			<td><%=v.getDate()%></td>
+			<td><%=v.getMontant()%></td>
+			<td>
+				<%if(v.getDebiteur() != null) {
+					out.println(v.getDebiteur().getNumeroCompte() + " " );
+				} else {
+					out.println("Extérieur");
+				} %>
+			</td>
+			<td>
+				<%if(v.getCrediteur() != null) {
+					out.println(v.getCrediteur().getNumeroCompte());
+				}else {
+					out.println("Extérieur");
+				} %>
+			</td>
+			</tr>
 		<%
 		}	
 	%>
+	</table>
 	<br>
 	<form action="suppressionHistorique" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
@@ -76,10 +86,10 @@
 			<legend>Transaction vers l'extérieur</legend>
 			<form action="virement" method="post">
 				<input type="radio" name="type" value="debit">
-  				<label for="male">Débit</label><br>
+  				<label for="debit">Débit</label><br>
   				
 				<input type="radio" name="type" value="credit">
-				<label for="female">Crédit</label><br>
+				<label for="credit">Crédit</label><br>
 				
 				Montant : <input type="number" name="montant" step=0.01 min="0"/>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
@@ -93,10 +103,10 @@
 			<legend>Transaction entre comptes</legend>
 			<form action="virement" method="post">
 				Montant : <input type="number" name="montant" step=0.01 min="0"/><br>
-				Numéro du compte à crédité : <input type="text" name="compteCredite"/>
+				Numéro du compte à créditer : <input type="text" name="compteCredite"/>
 				<input type="hidden" name="type" value="virement" />
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-				<br><br>
+				<br>
 				<input type="submit" value="Entrer">
 			</form>
 		</fieldset>
@@ -109,13 +119,6 @@
 	</form>
 	<br>
 	
-	<form action="comptes.jsp" method="get">
-		<input type="submit" value="Retour aux comptes"/>
-	</form>
-	<br>
-	<form action="deconnection" method="post">
-		<input type="submit" value="Deconnection"/>
-	</form>
 	<%
 		if (erreur != null) {
 	%>

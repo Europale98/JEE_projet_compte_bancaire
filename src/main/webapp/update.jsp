@@ -10,17 +10,20 @@
 <body>
 	<%@include file="banniere.jsp" %>
 	<form action="update" method="post">
-		Nom : <input type="text" name="nom" value="<%=client.getNom()%>"/>
-		<br>
-		Prénom : <input type="text" name="prenom" value="<%=client.getPrenom()%>"/>
-		<br>
-		Mot de passe : <input type="password" name="motDePasse"/>
-		<br>
-		Numéro, rue : <input type="text" name="numeroRue" value="<%=client.getAdresse().getNumeroRue()%>"/>
-		<br>
-		Ville : <input type="text" name="ville" value="<%=client.getAdresse().getVille()%>"/>
-		<br>
-		<input type="submit" value="Entrer"/>
+		<fieldset>
+		    <legend>Modifier vos informations personnelles</legend>
+		    Nom : <input type="text" name="nom" value="<%=client.getNom()%>"/>
+			<br>
+			Prénom : <input type="text" name="prenom" value="<%=client.getPrenom()%>"/>
+			<br>
+			Mot de passe : <input type="password" name="motDePasse"/>
+			<br>
+			Numéro, rue : <input type="text" name="numeroRue" value="<%=client.getAdresse().getNumeroRue()%>"/>
+			<br>
+			Ville : <input type="text" name="ville" value="<%=client.getAdresse().getVille()%>"/>
+			<br><br>
+		    <input type="submit" value="Entrer">
+		</fieldset>
 	</form>
 	<%
 		if (erreur != null) {

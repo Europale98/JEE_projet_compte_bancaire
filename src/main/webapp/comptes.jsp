@@ -4,16 +4,15 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Comptes client</title>
+	<title>Mes comptes</title>
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="styleBanniere.css">
 </head>
 <body>
 
-	<%@include file="banniere.jsp" %>
-	<%
-	out.println("Compte(s) de " + client.getNom() + " " + client.getPrenom());
-	%>
+	<%@include file="banniere.jsp"%>
+	
+	Compte(s) de <%=client.getNom()%> <%=client.getPrenom()%>
 	<br>
 	<br>
 	<%
@@ -23,9 +22,7 @@
 		<form action="infosCompte.jsp" method="get">
 			<fieldset>
 				<legend>Compte numéro <%=c.getNumeroCompte()%></legend>
-				<%
-				out.println(" Solde : " + c.getMontant());
-				%>
+				Solde : <%=c.getMontant()%>
 				<br>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<input type="submit" value="Détails du compte"/>
@@ -46,9 +43,6 @@
 		</fieldset>
 	</form>
 	<br>
-	<form action="deconnection" method="post">
-		<input type="submit" value="Déconnection"/>
-	</form>
 	<%
 		if (erreur != null) {
 	%>
