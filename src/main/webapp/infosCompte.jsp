@@ -9,6 +9,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Informations compte</title>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styleBanniere.css">
 </head>
 <body>
 
@@ -82,9 +83,10 @@
 				
 				Montant : <input type="number" name="montant" step=0.01 min="0"/>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+				<br><br>
+				<input type="submit" value="Entrer">
 			</form>
 		<br>
-		<input type="submit" value="Entrer">
 		</fieldset>
 		<br>
 		<fieldset>

@@ -6,6 +6,7 @@
 	<meta charset="ISO-8859-1">
 	<title>Comptes client</title>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styleBanniere.css">
 </head>
 <body>
 
