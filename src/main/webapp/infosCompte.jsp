@@ -45,17 +45,14 @@
 	%>
 	<br>
 	<br>
-	<%
-		out.println("Historique des transactions : ");
-	%>
-	<br>
 	<table style="width:100%">
+		<caption>Historique des transactions</caption>
 		<tr>
 		<th>Type</th>
 		<th>Date</th> 
 		<th>Montant</th>
-		<th>Débiteur</th>
-		<th>Créditeur</th>
+		<th>Compte débiteur</th>
+		<th>Compte créditeur</th>
 		</tr>
 	<%
 		for (Virement v : c.getHistoriqueVirement()) {
@@ -97,10 +94,10 @@
 			<legend>Transaction vers l'extérieur</legend>
 			<form action="virement" method="post">
 				<input type="radio" name="type" value="debit">
-  				<label for="male">Débit</label><br>
+  				<label for="debit">Débit</label><br>
   				
 				<input type="radio" name="type" value="credit">
-				<label for="female">Crédit</label><br>
+				<label for="credit">Crédit</label><br>
 				
 				Montant : <input type="number" name="montant" step=0.01 min="0"/>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> /><br>
@@ -112,7 +109,7 @@
 			<legend>Transaction entre comptes</legend>
 			<form action="virement" method="post">
 				Montant : <input type="number" name="montant" step=0.01 min="0"/><br>
-				Numéro du compte à crédité : <input type="text" name="compteCredite"/>
+				Numéro du compte à créditer : <input type="text" name="compteCredite"/>
 				<input type="hidden" name="type" value="virement" />
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<br>
