@@ -16,7 +16,10 @@
 	<%@include file="banniere.jsp"%>
 	<%
 	    if (client != null) {%>
-	    	Bienvenue <%=client.getNom()%> <%=client.getPrenom()%>
+	    	<h3>Bienvenue <%=client.getNom()%> <%=client.getPrenom()%></h3>
+	    	<p>
+	    	Votre conseiller bancaire n'est pas disponible pour le moment
+	    	</p>
 	<%
 	    } else {%>
 	    
