@@ -17,24 +17,36 @@
 	<br>
 	<%
 	for (Compte c : client.getComptes()) {
-		out.println("Numéro du compte : " + c.getNumeroCompte() + " Solde : " + c.getMontant() + "\n");
+		
 		%>
 		<form action="infosCompte.jsp" method="get">
-			<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-			<input type="submit" value="Infos"/>
+			<fieldset>
+				<legend>Compte numéro <%=c.getNumeroCompte()%></legend>
+				<%
+				out.println(" Solde : " + c.getMontant());
+				%>
+				<br>
+				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
+				<input type="submit" value="Détails du compte"/>
+			</fieldset>
 		</form>
 		<br>
 	<%
 	}
 	%>
 	<form action="creerCompte" method="post">
-		Montant initial du nouveau compte : <input type="number" name="montant" step="0.01" min="0"/>
-		<br>
-		<input type="submit" value="Creer un nouveau compte"/>
+		<fieldset>
+			<legend>Créer un nouveau compte</legend>
+			
+			<label for="montant">Montant initial :</label><br>
+			<input type="number" name="montant" step="0.01" min="0"><br><br>
+		    
+		    <input type="submit" value="Entrer">
+		</fieldset>
 	</form>
 	<br>
 	<form action="deconnection" method="post">
-		<input type="submit" value="Deconnection"/>
+		<input type="submit" value="Déconnection"/>
 	</form>
 	<%
 		if (erreur != null) {
