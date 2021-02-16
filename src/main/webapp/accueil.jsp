@@ -22,7 +22,7 @@
 	    	</p>
 	    	<br>
 	    	<fieldset>
-				<legend>Vos informations personnelles</legend>
+				<legend>Mes informations personnelles</legend>
 				Numéro client : <%=client.getNumeroClient()%>
 				<br>
 				Adresse : <%=client.getAdresse()%>

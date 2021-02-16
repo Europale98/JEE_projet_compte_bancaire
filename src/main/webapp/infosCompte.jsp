@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>Informations compte</title>
+	<title>Détails compte</title>
 	<link rel="stylesheet" href="styles.css">
 	<style>
 	table, th, td {
