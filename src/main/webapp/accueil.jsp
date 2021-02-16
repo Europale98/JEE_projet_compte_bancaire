@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Accueil</title>
+	<meta charset="ISO-8859-1">
+	<title>Accueil</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 	<%@include file="banniere.jsp"%>

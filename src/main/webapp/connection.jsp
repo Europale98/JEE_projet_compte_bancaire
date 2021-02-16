@@ -9,11 +9,16 @@
 <body>
 	<%@include file="banniere.jsp"%>
 	<form action="connection" method="post">
-		Numéro client : <input type="number" name="numeroClient" 
-			value="<%=(request.getParameter("numeroClient")==null?"":request.getParameter("numeroClient"))%>"/> 
-		Mot de passe : <input type="password" name="motDePasse" 
-			value="<%=(request.getParameter("motDePasse")==null?"":request.getParameter("motDePasse"))%>"/>
-		<input type="submit" value="Entrer" />
+		<fieldset>
+		    <legend>Se connecter</legend>
+		    <label for="numeroClient">Numéro client :</label><br>
+		    <input type="number" name="numeroClient"
+			value="<%=(request.getParameter("numeroClient")==null?"":request.getParameter("numeroClient"))%>"/><br>
+		    <label for="motDePasse">Mot de passe :</label><br>
+		    <input type="password" name="motDePasse"
+			value="<%=(request.getParameter("motDePasse")==null?"":request.getParameter("motDePasse"))%>"/><br><br>
+		    <input type="submit" value="Entrer">
+	  </fieldset>
 	</form>
 	<%
 		if (erreur != null) {

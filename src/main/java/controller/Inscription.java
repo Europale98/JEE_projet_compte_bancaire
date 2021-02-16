@@ -65,7 +65,7 @@ public class Inscription extends HttpServlet {
             erreur = e.getMessage();
         }
 
-        if(erreur != null) {
+        if(erreur == null) {
             ApplicationContexte appContext = ApplicationContexte.getInstance();
 
             ClientService cs = appContext.getClientService();

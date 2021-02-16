@@ -28,7 +28,7 @@
 	}
 	%>
 	<form action="creerCompte" method="post">
-		Montant initial du nouveau compte : <input type="number" name="montant"/>
+		Montant initial du nouveau compte : <input type="number" name="montant" step="0.01" min="0"/>
 		<br>
 		<input type="submit" value="Creer un nouveau compte"/>
 	</form>

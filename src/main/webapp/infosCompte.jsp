@@ -72,21 +72,21 @@
 	out.println("Effectuer un mouvement bancaire :");%>
 	<br>
 	<form action="virement" method="post">
-		Montant : <input type="number" name="montant"/>
+		Montant : <input type="number" name="montant" step=0.01 min="0"/>
 		<input type="hidden" name="type" value="debit" />
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Debit"/>
 	</form>
 	<br>
 	<form action="virement" method="post">
-		Montant : <input type="number" name="montant"/>
+		Montant : <input type="number" name="montant" step=0.01 min="0"/>
 		<input type="hidden" name="type" value="credit" />
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Credit"/>
 	</form>
 	<br>
 	<form action="virement" method="post">
-		Montant : <input type="number" name="montant"/>
+		Montant : <input type="number" name="montant" step=0.01 min="0"/>
 		Numéro du compte à crédité : <input type="text" name="compteCredite"/>
 		<input type="hidden" name="type" value="virement" />
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
