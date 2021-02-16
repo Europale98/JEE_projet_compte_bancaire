@@ -9,6 +9,12 @@
 	<meta charset="ISO-8859-1">
 	<title>Informations compte</title>
 	<link rel="stylesheet" href="styles.css">
+	<style>
+	table, th, td {
+	  border: 1px solid black;
+	  border-collapse: collapse;
+	}
+	</style>
 </head>
 <body>
 
@@ -43,24 +49,40 @@
 		out.println("Historique des transactions : ");
 	%>
 	<br>
+	<table style="width:100%">
+		<tr>
+		<th>Type</th>
+		<th>Date</th> 
+		<th>Montant</th>
+		<th>Débiteur</th>
+		<th>Créditeur</th>
+		</tr>
 	<%
 		for (Virement v : c.getHistoriqueVirement()) {
-			out.println(v.getType() + " " + v.getDate() + " " + v.getMontant() + " " );
-			if(v.getDebiteur() != null) {
-				out.println(v.getDebiteur().getNumeroCompte() + " " );
-			} else {
-				out.println("null ");
-			}
-			if(v.getCrediteur() != null) {
-				out.println(v.getCrediteur().getNumeroCompte());
-			}else {
-				out.println("null");
-			}
-		%>
-		<br>
+			%>
+			<tr>
+			<td><%=v.getType()%></td>
+			<td><%=v.getDate()%></td>
+			<td><%=v.getMontant()%></td>
+			<td>
+				<%if(v.getDebiteur() != null) {
+					out.println(v.getDebiteur().getNumeroCompte() + " " );
+				} else {
+					out.println("Extérieur");
+				} %>
+			</td>
+			<td>
+				<%if(v.getCrediteur() != null) {
+					out.println(v.getCrediteur().getNumeroCompte());
+				}else {
+					out.println("Extérieur");
+				} %>
+			</td>
+			</tr>
 		<%
 		}	
 	%>
+	</table>
 	<br>
 	<form action="suppressionHistorique" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
