@@ -27,6 +27,8 @@
 				<br>
 				Adresse : <%=client.getAdresse()%>
 				<br>
+				Nombre de comptes : <%=client.getComptes().size()%>
+				<br>
 			</fieldset>	
 	
 	
