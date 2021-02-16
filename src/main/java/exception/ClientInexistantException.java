@@ -2,6 +2,6 @@ package exception;
 
 public class ClientInexistantException extends CompteBancaireException {
     public ClientInexistantException() {
-        super("Client inexistant");
+        super("Numéro client ou Mot de passe incorrect");
     }
 }
