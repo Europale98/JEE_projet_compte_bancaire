@@ -9,9 +9,8 @@
 <body>
 	<%@include file="banniere.jsp"%>
 	<%
-	    if (client != null) {
-	    out.println("Bienvenue " + client.getNom() + " " + client.getPrenom());
-	%>
+	    if (client != null) {%>
+	    	Bienvenue <%=client.getNom()%> <%=client.getPrenom()%>
 	<br>
 	<a href="update.jsp"><input type="button"
 		value="Modification infos client"></a>
@@ -20,9 +19,9 @@
 		<input type="submit" value="Deconnection" />
 	</form>
 	<%
-	    } else {
-	out.println("Bienvenue");
-	%>
+	    } else {%>
+	    
+	Bienvenue
 	<a href="connection.jsp"><input type="button" value="Connection"></a>
 	<a href="inscription.jsp"><input type="button" value="Inscription"></a>
 	<%

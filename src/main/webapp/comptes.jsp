@@ -9,10 +9,9 @@
 </head>
 <body>
 
-	<%@include file="banniere.jsp" %>
-	<%
-	out.println("Compte(s) de " + client.getNom() + " " + client.getPrenom());
-	%>
+	<%@include file="banniere.jsp"%>
+	
+	Compte(s) de <%=client.getNom()%> <%=client.getPrenom()%>
 	<br>
 	<br>
 	<%
@@ -22,9 +21,7 @@
 		<form action="infosCompte.jsp" method="get">
 			<fieldset>
 				<legend>Compte numéro <%=c.getNumeroCompte()%></legend>
-				<%
-				out.println(" Solde : " + c.getMontant());
-				%>
+				Solde : <%=c.getMontant()%>
 				<br>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<input type="submit" value="Détails du compte"/>
