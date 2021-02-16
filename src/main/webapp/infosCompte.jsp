@@ -42,7 +42,7 @@
 	<br>
 	<br>
 	<table style="width:100%">
-		<caption>Historique des transactions</caption>
+		<caption><b>Historique des transactions</b></caption>
 		<tr>
 		<th>Type</th>
 		<th>Date</th> 
@@ -121,13 +121,6 @@
 	</form>
 	<br>
 	
-	<form action="comptes.jsp" method="get">
-		<input type="submit" value="Retour aux comptes"/>
-	</form>
-	<br>
-	<form action="deconnection" method="post">
-		<input type="submit" value="Deconnection"/>
-	</form>
 	<%
 		if (erreur != null) {
 	%>

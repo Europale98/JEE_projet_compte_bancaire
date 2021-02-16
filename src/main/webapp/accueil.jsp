@@ -5,25 +5,33 @@
 	<meta charset="ISO-8859-1">
 	<title>Accueil</title>
 	<link rel="stylesheet" href="styles.css">
+	<style> 
+	.tabulation { 
+	display: inline-block; 
+	margin-left: 40px; 
+	} 
+	</style> 
 </head>
 <body>
 	<%@include file="banniere.jsp"%>
 	<%
 	    if (client != null) {%>
 	    	Bienvenue <%=client.getNom()%> <%=client.getPrenom()%>
-	<br>
-	<a href="update.jsp"><input type="button"
-		value="Modification infos client"></a>
-	<a href="comptes.jsp"><input type="button" value="Infos compte(s)"></a>
-	<form action="deconnection" method="post">
-		<input type="submit" value="Deconnection" />
-	</form>
 	<%
 	    } else {%>
 	    
-	Bienvenue
-	<a href="connection.jsp"><input type="button" value="Connection"></a>
-	<a href="inscription.jsp"><input type="button" value="Inscription"></a>
+	<h2 style="text-align:center;">Bienvenue sur notre site de banque en ligne</h2>
+	
+	<p>
+		Déja client ?
+		<br>
+		<span class="tabulation"></span>Connectez-vous pour pouvoir accéder a vos comptes
+	</p>
+	<p>
+		Futur client ?
+		<br>
+		<span class="tabulation"></span>Inscrivez-vous dès maintenant pour faire partie de notre heureuse clientèle
+	</p>
 	<%
 	    }
 	%>

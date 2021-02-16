@@ -42,9 +42,6 @@
 		</fieldset>
 	</form>
 	<br>
-	<form action="deconnection" method="post">
-		<input type="submit" value="Déconnection"/>
-	</form>
 	<%
 		if (erreur != null) {
 	%>
