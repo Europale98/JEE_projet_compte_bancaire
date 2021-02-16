@@ -7,19 +7,29 @@
 </head>
 <body>
 	<form action="inscription" method="post">
-		Nom : <input type="text" name="nom"/>
-		<br>
-		Prénom : <input type="text" name="prenom"/>
-		<br>
-		Mot de passe : <input type="text" name="motDePasse"/>
-		<br>
-		Numéro, rue : <input type="text" name="numeroRue"/>
-		<br>
-		Ville : <input type="text" name="ville"/>
-		<br>
-		Montant initial du compte : <input type="number" name="montant"/>
-		<br>
-		<input type="submit" value="Entrer"/>
+		<fieldset>
+		    <legend>S'inscrire</legend>
+		    
+		    <label for="nom">Nom :</label><br>
+		    <input type="text" name="nom"><br>
+		    
+		    <label for="prenom">Prénom :</label><br>
+		    <input type="text" name="prenom"><br>
+		    
+		    <label for="motDePasse">Mot de passe :</label><br>
+		    <input type="text" name="motDePasse"><br>
+		    
+		    <label for="numeroRue">Numéro, rue :</label><br>
+		    <input type="text" name="numeroRue"><br>
+		    
+		    <label for="ville">Ville :</label><br>
+		    <input type="text" name="ville"><br>
+		    
+		    <label for="montant">Montant initial du compte :</label><br>
+		    <input type="number" name="montant"><br><br>
+		    
+		    <input type="submit" value="Entrer">
+		</fieldset>
 	</form>
 </body>
 </html>

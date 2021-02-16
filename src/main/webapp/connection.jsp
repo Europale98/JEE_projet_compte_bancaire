@@ -7,9 +7,14 @@
 </head>
 <body>
 	<form action="connection" method="post">
-		Numéro client : <input type="number" name="numeroClient"/>
-		Mot de passe : <input type="text" name="motDePasse"/>
-		<input type="submit" value="Entrer"/>
+		<fieldset>
+		    <legend>Se connecter</legend>
+		    <label for="numeroClient">Numéro client :</label><br>
+		    <input type="number" name="numeroClient"><br>
+		    <label for="motDePasse">Mot de passe :</label><br>
+		    <input type="password" name="motDePasse"><br><br>
+		    <input type="submit" value="Entrer">
+	  </fieldset>
 	</form>
 </body>
 </html>
