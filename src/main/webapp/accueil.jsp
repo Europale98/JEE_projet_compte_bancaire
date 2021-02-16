@@ -28,7 +28,7 @@
 	<p>
 		Déja client ?
 		<br>
-		<span class="tabulation"></span>Connectez-vous pour pouvoir accéder a vos comptes
+		<span class="tabulation"></span>Connectez-vous pour pouvoir accéder à vos comptes
 	</p>
 	<p>
 		Futur client ?
