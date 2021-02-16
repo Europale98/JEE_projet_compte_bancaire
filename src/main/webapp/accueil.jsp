@@ -20,6 +20,16 @@
 	    	<p>
 	    	Votre conseiller bancaire n'est pas disponible pour le moment
 	    	</p>
+	    	<br>
+	    	<fieldset>
+				<legend>Vos informations personnelles</legend>
+				Numéro client : <%=client.getNumeroClient()%>
+				<br>
+				Adresse : <%=client.getAdresse()%>
+				<br>
+			</fieldset>	
+	
+	
 	<%
 	    } else {%>
 	    
