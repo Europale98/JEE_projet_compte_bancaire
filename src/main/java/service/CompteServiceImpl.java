@@ -64,6 +64,8 @@ public class CompteServiceImpl implements CompteService {
 
     @Override
     public void suppressionHistoriqueVirement(Compte c) {
+        c.changeVirementPourSupression();
+        repository.save(c);
         c.supprimerHistorique();
         repository.save(c);
     }

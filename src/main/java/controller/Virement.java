@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import entity.Client;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MemeCompteException;
 import exception.MontantImpossibleException;
 import service.ApplicationContexte;
 import service.ClientService;
@@ -76,7 +77,7 @@ public class Virement extends HttpServlet {
                 try {
                     client = cs.effectuerVirementCompte(client, numeroCompte,
                             numeroCompteCredite, montant);
-                } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
+                } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
                     erreur = e.getMessage();
                 }
             }

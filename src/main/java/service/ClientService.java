@@ -8,6 +8,7 @@ import exception.AuMoinsUnCompteException;
 import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MemeCompteException;
 import exception.MontantImpossibleException;
 
 public interface ClientService {
@@ -37,7 +38,7 @@ public interface ClientService {
             throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
 
     Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant)
-            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException, MemeCompteException;
 
     Client suppressionHistoriqueVirement(Client c, Long numeroCompte) throws CompteInexistantException;
 }

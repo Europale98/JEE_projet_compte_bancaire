@@ -14,6 +14,7 @@ import entity.Client;
 import entity.Compte;
 import exception.AuMoinsUnCompteException;
 import exception.DeficitImpossibleException;
+import exception.MemeCompteException;
 import exception.MontantImpossibleException;
 import exception.ClientInexistantException;
 import exception.CompteInexistantException;
@@ -129,6 +130,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client fermerCompteClient(Client c, Long numeroCompte)
             throws CompteInexistantException, AuMoinsUnCompteException {
+        c = this.suppressionHistoriqueVirement(c, numeroCompte);
         Compte compte = c.getCompte(numeroCompte);
         c.fermeCompte(compte);
         c = repository.save(c);
@@ -165,7 +167,10 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public Client effectuerVirementCompte(Client c, Long numeroCompte, Long numeroCompte2, double montant)
-            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
+            throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException, MemeCompteException {
+        if(numeroCompte.equals(numeroCompte2)) {
+            throw new MemeCompteException();
+        }
         Compte compte = c.getCompte(numeroCompte);
         compteService.effectuerVirementCompte(compte, numeroCompte2, montant);
         try {

@@ -24,7 +24,7 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.Formula;
 import org.hibernate.annotations.Where;
 
-import entity.Virement.typeVirement;
+import entity.Virement.TypeVirement;
 import exception.DeficitImpossibleException;
 import exception.MontantImpossibleException;
 
@@ -62,7 +62,7 @@ public class Compte implements Serializable {
             throw new DeficitImpossibleException();
         }
         this.montant -= montant;
-        historiqueDebit.add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.DEBIT, montant, this));
+        historiqueDebit.add(new Virement(new Timestamp(System.currentTimeMillis()), TypeVirement.DEBIT, montant, this));
     }
 
     public void effectuerCredit(double montant) throws MontantImpossibleException {
@@ -71,7 +71,7 @@ public class Compte implements Serializable {
         }
         this.montant += montant;
         historiqueCredit
-                .add(new Virement(new Timestamp(System.currentTimeMillis()), typeVirement.CREDIT, montant, this));
+                .add(new Virement(new Timestamp(System.currentTimeMillis()), TypeVirement.CREDIT, montant, this));
     }
 
     public Virement effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException, MontantImpossibleException {
@@ -91,6 +91,21 @@ public class Compte implements Serializable {
     public void recupererVirement(Virement v) {
         this.montant += v.getMontant();
         historiqueCredit.add(v);
+    }
+    
+    public void changeVirementPourSupression() {
+        for(Virement v : historiqueCredit) {
+            if(v.getType()==TypeVirement.VIREMENT) {
+                v.setCrediteur(null);
+                v.setType(TypeVirement.DEBIT);
+            }
+        }
+        for(Virement v : historiqueDebit) {
+            if(v.getType()==TypeVirement.VIREMENT) {
+                v.setDebiteur(null);
+                v.setType(TypeVirement.CREDIT);
+            }
+        }
     }
 
     public void supprimerHistorique() {

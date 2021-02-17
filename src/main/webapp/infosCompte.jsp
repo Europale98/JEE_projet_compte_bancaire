@@ -2,6 +2,7 @@
 <%@ page import="entity.Client"%>
 <%@ page import="entity.Compte"%>
 <%@ page import="entity.Virement"%>
+<%@ page import="entity.Virement.TypeVirement"%>
 
 <!DOCTYPE html>
 <html>

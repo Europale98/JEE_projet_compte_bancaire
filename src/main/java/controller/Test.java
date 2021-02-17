@@ -3,8 +3,10 @@ package controller;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import entity.Client;
+import exception.AuMoinsUnCompteException;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
+import exception.MemeCompteException;
 import exception.MontantImpossibleException;
 import service.ApplicationContexte;
 import service.ClientService;
@@ -34,11 +36,54 @@ public class Test {
             System.out.println(e.getMessage());
         }
         System.out.println(c);
+        
+        try {
+            c = clientService.effectuerCreditCompte(c, c.getComptes().get(0).getNumeroCompte(), 10);
+        } catch (CompteInexistantException | MontantImpossibleException e1) {
+            System.out.println(e1.getMessage());
+        }
+        try {
+            c = clientService.effectuerDebitCompte(c, c.getComptes().get(0).getNumeroCompte(), 30);
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
+            System.out.println(e.getMessage());
+        }
 
+        System.out.println("Virement");
+        try {
+            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(c);
+        
+        System.out.println("Histo suppr");
+        try {
+            c = clientService.suppressionHistoriqueVirement(c, c.getComptes().get(0).getNumeroCompte());
+        } catch (CompteInexistantException e) {
+            e.printStackTrace();
+        }
+        System.out.println(c);
+        
+        System.out.println("Supprimer");
+        try {
+            c = clientService.fermerCompteClient(c, c.getComptes().get(0).getNumeroCompte());
+        } catch (CompteInexistantException | AuMoinsUnCompteException e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        System.out.println(c);
+        
+        
+        
+        System.out.println("Virement lui même");
+        try {
+            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(0).getNumeroCompte(), 27);
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println(c);
+        
         /*
-         * c = clientService.fermerCompteClient(c, c.getComptes().get(0));
-         * System.out.println(c);
-         * 
          * c = clientService.fermerCompteClient(c, c.getComptes().get(0));
          * System.out.println(c);
          * System.out.println(clientService.getAllClient());
@@ -51,7 +96,7 @@ public class Test {
 
         // CompteService compteService =
         // (CompteService)appContext.getBean("compteService");
-        try {
+        /*try {
             c = clientService.effectuerCreditCompte(c, c.getComptes().get(0).getNumeroCompte(), 10);
         } catch (CompteInexistantException | MontantImpossibleException e1) {
         }
@@ -60,16 +105,11 @@ public class Test {
         } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
             System.out.println(e.getMessage());
         }
-        try {
-            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
-        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
-            System.out.println(e.getMessage());
-        }
 
         System.out.println("-----> " + c.getComptes().size());
         System.out.println(c);
         
-        System.out.println(c.getComptes().get(0).getHistoriqueVirement());
+        System.out.println(c.getComptes().get(0).getHistoriqueVirement());*/
 
         /*c = clientService.fermerCompteClient(c, c.getComptes().get(1));
         System.out.println(c);

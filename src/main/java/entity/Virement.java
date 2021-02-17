@@ -29,17 +29,17 @@ public class Virement {
     private Long numeroVirement;
     private Timestamp date;
     @Enumerated(EnumType.STRING)
-    private typeVirement type;
+    private TypeVirement type;
     private double montant;
     @ManyToOne
     private Compte debiteur;
     @ManyToOne
     private Compte crediteur;
 
-    public enum typeVirement {
+    public enum TypeVirement {
         DEBIT, CREDIT, VIREMENT;
 
-        typeVirement() {
+        TypeVirement() {
         }
     }
 
@@ -47,15 +47,15 @@ public class Virement {
         super();
     }
 
-    public Virement(Timestamp date, typeVirement type, double montant, Compte compte) {
+    public Virement(Timestamp date, TypeVirement type, double montant, Compte compte) {
         super();
         this.date = date;
         this.type = type;
         this.montant = montant;
-        if (type == typeVirement.CREDIT) {
+        if (type == TypeVirement.CREDIT) {
             this.crediteur = compte;
             this.debiteur = null;
-        } else if (type == typeVirement.DEBIT) {
+        } else if (type == TypeVirement.DEBIT) {
             this.debiteur = compte;
             this.crediteur = null;
         }
@@ -64,7 +64,7 @@ public class Virement {
     public Virement(Timestamp date, double montant, Compte debiteur, Compte crediteur) {
         super();
         this.date = date;
-        this.type = typeVirement.VIREMENT;
+        this.type = TypeVirement.VIREMENT;
         this.montant = montant;
         this.crediteur = crediteur;
         this.debiteur = debiteur;
@@ -86,11 +86,11 @@ public class Virement {
         this.date = date;
     }
 
-    public typeVirement getType() {
+    public TypeVirement getType() {
         return type;
     }
 
-    public void setType(typeVirement type) {
+    public void setType(TypeVirement type) {
         this.type = type;
     }
 
