@@ -1,42 +1,46 @@
 @charset "ISO-8859-1";
 
+body {
+		font-family: Arial, Helvetica, sans-serif;
+}
+
 #banniere {
-    margin-bottom: 47px;
+	margin-bottom: 47px;
 }
 
 #banniere ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    height: 47px;
-    top: 0;
-    left: 0;
-    position: fixed;
-    overflow: hidden;
-    background-color: #333;
-    width: 100%;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	height: 47px;
+	top: 0;
+	left: 0;
+	position: fixed;
+	overflow: hidden;
+	background-color: #333;
+	width: 100%;
 }
 
 #banniere li {
-    float: left;
+	float: left;
 }
 
-#banniere li.right{
+#banniere li.right {
 	float: right;
 }
 
 #banniere li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
 }
 
 #banniere li a:hover:not(.active) {
-    background-color: #111;
+	background-color: #111;
 }
 
 #banniere .active {
-    background-color: #C21258;
+	background-color: #C21258;
 }

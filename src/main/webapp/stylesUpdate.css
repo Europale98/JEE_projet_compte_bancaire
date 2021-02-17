@@ -1,0 +1,62 @@
+@charset "ISO-8859-1";
+
+.error {
+	color: crimson;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+h3 b {
+	font-weight: bold;
+}
+
+.cursive {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color: #C21258;
+	font-size: 20px;
+}
+
+.lf--submit {
+	background-color: #111;
+	color: white;
+	padding: 10px 20px;
+	text-align: left;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	border: 0px solid #111;
+}
+
+.lf--submit:hover {
+	background-color: #C21258;
+	border: 0px solid #C21258;
+}
+
+input[type=text], input[type=password], input[type=number] {
+	padding: 0.5em;
+	font-size: 1rem;
+	margin: 5px 0 15px 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	border-style: solid;
+	border-color: #C21258;
+	border-width: 2px;
+stylesUpdate.css}
+
+label {
+	display: inline-block;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
+	{
+	background-color: #ffe3ec;
+	outline: none;
+}

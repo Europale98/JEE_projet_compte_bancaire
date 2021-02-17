@@ -1,0 +1,79 @@
+@charset "ISO-8859-1";
+
+.error {
+	color: crimson;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.cursive {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color:#C21258;
+	font-size: 20px;
+}
+
+.flex-row {
+	display: flex;
+	margin-bottom: 1em;
+}
+
+.lf--label {
+	width: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #C21258;
+	cursor: pointer;
+}
+
+.lf--input {
+	flex: 1;
+	padding: 1em;
+	font-size: 1rem;
+	color : black;
+	border-style: solid;
+	border-color: #C21258;
+	background-color: #f1f1f1
+}
+
+.lf--input:focus {
+	background-color: #ffe3ec;
+	color: black;
+}
+
+.lf--submit {
+	background-color: #111;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	border: 0px solid #111;
+	width : 100%
+}
+
+.lf--submit:hover {
+	background-color: #C21258;
+	border: 0px solid #C21258;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bababa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #bababa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #bababa;
+}
+
+.marge {
+	margin: 2em;
+}

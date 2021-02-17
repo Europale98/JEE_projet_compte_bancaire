@@ -1,0 +1,50 @@
+@charset "ISO-8859-1";
+
+.error {
+	color: crimson;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+h3 b {
+	font-weight: bold;
+}
+
+h2 {
+	font-weight: bold;
+}
+
+.cursive {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color: #C21258;
+	font-size: 20px;
+}
+
+.cursive2 {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color: black;
+	font-size: 15px;
+}
+
+.lf--submit {
+	background-color: #111;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	border: 0px solid #111;
+	padding: 5px 10px;
+}
+
+.lf--submit:hover {
+	background-color: #C21258;
+	border: 0px solid #C21258;
+}
