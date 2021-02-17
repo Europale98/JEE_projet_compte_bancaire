@@ -57,19 +57,19 @@ public class Test {
         }
         System.out.println(c);
         
-        System.out.println("Histo suppr");
+        /*System.out.println("Histo suppr");
         try {
             c = clientService.suppressionHistoriqueVirement(c, c.getComptes().get(0).getNumeroCompte());
         } catch (CompteInexistantException e) {
             e.printStackTrace();
         }
-        System.out.println(c);
+        System.out.println(c);*/
         
         System.out.println("Supprimer");
         try {
             c = clientService.fermerCompteClient(c, c.getComptes().get(0).getNumeroCompte());
         } catch (CompteInexistantException | AuMoinsUnCompteException e2) {
-            // TODO Auto-generated catch block
+            System.out.println("ICI");
             e2.printStackTrace();
         }
         System.out.println(c);

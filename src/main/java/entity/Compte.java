@@ -36,12 +36,7 @@ public class Compte implements Serializable {
     @Column(name = "numero_compte")
     private Long numeroCompte;
     private double montant;
-    /*
-     * @ManyToOne
-     * 
-     * @JoinColumn(name="numero_client", nullable=false)
-     * private Client client;
-     */
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "debiteur", cascade = CascadeType.ALL, orphanRemoval = true)
     @Fetch(FetchMode.SELECT)
     private List<Virement> historiqueDebit;
@@ -130,14 +125,6 @@ public class Compte implements Serializable {
             throw new DeficitImpossibleException();
         this.montant = montant;
     }
-    /*
-     * public Client getClient() {
-     * return client;
-     * }
-     * public void setClient(Client client) {
-     * this.client = client;
-     * }
-     */
 
     public List<Virement> getHistoriqueDebit() {
         return historiqueDebit;

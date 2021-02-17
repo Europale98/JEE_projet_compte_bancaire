@@ -139,8 +139,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client fermerCompteClient(Client c, Long numeroCompte)
             throws CompteInexistantException, AuMoinsUnCompteException {
-        c = this.suppressionHistoriqueVirement(c, numeroCompte);
         Compte compte = c.getCompte(numeroCompte);
+        compte.changeVirementPourSupression();
+        c = repository.save(c);
+        compte = c.getCompte(numeroCompte);
         c.fermeCompte(compte);
         c = repository.save(c);
         try {
