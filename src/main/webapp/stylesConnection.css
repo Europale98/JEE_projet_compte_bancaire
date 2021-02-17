@@ -30,8 +30,8 @@ body {
 .lf--input {
 	flex: 1;
 	padding: 1em;
-	color: black;
 	font-size: 1rem;
+	color : white;
 	border-style: solid;
 	border-color: #C21258;
 }
@@ -50,9 +50,23 @@ body {
 	margin: 4px 2px;
 	cursor: pointer;
 	border: 0px solid #111;
+	width : 100%
 }
 
 .lf--submit:hover {
 	background-color: #C21258;
 	border: 0px solid #C21258;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bababa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #bababa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #bababa;
 }

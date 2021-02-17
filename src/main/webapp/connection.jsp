@@ -4,7 +4,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Connection</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="stylesConnection.css">
 <link rel="stylesheet" href="styleBanniere.css">
 </head>
 <body>
