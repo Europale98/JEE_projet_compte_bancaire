@@ -10,6 +10,7 @@
 	<title>Détails compte</title>
 
 	<link rel="stylesheet" href="styleBanniere.css">
+	<link rel="stylesheet" href="stylesInfosCompte.css">
 
 </head>
 <body>
@@ -31,11 +32,8 @@
 	}
 	if (aVous) {%>
 	
-	Compte <%=numeroCompte%> de <%=client.getNom()%> <%=client.getPrenom()%>
-	<br>
-	<br>
-	Solde : <%=c.getMontant()%>
-	<br>
+	<h2>Compte <%=numeroCompte%> de <%=client.getNom()%> <%=client.getPrenom()%></h2>
+	<h3><b>Solde :</b> <%=c.getMontant()%></h3>
 	<br>
 	<table style="width:100%">
 		<caption><b>Historique des transactions</b></caption>
@@ -75,15 +73,15 @@
 	<br>
 	<form action="suppressionHistorique" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-		<input type="submit" value="Supprimer l'historique"/>
+		<input class="lf--submit" type="submit" value="Supprimer l'historique"/>
 	</form>
 	<br>
 	<br>
 	<fieldset>
-		<legend>Effectuer un mouvement bancaire</legend>
+		<legend class="cursive">Effectuer un mouvement bancaire</legend>
 		<br>
 		<fieldset>
-			<legend>Transaction vers l'extérieur</legend>
+			<legend class="cursive2">Transaction vers l'extérieur</legend>
 			<form action="virement" method="post">
 				<input type="radio" name="type" value="debit">
   				<label for="debit">Débit</label><br>
@@ -94,20 +92,19 @@
 				Montant : <input type="number" name="montant" step=0.01 min="0"/>
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<br><br>
-				<input type="submit" value="Entrer">
+				<input class="lf--submit" type="submit" value="Entrer">
 			</form>
-		<br>
 		</fieldset>
 		<br>
 		<fieldset>
-			<legend>Transaction entre comptes</legend>
+			<legend class="cursive2">Transaction entre comptes</legend>
 			<form action="virement" method="post">
 				Montant : <input type="number" name="montant" step=0.01 min="0"/><br>
 				Numéro du compte à créditer : <input type="text" name="compteCredite"/>
 				<input type="hidden" name="type" value="virement" />
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<br>
-				<input type="submit" value="Entrer">
+				<input class="lf--submit" type="submit" value="Entrer">
 			</form>
 		</fieldset>
 	</fieldset>
@@ -115,7 +112,7 @@
 	<br>
 	<form action="fermerCompte" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
-		<input type="submit" value="Fermer ce compte"/>
+		<input class="lf--submit" type="submit" value="Fermer ce compte"/>
 	</form>
 	
 	<%
