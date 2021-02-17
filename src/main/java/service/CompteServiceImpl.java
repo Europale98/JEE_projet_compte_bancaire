@@ -1,5 +1,6 @@
 package service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.CompteRepository;
+import entity.Client;
 import entity.Compte;
 import entity.Virement;
 import exception.CompteInexistantException;
@@ -40,20 +42,23 @@ public class CompteServiceImpl implements CompteService {
     }
 
     @Override
-    public void effectuerCreditCompte(Compte c, double montant) throws MontantImpossibleException {
+    public void effectuerCreditCompte(Long numeroCompte, double montant) throws MontantImpossibleException, CompteInexistantException {
+        Compte c = this.getCompteByNumero(numeroCompte);
         c.effectuerCredit(montant);
         repository.save(c);
     }
 
     @Override
-    public void effectuerDebitCompte(Compte c, double montant) throws DeficitImpossibleException, MontantImpossibleException {
+    public void effectuerDebitCompte(Long numeroCompte, double montant) throws DeficitImpossibleException, MontantImpossibleException, CompteInexistantException {
+        Compte c = this.getCompteByNumero(numeroCompte);
         c.effectuerDebit(montant);
         repository.save(c);
     }
 
     @Override
-    public void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant)
+    public void effectuerVirementCompte(Long numeroCompte, Long numeroCompte2, double montant)
             throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
+        Compte c = this.getCompteByNumero(numeroCompte);
         Compte c2 = this.getCompteByNumero(numeroCompte2);
         Virement v = c.effectuerVirement(montant, c2);
         c = repository.save(c);
@@ -63,7 +68,8 @@ public class CompteServiceImpl implements CompteService {
     }
 
     @Override
-    public void suppressionHistoriqueVirement(Compte c) {
+    public void suppressionHistoriqueVirement(Long numeroCompte) throws CompteInexistantException {
+        Compte c = this.getCompteByNumero(numeroCompte);
         c.changeVirementPourSupression();
         repository.save(c);
         c.supprimerHistorique();

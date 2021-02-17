@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entity.Client;
+import exception.ClientInexistantException;
 import service.ApplicationContexte;
 import service.ClientService;
 
@@ -43,7 +44,12 @@ public class Update extends HttpServlet {
         ClientService cs = appContext.getClientService();
 		
 		HttpSession session = request.getSession();
-		Client client = cs.updateClient((Client) session.getAttribute("client"), nom, prenom, mdp, numeroRue, ville);
+		Client client = (Client) session.getAttribute("client");
+		try {
+            client = cs.updateClient(client.getNumeroClient(), nom, prenom, mdp, numeroRue, ville);
+        } catch (ClientInexistantException e) {
+            client = null;
+        }
 		session.setAttribute("client", client);
 			
 		response.sendRedirect(request.getContextPath() + "/accueil.jsp");

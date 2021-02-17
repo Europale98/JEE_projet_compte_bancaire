@@ -8,11 +8,11 @@ import exception.MontantImpossibleException;
 public interface CompteService {
     Compte getCompteByNumero(Long numeroCompte) throws CompteInexistantException;
 
-    void effectuerCreditCompte(Compte c, double montant) throws MontantImpossibleException;
+    void effectuerCreditCompte(Long numeroCompte, double montant) throws MontantImpossibleException, CompteInexistantException;
 
-    void effectuerDebitCompte(Compte c, double montant) throws DeficitImpossibleException, MontantImpossibleException;
+    void effectuerDebitCompte(Long numeroCompte, double montant) throws DeficitImpossibleException, MontantImpossibleException, CompteInexistantException;
 
-    void effectuerVirementCompte(Compte c, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
+    void effectuerVirementCompte(Long numeroCompte, Long numeroCompte2, double montant) throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException;
 
-    void suppressionHistoriqueVirement(Compte c);
+    void suppressionHistoriqueVirement(Long numeroCompte) throws CompteInexistantException;
 }

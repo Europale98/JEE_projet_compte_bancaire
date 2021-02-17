@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import entity.Client;
 import entity.Compte;
 import exception.AuMoinsUnCompteException;
+import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 import service.ApplicationContexte;
 import service.ClientService;
@@ -51,8 +52,11 @@ public class FermerCompte extends HttpServlet {
             ClientService cs = appContext.getClientService();
 
             try {
-                client = cs.fermerCompteClient(client, numeroCompte);
+                client = cs.fermerCompteClient(client.getNumeroClient(), numeroCompte);
             } catch (CompteInexistantException | AuMoinsUnCompteException e) {
+                erreur = e.getMessage();
+            } catch (ClientInexistantException e) {
+                client = null;
                 erreur = e.getMessage();
             }
             session.setAttribute("client", client);

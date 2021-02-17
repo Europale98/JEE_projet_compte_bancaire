@@ -62,20 +62,20 @@ public class Virement extends HttpServlet {
 
             if (type.equals("debit")) {
                 try {
-                    client = cs.effectuerDebitCompte(client, numeroCompte, montant);
+                    client = cs.effectuerDebitCompte(client.getNumeroClient(), numeroCompte, montant);
                 } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
                     erreur = e.getMessage();
                 }
             } else if (type.equals("credit")) {
                 try {
-                    client = cs.effectuerCreditCompte(client, numeroCompte, montant);
+                    client = cs.effectuerCreditCompte(client.getNumeroClient(), numeroCompte, montant);
                 } catch (CompteInexistantException | MontantImpossibleException e) {
                     erreur = e.getMessage();
                 }
             } else if(type.equals("virement")){
                 Long numeroCompteCredite = Long.parseLong(request.getParameter("compteCredite"));
                 try {
-                    client = cs.effectuerVirementCompte(client, numeroCompte,
+                    client = cs.effectuerVirementCompte(client.getNumeroClient(), numeroCompte,
                             numeroCompteCredite, montant);
                 } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
                     erreur = e.getMessage();

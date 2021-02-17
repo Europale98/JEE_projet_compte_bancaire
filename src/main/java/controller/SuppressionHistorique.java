@@ -49,7 +49,7 @@ public class SuppressionHistorique extends HttpServlet {
             ClientService cs = appContext.getClientService();
 
             try {
-                client = cs.suppressionHistoriqueVirement(client, numeroCompte);
+                client = cs.suppressionHistoriqueVirement(client.getNumeroClient(), numeroCompte);
             } catch (CompteInexistantException e) {
                 erreur = e.getMessage();
             }

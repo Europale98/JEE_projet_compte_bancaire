@@ -13,10 +13,10 @@
 		<fieldset>
 		    <legend>Se connecter</legend>
 		    <label for="numeroClient">Numéro client :</label><br>
-		    <input type="number" name="numeroClient"
+		    <input type="number" name="numeroClient" required
 			value="<%=(request.getParameter("numeroClient")==null?"":request.getParameter("numeroClient"))%>"/><br>
 		    <label for="motDePasse">Mot de passe :</label><br>
-		    <input type="password" name="motDePasse"
+		    <input type="password" name="motDePasse" required
 			value="<%=(request.getParameter("motDePasse")==null?"":request.getParameter("motDePasse"))%>"/><br><br>
 		    <input type="submit" value="Entrer">
 	  </fieldset>

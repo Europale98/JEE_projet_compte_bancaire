@@ -32,26 +32,26 @@ public class Test {
         System.out.println("Verif mdp false : " + clientService.verificationMotDePasse(c.getNumeroClient(), "mdpcazdsub"));
 
         try {
-            c = clientService.creerCompteClient(c, 300);
-        } catch (DeficitImpossibleException e) {
+            c = clientService.creerCompteClient(c.getNumeroClient(), 300);
+        } catch (DeficitImpossibleException | ClientInexistantException e) {
             System.out.println(e.getMessage());
         }
         System.out.println(c);
         
         try {
-            c = clientService.effectuerCreditCompte(c, c.getComptes().get(0).getNumeroCompte(), 10);
+            c = clientService.effectuerCreditCompte(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte(), 10);
         } catch (CompteInexistantException | MontantImpossibleException e1) {
             System.out.println(e1.getMessage());
         }
         try {
-            c = clientService.effectuerDebitCompte(c, c.getComptes().get(0).getNumeroCompte(), 30);
+            c = clientService.effectuerDebitCompte(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte(), 30);
         } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException e) {
             System.out.println(e.getMessage());
         }
 
         System.out.println("Virement");
         try {
-            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
+            c = clientService.effectuerVirementCompte(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(1).getNumeroCompte(), 5);
         } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
             System.out.println(e.getMessage());
         }
@@ -67,8 +67,8 @@ public class Test {
         
         System.out.println("Supprimer");
         try {
-            c = clientService.fermerCompteClient(c, c.getComptes().get(0).getNumeroCompte());
-        } catch (CompteInexistantException | AuMoinsUnCompteException e2) {
+            c = clientService.fermerCompteClient(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte());
+        } catch (CompteInexistantException | AuMoinsUnCompteException | ClientInexistantException e2) {
             System.out.println("ICI");
             e2.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class Test {
         
         System.out.println("Virement lui même");
         try {
-            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(0).getNumeroCompte(), 27);
+            c = clientService.effectuerVirementCompte(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte(), c.getComptes().get(0).getNumeroCompte(), 27);
         } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
             System.out.println(e.getMessage());
         }
@@ -96,7 +96,7 @@ public class Test {
 
         System.out.println("Virement entre comptes");
         try {
-            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c2.getComptes().get(0).getNumeroCompte(), 27);
+            c = clientService.effectuerVirementCompte(c.getNumeroClient(), c.getComptes().get(0).getNumeroCompte(), c2.getComptes().get(0).getNumeroCompte(), 27);
         } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
             System.out.println(e.getMessage());
         }
@@ -110,7 +110,7 @@ public class Test {
         System.out.println(c2);
 
         System.out.println("\nsuprimme c2");
-        clientService.deleteClient(c2);
+        clientService.deleteClientByNumero(c2.getNumeroClient());
         
         try {
             System.out.println(clientService.getClientByNumero(c.getNumeroClient()));

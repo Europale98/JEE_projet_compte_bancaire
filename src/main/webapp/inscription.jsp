@@ -14,27 +14,27 @@
 		    <legend>S'inscrire</legend>
 		    
 		    <label for="nom">Nom :</label><br>
-		    <input type="text" name="nom"
+		    <input type="text" name="nom" required
 			value="<%=(request.getParameter("nom")==null?"":request.getParameter("nom"))%>"/><br>
 		    
 		    <label for="prenom">Prénom :</label><br>
-		    <input type="text" name="prenom"
+		    <input type="text" name="prenom" required
 			value="<%=(request.getParameter("prenom")==null?"":request.getParameter("prenom"))%>"/><br>
 		    
 		    <label for="motDePasse">Mot de passe :</label><br>
-		    <input type="password" name="motDePasse"
+		    <input type="password" name="motDePasse" required
 			value="<%=(request.getParameter("motDePasse")==null?"":request.getParameter("motDePasse"))%>"/><br>
 		    
 		    <label for="numeroRue">Numéro, rue :</label><br>
-		    <input type="text" name="numeroRue"
+		    <input type="text" name="numeroRue" required
 			value="<%=(request.getParameter("numeroRue")==null?"":request.getParameter("numeroRue"))%>"/><br>
 		    
 		    <label for="ville">Ville :</label><br>
-		    <input type="text" name="ville"
+		    <input type="text" name="ville" required
 			value="<%=(request.getParameter("ville")==null?"":request.getParameter("ville"))%>"/><br>
 		    
 		    <label for="montant">Montant initial du compte :</label><br>
-		    <input type="number" name="montant" step="0.01 min="0""
+		    <input type="number" name="montant" step="0.01" min="0" required
 			value="<%=(request.getParameter("montant")==null?"":request.getParameter("montant"))%>"/><br><br>
 		    
 		    <input type="submit" value="Entrer">

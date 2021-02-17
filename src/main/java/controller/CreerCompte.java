@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entity.Client;
+import exception.ClientInexistantException;
 import exception.DeficitImpossibleException;
 import service.ApplicationContexte;
 import service.ClientService;
@@ -48,10 +49,13 @@ public class CreerCompte extends HttpServlet {
             ClientService cs = appContext.getClientService();
             
     		try {
-    			client = cs.creerCompteClient(client, montant);
+    			client = cs.creerCompteClient(client.getNumeroClient(), montant);
     		} catch (DeficitImpossibleException e) {
     		    erreur = e.getMessage();
-    		}
+    		} catch (ClientInexistantException e) {
+    		    client = null;
+    		    erreur = e.getMessage();
+            }
 		}
 		
 		session.setAttribute("client", client);
