@@ -106,11 +106,20 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void deleteClient(Client c) {
+        c.changeVirementPourSupression();
+        c = repository.save(c);
         repository.delete(c);
     }
 
     @Override
     public void deleteClientByNumero(Long numeroClient) {
+        Client c;
+        try {
+            c = this.getClientByNumero(numeroClient);
+            c.changeVirementPourSupression();
+            c = repository.save(c);
+        } catch (ClientInexistantException e) {
+        }
         repository.deleteById(numeroClient);
     }
 

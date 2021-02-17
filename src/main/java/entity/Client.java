@@ -68,6 +68,12 @@ public class Client {
             throw new AuMoinsUnCompteException();
         }
     }
+    
+    public void changeVirementPourSupression() {
+        for(Compte c : comptes) {
+            c.changeVirementPourSupression();
+        }
+    }
 
     public Long getNumeroClient() {
         return numeroClient;

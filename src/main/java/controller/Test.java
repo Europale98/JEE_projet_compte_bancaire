@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import entity.Client;
 import exception.AuMoinsUnCompteException;
+import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 import exception.DeficitImpossibleException;
 import exception.MemeCompteException;
@@ -82,6 +83,43 @@ public class Test {
             System.out.println(e.getMessage());
         }
         System.out.println(c);
+
+        System.out.println("\nNouveau compte");
+        Client c2 = null;
+        try {
+            c2 = clientService.createClient("N2", "P2", "m", "2", "2", 256789);
+        } catch (DeficitImpossibleException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        System.out.println(c2);
+
+        System.out.println("Virement entre comptes");
+        try {
+            c = clientService.effectuerVirementCompte(c, c.getComptes().get(0).getNumeroCompte(), c2.getComptes().get(0).getNumeroCompte(), 27);
+        } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            c2 = clientService.getClientByNumero(c2.getNumeroClient());
+        } catch (ClientInexistantException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        System.out.println(c);
+        System.out.println(c2);
+
+        System.out.println("\nsuprimme c2");
+        clientService.deleteClient(c2);
+        
+        try {
+            System.out.println(clientService.getClientByNumero(c.getNumeroClient()));
+        } catch (ClientInexistantException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        
+        
         
         /*
          * c = clientService.fermerCompteClient(c, c.getComptes().get(0));
