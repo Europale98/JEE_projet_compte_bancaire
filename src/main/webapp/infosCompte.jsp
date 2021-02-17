@@ -117,7 +117,6 @@
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 		<input type="submit" value="Fermer ce compte"/>
 	</form>
-	<br>
 	
 	<%
 		if (erreur != null) {

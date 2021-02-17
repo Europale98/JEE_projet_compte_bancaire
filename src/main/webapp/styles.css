@@ -7,3 +7,52 @@
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+.cursive {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+}
+
+.flex-row {
+	display: flex;
+	margin-bottom: 1em;
+}
+
+.lf--label {
+	width: 2em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #C21258;
+	cursor: pointer;
+}
+
+.lf--input {
+	flex: 1;
+	padding: 1em;
+	color: black;
+	font-size: 1rem;
+	border-style: solid;
+	border-color: #C21258;
+}
+
+.lf--input:focus {
+	background-color: #ffe3ec;
+}
+
+.lf--submit {
+	background-color: #111;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border: 0px solid #111;
+}
+
+.lf--submit:hover {
+	background-color: #C21258;
+	border: 0px solid #C21258;
+}
