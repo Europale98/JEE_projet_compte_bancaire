@@ -11,7 +11,7 @@
 	<%@include file="banniere.jsp"%>
 
 	<form action="connection" method="post">
-		<fieldset>
+		<fieldset class= "marge">
 			<legend class="cursive">Se connecter</legend>
 			<br>
 

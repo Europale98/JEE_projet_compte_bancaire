@@ -18,7 +18,7 @@
 		%>
 		<li><a href="comptes.jsp" <%=((request.getServletPath().equals("/comptes.jsp")||request.getServletPath().equals("/infosCompte.jsp"))?"class=\"active\"":"")%>>Vos Comptes</a></li>
 		<li><a href="update.jsp" <%=(request.getServletPath().equals("/update.jsp")?"class=\"active\"":"")%>>Modification</a></li>
-		<li class="right"><a href="deconnection">Déconnection</a></li>
+		<li class="right"><a href="deconnection">Déconnexion</a></li>
 		<%
 		    }
 		%>

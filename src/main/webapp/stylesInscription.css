@@ -11,6 +11,8 @@ body {
 .cursive {
 	font-weight: bold;
 	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color:#C21258;
+	font-size: 20px;
 }
 
 * {
@@ -81,4 +83,13 @@ button:hover {
 .lf--submit:hover {
 	background-color: #C21258;
 	border: 0px solid #C21258;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bababa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #bababa;
 }
