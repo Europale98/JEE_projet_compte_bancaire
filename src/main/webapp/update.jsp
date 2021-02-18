@@ -9,33 +9,47 @@
 </head>
 <body>
 	<%@include file="banniere.jsp"%>
+	<%if(client==null){
+	%>
+	<fieldset class="error">
+		<legend>Erreur</legend>
+		<p>Vous n'êtes pas connecté.</p>
+	</fieldset>
+	<%
+	}else {
+	    %>
+ 	<%
+		if (erreur != null) {
+	%>
+	<fieldset class="error">
+		<legend>Erreur</legend>
+		<p><%=erreur%></p>
+	</fieldset>
+	<%
+		}
+	%>
 	<div class="container">
 		<form action="update" method="post">
 			<fieldset>
-				<legend class="cursive">Modifier vos informations
-					personnelles</legend>
-				<h3><b>Nom : </b><input type="text" name="nom" value="<%=client.getNom()%>" /></h3>
-				<h3><b>Prénom :</b> <input type="text" name="prenom"
-					value="<%=client.getPrenom()%>" /></h3>
-					<h3><b>Mot de passe :</b> <input
-					type="password" name="motDePasse" /></h3>
-					<h3><b>Numéro, rue : <b></b><input
-					type="text" name="numeroRue"
-					value="<%=client.getAdresse().getNumeroRue()%>" /></h3>
-					<h3><b>Ville :</b> <input type="text" name="ville"
-					value="<%=client.getAdresse().getVille()%>" /></h3> 
-				<input class="lf--submit" type="submit" value="Entrer">
+				<legend class="cursive">Modifier vos informations personnelles</legend>
+				<table>
+				<tr><td class="label"><label><b>Nom : </b></label></td><td><input type="text" name="nom" placeholder="Nom" value="<%=client.getNom()%>"/></td></tr>
+				<tr><td class="label"><label><b>Prénom : </b></label></td><td><input type="text" name="prenom" placeholder="Prénom"
+					value="<%=client.getPrenom()%>" /></td></tr>
+				<tr><td class="label"><label><b>Mot de passe : </b></label></td><td><input
+					type="password" name="motDePasse" placeholder="Mot de passe"/></td></tr>
+				<tr><td class="label"><label><b>Numéro, rue : </b></label></td><td><input
+					type="text" name="numeroRue" placeholder="Numéro, rue"
+					value="<%=client.getAdresse().getNumeroRue()%>" /></td></tr>
+				<tr><td class="label"><label><b>Ville : </b></label></td><td><input type="text" name="ville" placeholder="Ville"
+					value="<%=client.getAdresse().getVille()%>" /></td></tr>
+				<tr><td colspan="2"><input class="lf--submit" type="submit" value="Entrer"></td></tr>
+				</table>
 			</fieldset>
 		</form>
 	</div>
 	<%
-		if (erreur != null) {
-	%>
-	<p class="error">
-		<%=erreur%>
-	</p>
-	<%
-		}
+	}
 	%>
 </body>
 </html>

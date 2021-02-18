@@ -39,8 +39,7 @@ public class Connection extends HttpServlet {
         try {
             num = Long.parseLong(request.getParameter("numeroClient"));
         } catch(NumberFormatException e) {
-            ClientInexistantException eC = new ClientInexistantException();
-            erreur = eC.getMessage();
+            erreur = "Numéro de compte incorrect";
         }
         String mdp = request.getParameter("motDePasse");
 
@@ -56,12 +55,11 @@ public class Connection extends HttpServlet {
                     client = cs.getClientByNumero(num);
                     session.setAttribute("client", client);
                 } catch (ClientInexistantException e) {
-                    erreur = e.getMessage();
+                    erreur = "Numéro de compte ou mot de passe incorrect";
                 }
             }
             else {
-                ClientInexistantException eC = new ClientInexistantException();
-                erreur = eC.getMessage();
+                erreur = "Numéro de compte ou mot de passe incorrect";
             }
         }
         if (erreur != null) {

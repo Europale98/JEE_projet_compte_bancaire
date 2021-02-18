@@ -42,18 +42,21 @@ public class Virement extends HttpServlet {
         String erreur = null;
         HttpSession session = request.getSession();
         String type = request.getParameter("type");
+        if (type == null) {
+            erreur = "Aucun type de virement";
+        }
         Long numeroCompte = null;
         try {
             numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
         } catch (NumberFormatException e1) {
-            erreur = e1.getMessage();
+            erreur = "Numéro de compte incorrect";
         }
         Client client = (Client) session.getAttribute("client");
         double montant = 0;
         try {
             montant = Double.parseDouble(request.getParameter("montant"));
         } catch (NumberFormatException e1) {
-            erreur = e1.getMessage();
+            erreur = "Montant incorrect";
         }
 
         if(erreur==null) {

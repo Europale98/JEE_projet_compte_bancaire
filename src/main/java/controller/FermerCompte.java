@@ -45,7 +45,7 @@ public class FermerCompte extends HttpServlet {
         try {
             numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
         } catch(NumberFormatException e) {
-            erreur = e.getMessage();
+            erreur = "Numéro de compte incorrect";
         }
         if(erreur==null) {
             ApplicationContexte appContext = ApplicationContexte.getInstance();
@@ -53,11 +53,13 @@ public class FermerCompte extends HttpServlet {
 
             try {
                 client = cs.fermerCompteClient(client.getNumeroClient(), numeroCompte);
-            } catch (CompteInexistantException | AuMoinsUnCompteException e) {
-                erreur = e.getMessage();
             } catch (ClientInexistantException e) {
                 client = null;
                 erreur = e.getMessage();
+            } catch (CompteInexistantException e) {
+                erreur = "Compte inexistant";
+            } catch (AuMoinsUnCompteException e) {
+                erreur = "Vous ne pouvez pas supprimer le seul compte que vous avez.";
             }
             session.setAttribute("client", client);
         }

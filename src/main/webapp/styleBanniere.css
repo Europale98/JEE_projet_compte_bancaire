@@ -5,7 +5,7 @@ body {
 }
 
 #banniere {
-	margin-bottom: 47px;
+	margin-bottom: 60px;
 }
 
 #banniere ul {
@@ -44,3 +44,35 @@ body {
 #banniere .active {
 	background-color: #C21258;
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.error {
+	background-color: #ffe3ec;
+	border-color: #C21258;
+	border-width: 3px;
+}
+
+.error legend {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color: #000;
+	font-size: 20px;
+}
+
+.error p {
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px;
+	color: #C21258;
+}
+

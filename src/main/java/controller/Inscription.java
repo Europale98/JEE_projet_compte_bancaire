@@ -62,7 +62,7 @@ public class Inscription extends HttpServlet {
         try {
             montant = Double.parseDouble(request.getParameter("montant"));
         } catch (NumberFormatException e) {
-            erreur = e.getMessage();
+            erreur = "Montant incorrect";
         }
 
         if(erreur == null) {
@@ -76,7 +76,7 @@ public class Inscription extends HttpServlet {
             try {
                 client = cs.createClient(nom, prenom, mdp, numeroRue, ville, montant);
             } catch (DeficitImpossibleException e) {
-                erreur = e.getMessage();
+                erreur = "Déficit impossible";
             }
 
             session.setAttribute("client", client);

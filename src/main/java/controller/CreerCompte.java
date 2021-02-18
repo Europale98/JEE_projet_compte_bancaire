@@ -42,7 +42,7 @@ public class CreerCompte extends HttpServlet {
 		try {
 		    montant = Double.parseDouble(request.getParameter("montant"));
 		} catch(NumberFormatException e) {
-		    erreur = e.getMessage();
+		    erreur = "Montant incorrect";
 		}
 		if (erreur == null) {
     		ApplicationContexte appContext = ApplicationContexte.getInstance();
@@ -51,7 +51,7 @@ public class CreerCompte extends HttpServlet {
     		try {
     			client = cs.creerCompteClient(client.getNumeroClient(), montant);
     		} catch (DeficitImpossibleException e) {
-    		    erreur = e.getMessage();
+    		    erreur = "Deficit impossible";
     		} catch (ClientInexistantException e) {
     		    client = null;
     		    erreur = e.getMessage();

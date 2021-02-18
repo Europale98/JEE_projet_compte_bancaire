@@ -1,9 +1,5 @@
 @charset "ISO-8859-1";
 
-.error {
-	color: crimson;
-}
-
 body {
 	font-family: Arial, Helvetica, sans-serif;
 }
@@ -20,6 +16,14 @@ h2 {
 	font-weight: bold;
 }
 
+.inline {
+	display: inline-block;
+}
+
+.float-left {
+	float: right;
+}
+
 .cursive {
 	font-weight: bold;
 	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
@@ -34,6 +38,13 @@ h2 {
 	font-size: 15px;
 }
 
+.cursive3 {
+	font-weight: bold;
+	font-family: "Lucida Handwriting", "Lucida Handwriting", cursive;
+	color: black;
+	font-size: 20px;
+}
+
 .lf--submit {
 	background-color: #111;
 	color: white;
@@ -41,10 +52,134 @@ h2 {
 	text-decoration: none;
 	cursor: pointer;
 	border: 0px solid #111;
-	padding: 5px 10px;
+	padding: 0.5em;
+	font-size: 14px;
 }
 
 .lf--submit:hover {
 	background-color: #C21258;
 	border: 0px solid #C21258;
+}
+
+input[type=text], input[type=password], input[type=number] {
+	padding: 0.5em;
+	font-size: 1rem;
+	margin: 0;
+	display: inline-block;
+	border: none;
+	background: #f1f1f1;
+	border-style: solid;
+	border-color: #C21258;
+	border-width: 2px;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #bababa;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #bababa;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #bababa;
+}
+
+label {
+	text-align: right;
+	width: 100%;
+}
+
+.suppr {
+	background-color: #C21258;
+	border: 0px solid #C21258;
+	margin: 5px;
+}
+
+.suppr:hover {
+	background-color: #111;
+	border: 0px solid #111;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
+	{
+	background-color: #ffe3ec;
+	outline: none;
+}
+
+#formulaire {
+	display: flex;
+}
+#formulaire fieldset {
+	flex: 1;
+}
+#formulaire .lf--submit {
+	width: 100%;
+}
+#formulaire form {
+	height: 100%;
+}
+#formulaire .block {
+	height: 30%;
+	min-height: 58px;
+	margin-bottom: 3%;
+}
+#formulaire .block_submit {
+	height: 20%;
+}
+#formulaire .block_int {
+	height: 50%;
+}
+
+#table-virement {
+	overflow-y: auto;
+	height: 40vh;
+}
+#virement table {
+    border:none;
+    border-collapse: collapse;
+}
+
+#virement table td, #virement table th {
+    padding: 1%;
+}
+#virement table td:first-child {
+    border-left: none;
+}
+
+#virement table td:last-child {
+    border-right: none;
+}
+#table-virement thead {
+	position: sticky;
+	background-color: white;
+	top: 0;
+}
+#virement tr {
+	margin: 1%;
+}
+.tab-date {
+	width: 28%;
+}
+.tab-type {
+	width: 15%;
+	background: #f1f1f1;
+}
+.tab-ori {
+	width: 25%;
+}
+.tab-montant {
+	background: #f1f1f1;
+}
+td.tab-montant {
+	text-align: right;
+}
+.credit {
+	color: #07B872;
+}
+.debit {
+	color: #A90748;
 }

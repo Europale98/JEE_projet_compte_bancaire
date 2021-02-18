@@ -2,13 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Inscription</title>
-<link rel="stylesheet" href="stylesInscription.css">
-<link rel="stylesheet" href="styleBanniere.css">
+	<meta charset="ISO-8859-1">
+	<title>Inscription</title>
+	<link rel="stylesheet" href="stylesInscription.css">
+	<link rel="stylesheet" href="styleBanniere.css">
 </head>
 <body>
 	<%@include file="banniere.jsp"%>
+	<%
+		if (erreur != null) {
+	%>
+	<fieldset class="error">
+		<legend>Erreur</legend>
+		<p><%=erreur%></p>
+	</fieldset>
+	<%
+		}
+	%>
 	<form action="inscription" method="post">
 		<div class="container">
 			<fieldset>
@@ -41,15 +51,5 @@
 			</fieldset>
 		</div>
 	</form>
-
-	<%
-		if (erreur != null) {
-	%>
-	<p class="error">
-		<%=erreur%>
-	</p>
-	<%
-		}
-	%>
 </body>
 </html>

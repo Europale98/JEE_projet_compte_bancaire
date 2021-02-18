@@ -41,7 +41,7 @@ public class SuppressionHistorique extends HttpServlet {
         try {
             numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
         } catch (NumberFormatException e1) {
-            erreur = e1.getMessage();
+            erreur = "Numéro de compte incorrect";
         }
 
         if(erreur==null) {
@@ -51,7 +51,7 @@ public class SuppressionHistorique extends HttpServlet {
             try {
                 client = cs.suppressionHistoriqueVirement(client.getNumeroClient(), numeroCompte);
             } catch (CompteInexistantException e) {
-                erreur = e.getMessage();
+                erreur = "Compte inexistant";
             }
 
             session.setAttribute("client", client);

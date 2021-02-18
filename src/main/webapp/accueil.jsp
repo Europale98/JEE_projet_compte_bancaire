@@ -1,23 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="entity.Client"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Accueil</title>
-<link rel="stylesheet" href="styleBanniere.css">
-<link rel="stylesheet" href="stylesAccueil.css">
-
+	<meta charset="ISO-8859-1">
+	<title>Accueil</title>
+	<link rel="stylesheet" href="styleBanniere.css">
+	<link rel="stylesheet" href="stylesAccueil.css">
 </head>
 <body>
 	<%@include file="banniere.jsp"%>
 	<%
-	    if (client != null) {%>
-	<h2>
-		Bienvenue
-		<%=client.getNom()%>
-		<%=client.getPrenom()%></h2>
-	<p>Votre conseiller bancaire n'est pas disponible pour le moment</p>
-	<br>
+	    if (client != null) {
+	%>
+	<h2>Bienvenue <%=client.getPrenom()%> <%=client.getNom()%></h2>
+	<p><em>Votre conseiller bancaire n'est pas disponible pour le moment.</em></p>
 	<fieldset>
 		<legend class="cursive">Mes informations personnelles</legend>
 		<div class="col-md-8">
@@ -44,31 +41,28 @@
 						<div class="col-sm-9 text-secondary"><%=client.getComptes().size()%></div>
 					</div>
 					<hr>
-					<div class="row">
-					</div>
+					<div class="row"></div>
 				</div>
 			</div>
+		</div>
 	</fieldset>
 
 
 	<%
-	    } else {%>
+	    } else {
+	%>
 
-	<h2 style="text-align: center;">Bienvenue sur notre site de banque
-		en ligne</h2>
-
+	<h2>Bienvenue sur notre site de banque en ligne</h2>
 
 	<p>
-	<div class="cursive">Déja client ?</div>
-	<span class="tabulation"></span>Connectez-vous pour pouvoir accéder à
-	vos comptes
+		<div class="cursive">Déja client ?</div>
+		Connectez-vous pour pouvoir accéder à vos comptes
 	</p>
 	<p>
-	<div class="cursive">Futur client ?</div>
-	<span class="tabulation"></span>Inscrivez-vous dès maintenant pour
-	faire partie de notre heureuse clientèle
+		<div class="cursive">Futur client ?</div>
+		Inscrivez-vous dès maintenant pour faire partie de notre heureuse clientèle
 	</p>
-
+	
 	<%
 	    }
 	%>

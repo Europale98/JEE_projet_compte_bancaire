@@ -141,7 +141,7 @@ public class Compte implements Serializable {
         virementListe.sort(new Comparator<Virement>() {
             @Override
             public int compare(Virement o1, Virement o2) {
-                return o1.getDate().compareTo(o2.getDate());
+                return -o1.getDate().compareTo(o2.getDate());
             }
         });
         return virementListe;
