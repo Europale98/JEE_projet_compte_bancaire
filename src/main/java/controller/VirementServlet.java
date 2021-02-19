@@ -21,13 +21,13 @@ import service.ClientService;
  * Servlet implementation class Virement
  */
 @WebServlet("/virement")
-public class Virement extends HttpServlet {
+public class VirementServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Virement() {
+    public VirementServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -52,6 +52,9 @@ public class Virement extends HttpServlet {
             erreur = "Numéro de compte incorrect";
         }
         Client client = (Client) session.getAttribute("client");
+        if(client==null) {
+            erreur = "Non connecté";
+        }
         double montant = 0;
         try {
             montant = Double.parseDouble(request.getParameter("montant"));
@@ -76,12 +79,19 @@ public class Virement extends HttpServlet {
                     erreur = e.getMessage();
                 }
             } else if(type.equals("virement")){
-                Long numeroCompteCredite = Long.parseLong(request.getParameter("compteCredite"));
+                Long numeroCompteCredite = null;
                 try {
-                    client = cs.effectuerVirementCompte(client.getNumeroClient(), numeroCompte,
-                            numeroCompteCredite, montant);
-                } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
-                    erreur = e.getMessage();
+                    numeroCompteCredite = Long.parseLong(request.getParameter("compteCredite"));
+                } catch (NumberFormatException e1) {
+                    erreur = "Numéro de compte incorrect";
+                }
+                if (erreur==null) {
+                    try {
+                        client = cs.effectuerVirementCompte(client.getNumeroClient(), numeroCompte,
+                                numeroCompteCredite, montant);
+                    } catch (DeficitImpossibleException | CompteInexistantException | MontantImpossibleException | MemeCompteException e) {
+                        erreur = e.getMessage();
+                    }
                 }
             }
 

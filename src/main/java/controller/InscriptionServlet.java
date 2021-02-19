@@ -18,13 +18,13 @@ import service.ClientService;
  * Servlet implementation class Inscription
  */
 @WebServlet("/inscription")
-public class Inscription extends HttpServlet {
+public class InscriptionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Inscription() {
+    public InscriptionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

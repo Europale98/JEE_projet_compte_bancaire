@@ -26,28 +26,29 @@
 	</fieldset>
 	<%
 	}else {
-	    
-	Long numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
-	boolean aVous = true;
-	Compte c = null;
-	try {
-	    c = client.getCompte(numeroCompte);
-	} catch (CompteInexistantException e) {
-	    aVous = false;
+		boolean aVous = true;
+		Long numeroCompte = null;
+		Compte c = null;
+		try {
+			numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
+			c = client.getCompte(numeroCompte);
+		} catch (NumberFormatException | CompteInexistantException e) {
+		    aVous = false;
+		}
+		if (!aVous) {
 	%>
 	<fieldset class="error">
 		<legend>Erreur</legend>
 		<p>Vous ne possédez pas un tel compte.</p>
 	</fieldset>
 	<%
-	}
-	if (aVous) {
+		} else {
 	%>
 	<h2 class="inline">Compte <%=numeroCompte%> de <%=client.getNom()%> <%=client.getPrenom()%></h2>
 	<h2 class="float-left"><b>Solde :</b> <%=c.getMontant()%> &euro;</h2>
 	<br/>
 	<%
-		if (erreur != null) {
+			if (erreur != null) {
 	%>
 	<fieldset class="error">
 		<legend>Erreur</legend>
@@ -55,12 +56,13 @@
 	</fieldset>
 	<br>
 	<%
-		}
+			}
 	%>
 	<fieldset id="formulaire">
 		<legend class="cursive">Effectuer un mouvement bancaire</legend>
+		<div id="formu-div">
 		<fieldset>
-			<legend class="cursive2">Transaction vers l'extérieur</legend>
+			<legend class="cursive2">Transaction avec l'extérieur</legend>
 			<form action="virement" method="post">
 				<div class="block"><div class="block_int"><input type="radio" name="type" value="debit">
   				<label for="debit">Débit</label></div>
@@ -75,13 +77,14 @@
 		<fieldset>
 			<legend class="cursive2">Transaction entre comptes</legend>
 			<form action="virement" method="post">
-				<div class="block"><label for="compteCredite">Numéro du compte à créditer : </label><input type="text" name="compteCredite" placeholder="Numéro de compte"/></div>
+				<div class="block"><label for="compteCredite">Numéro du compte à créditer : </label><input type="number" name="compteCredite" placeholder="Numéro de compte"/></div>
 				<div class="block"><label for="montant">Montant : </label><input type="number" name="montant" placeholder="Montant" step=0.01 min="0"/></div>
 				<input type="hidden" name="type" value="virement" />
 				<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
 				<div class="block_submit"><input class="lf--submit" type="submit" value="Entrer"></div>
 			</form>
 		</fieldset>
+		</div>
 	</fieldset>
 	<form class="inline float-left" action="fermerCompte" method="post">
 		<input type="hidden" name="numeroCompte" value= <%=c.getNumeroCompte()%> />
@@ -101,7 +104,7 @@
 			<thead><tr>
 			<th class="tab-date">Date</th> 
 			<th class="tab-type">Type</th>
-			<th class="tab-ori">Origine/Destination</th>
+			<th class="tab-ori">Origine / Destination</th>
 			<th class="tab-montant">Montant</th>
 			</tr></thead>
 		<%
@@ -134,7 +137,7 @@
 				} else {
 				    out.println("credit\"> +");
 				}
-				out.println(v.getMontant()+"</td>");
+				out.println(v.getMontant()+" &euro;</td>");
 				%>
 				</tr>
 			<%

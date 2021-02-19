@@ -18,13 +18,13 @@ import service.ClientService;
  * Servlet implementation class Update
  */
 @WebServlet("/update")
-public class Update extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Update() {
+    public UpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,11 +45,13 @@ public class Update extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Client client = (Client) session.getAttribute("client");
-		try {
-            client = cs.updateClient(client.getNumeroClient(), nom, prenom, mdp, numeroRue, ville);
-        } catch (ClientInexistantException e) {
-            client = null;
-        }
+		if(client!=null) {
+    		try {
+                client = cs.updateClient(client.getNumeroClient(), nom, prenom, mdp, numeroRue, ville);
+            } catch (ClientInexistantException e) {
+                client = null;
+            }
+		}
 		session.setAttribute("client", client);
 			
 		response.sendRedirect(request.getContextPath() + "/accueil.jsp");

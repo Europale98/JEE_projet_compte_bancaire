@@ -19,13 +19,13 @@ import service.ClientService;
  * Servlet implementation class CreerCompte
  */
 @WebServlet("/creerCompte")
-public class CreerCompte extends HttpServlet {
+public class CreerCompteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreerCompte() {
+    public CreerCompteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +38,9 @@ public class CreerCompte extends HttpServlet {
 	    String erreur = null;
         HttpSession session = request.getSession();
         Client client = (Client) session.getAttribute("client");
+        if(client==null) {
+            erreur = "Non connecté";
+        }
         double montant = 0;
 		try {
 		    montant = Double.parseDouble(request.getParameter("montant"));

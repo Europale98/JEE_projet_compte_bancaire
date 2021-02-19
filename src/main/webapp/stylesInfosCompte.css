@@ -2,6 +2,7 @@
 
 body {
 	font-family: Arial, Helvetica, sans-serif;
+	max-width:100%;
 }
 
 h3 {
@@ -110,11 +111,18 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
 	outline: none;
 }
 
-#formulaire {
+#formu-div {
 	display: flex;
+}
+#formulaire {
+	width: 100%;
+	box-sizing: border-box;
 }
 #formulaire fieldset {
 	flex: 1;
+}
+#formu-div legend {
+	max-width:100%;
 }
 #formulaire .lf--submit {
 	width: 100%;
@@ -124,7 +132,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
 }
 #formulaire .block {
 	height: 30%;
-	min-height: 58px;
+	min-height: 64px;
 	margin-bottom: 3%;
 }
 #formulaire .block_submit {
@@ -139,12 +147,11 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
 	height: 40vh;
 }
 #virement table {
-    border:none;
     border-collapse: collapse;
 }
 
 #virement table td, #virement table th {
-    padding: 1%;
+    padding: 7px;
 }
 #virement table td:first-child {
     border-left: none;
@@ -159,17 +166,17 @@ input[type=text]:focus, input[type=password]:focus, input[type=number]:focus
 	top: 0;
 }
 #virement tr {
-	margin: 1%;
+	margin: 10px;
 }
 .tab-date {
 	width: 28%;
 }
 .tab-type {
-	width: 15%;
+	width: 20%;
 	background: #f1f1f1;
 }
 .tab-ori {
-	width: 25%;
+	width: 20%;
 }
 .tab-montant {
 	background: #f1f1f1;

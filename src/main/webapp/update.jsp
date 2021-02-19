@@ -25,13 +25,14 @@
 		<legend>Erreur</legend>
 		<p><%=erreur%></p>
 	</fieldset>
+	<br/>
 	<%
 		}
 	%>
 	<div class="container">
 		<form action="update" method="post">
 			<fieldset>
-				<legend class="cursive">Modifier vos informations personnelles</legend>
+				<legend class="cursive">Modifier mes informations personnelles</legend>
 				<table>
 				<tr><td class="label"><label><b>Nom : </b></label></td><td><input type="text" name="nom" placeholder="Nom" value="<%=client.getNom()%>"/></td></tr>
 				<tr><td class="label"><label><b>Prénom : </b></label></td><td><input type="text" name="prenom" placeholder="Prénom"
@@ -44,6 +45,17 @@
 				<tr><td class="label"><label><b>Ville : </b></label></td><td><input type="text" name="ville" placeholder="Ville"
 					value="<%=client.getAdresse().getVille()%>" /></td></tr>
 				<tr><td colspan="2"><input class="lf--submit" type="submit" value="Entrer"></td></tr>
+				</table>
+			</fieldset>
+		</form>
+		<br/>
+		<form action="suppressionClient" method="post">
+			<fieldset>
+				<legend class="cursive">Supprimer mon compte client</legend>
+				<table>
+				<tr><td class="label2"><label><b>Confirmer le mot de passe : </b></label></td><td><input
+					type="password" name="motDePasse" placeholder="Mot de passe"/></td></tr>
+				<tr><td colspan="2"><input class="lf--submit" type="submit" value="Supprimer mon compte client"></td></tr>
 				</table>
 			</fieldset>
 		</form>

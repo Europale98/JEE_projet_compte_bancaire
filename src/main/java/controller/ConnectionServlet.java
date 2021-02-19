@@ -17,13 +17,13 @@ import exception.ClientInexistantException;
  * Servlet implementation class Connection
  */
 @WebServlet("/connection")
-public class Connection extends HttpServlet {
+public class ConnectionServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Connection() {
+    public ConnectionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }

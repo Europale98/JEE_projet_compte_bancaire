@@ -10,21 +10,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import entity.Client;
+import entity.Compte;
+import exception.AuMoinsUnCompteException;
+import exception.ClientInexistantException;
 import exception.CompteInexistantException;
 import service.ApplicationContexte;
 import service.ClientService;
 
 /**
- * Servlet implementation class SuppressionHistorique
+ * Servlet implementation class FermerCompte
  */
-@WebServlet("/suppressionHistorique")
-public class SuppressionHistorique extends HttpServlet {
+@WebServlet("/fermerCompte")
+public class FermerCompteServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SuppressionHistorique() {
+    public FermerCompteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,28 +38,40 @@ public class SuppressionHistorique extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        String suite = "/comptes.jsp";
         String erreur = null;
         Client client = (Client) session.getAttribute("client");
+        if(client==null) {
+            erreur = "Non connecté";
+        }
         Long numeroCompte = null;
         try {
             numeroCompte = Long.parseLong(request.getParameter("numeroCompte"));
-        } catch (NumberFormatException e1) {
+        } catch(NumberFormatException e) {
             erreur = "Numéro de compte incorrect";
         }
-
         if(erreur==null) {
             ApplicationContexte appContext = ApplicationContexte.getInstance();
             ClientService cs = appContext.getClientService();
 
             try {
-                client = cs.suppressionHistoriqueVirement(client.getNumeroClient(), numeroCompte);
+                client = cs.fermerCompteClient(client.getNumeroClient(), numeroCompte);
+            } catch (ClientInexistantException e) {
+                client = null;
+                erreur = e.getMessage();
             } catch (CompteInexistantException e) {
                 erreur = "Compte inexistant";
+            } catch (AuMoinsUnCompteException e) {
+                erreur = "Vous ne pouvez pas supprimer le seul compte que vous avez.";
             }
-
             session.setAttribute("client", client);
         }
-        request.setAttribute("erreur", erreur);
-        getServletContext().getRequestDispatcher("/infosCompte.jsp").forward(request, response);
+        if (erreur!=null) {
+            request.setAttribute("erreur", erreur);
+            suite = "/infosCompte.jsp";
+            getServletContext().getRequestDispatcher(suite).forward(request, response);
+        } else {
+            response.sendRedirect(request.getContextPath() + suite);
+        }
     }
 }
