@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="controller.UpdateServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/UpdateServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="3012" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="controller.ActualiserServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/ActualiserServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="3900" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="controller.VirementServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/VirementServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="792" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="controller.CreerCompteServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/CreerCompteServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="2124" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="controller.FermerCompteServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/FermerCompteServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="1680" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="controller.SuppressionHistoriqueServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/SuppressionHistoriqueServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="1236" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="controller.ConnectionServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/ConnectionServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="3456" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="controller.SuppressionClientServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/SuppressionClientServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="2568" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="controller.AppConfig" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/AppConfig.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="136" width="498" x="920" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="controller.DeconnectionServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/DeconnectionServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="348" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="controller.InscriptionServlet" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/controller/InscriptionServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="156" width="404" x="4344" y="373"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="12" language="java" name="dao.ClientRepository" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/dao/ClientRepository.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="461" x="1721" y="995"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="13" language="java" name="dao.CompteRepository" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/dao/CompteRepository.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="76" width="189" x="459" y="1371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="14" language="java" name="entity.Compte" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/entity/Compte.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="496" width="333" x="336" y="1927"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="15" language="java" name="entity.Virement.TypeVirement" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/entity/Virement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="156" width="208" x="53" y="2463"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="16" language="java" name="entity.Virement" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/entity/Virement.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="456" width="387" x="32" y="1371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="entity.Adresse" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/entity/Adresse.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="236" width="214" x="1658" y="1927"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="entity.Client" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/entity/Client.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="516" width="295" x="2036" y="1371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="exception.CompteInexistantException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/CompteInexistantException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="267" x="1229" y="1927"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="exception.AuMoinsUnCompteException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/AuMoinsUnCompteException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="281" x="2036" y="1927"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="exception.MontantImpossibleException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/MontantImpossibleException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="278" x="1300" y="2463"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="exception.DeficitImpossibleException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/DeficitImpossibleException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="264" x="1618" y="2463"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="exception.MemeCompteException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/MemeCompteException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="235" x="1700" y="1371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="exception.ClientInexistantException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/ClientInexistantException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="3004" y="1542"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="exception.CompteBancaireException" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/exception/CompteBancaireException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="265" x="1311" y="995"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="service.CompteServiceImpl" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/service/CompteServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="216" width="373" x="349" y="995"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="service.ApplicationContexte" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/service/ApplicationContexte.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="136" width="259" x="2495" y="569"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="28" language="java" name="service.CompteService" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/service/CompteService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="176" width="373" x="793" y="1371"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="29" language="java" name="service.ClientServiceImpl" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/service/ClientServiceImpl.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="376" width="436" x="1639" y="569"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="30" language="java" name="service.ClientService" project="JEE_projet_compte_bancaire" 
+    file="/JEE_projet_compte_bancaire/src/main/java/service/ClientService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="336" width="436" x="2434" y="995"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="31" language="java" name="javax.servlet.http.HttpServlet" project="JEE_projet_compte_bancaire" 
+    file="C:/Users/Flora/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/9.0.39/tomcat-embed-core-9.0.39.jar" 
+    binary="true" corner="BOTTOM_RIGHT">    
+    <position height="296" width="426" x="2346" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="false"/>    
+    </display>  
+  </class>  
+  <dependency id="32">    
+    <bendpoint x="2984" y="569"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="33">    
+    <bendpoint x="2296" y="569"/>    
+    <bendpoint x="2319" y="995"/>    
+    <bendpoint x="2382" y="1371"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <association id="34">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="35" name="debiteur">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="37">    
+    <bendpoint x="2361" y="1371"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="38">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="39" name="adresse">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="41">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="42">    
+    <bendpoint x="2212" y="995"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="43">    
+    <bendpoint x="3047" y="569"/>    
+    <bendpoint x="2963" y="995"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="44">    
+    <bendpoint x="2464" y="569"/>    
+    <bendpoint x="2900" y="995"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="45">    
+    <bendpoint x="2836" y="569"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <association id="46">    
+    <bendpoint x="62" y="1927"/>    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="47" name="type">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="49">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="50">    
+    <bendpoint x="2401" y="569"/>    
+    <bendpoint x="2403" y="995"/>    
+    <bendpoint x="2403" y="1371"/>    
+    <bendpoint x="2403" y="1927"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="51">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <dependency id="52">    
+    <bendpoint x="762" y="569"/>    
+    <bendpoint x="762" y="995"/>    
+    <bendpoint x="762" y="1371"/>    
+    <bendpoint x="762" y="1927"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="53">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="54">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="55">    
+    <bendpoint x="2466" y="1371"/>    
+    <bendpoint x="2466" y="1927"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <association id="56">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="57" name="repository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="58" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="59">    
+    <bendpoint x="1238" y="569"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="25"/>  
+  </dependency>  
+  <dependency id="60">    
+    <bendpoint x="1648" y="995"/>    
+    <bendpoint x="1648" y="1371"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <generalization id="61">    
+    <bendpoint x="1568" y="1927"/>    
+    <bendpoint x="1564" y="1371"/>    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="63">    
+    <bendpoint x="1526" y="1927"/>    
+    <bendpoint x="1526" y="1371"/>    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <dependency id="64">    
+    <bendpoint x="2942" y="569"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <nesting id="65">    
+    <bendpoint x="41" y="1927"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="15"/>  
+  </nesting>  
+  <dependency id="66">    
+    <bendpoint x="2233" y="569"/>    
+    <bendpoint x="2233" y="995"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="67">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="68">    
+    <bendpoint x="3446" y="569"/>    
+    <bendpoint x="3446" y="995"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <association id="69">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="70" name="comptes">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="71" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="72">    
+    <bendpoint x="1196" y="1371"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <generalization id="73">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="74">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="75">    
+    <bendpoint x="1196" y="569"/>    
+    <bendpoint x="1196" y="995"/>    
+    <bendpoint x="1217" y="1371"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="76">    
+    <bendpoint x="2445" y="1371"/>    
+    <bendpoint x="2382" y="1927"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="77">    
+    <bendpoint x="2424" y="1371"/>    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="78">    
+    <bendpoint x="1217" y="569"/>    
+    <bendpoint x="1217" y="995"/>    
+    <bendpoint x="1238" y="1371"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="79">    
+    <bendpoint x="2879" y="569"/>    
+    <bendpoint x="2984" y="995"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="80">    
+    <bendpoint x="678" y="1371"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <generalization id="81">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="82">    
+    <bendpoint x="2921" y="569"/>    
+    <bendpoint x="2921" y="995"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="83">    
+    <bendpoint x="2815" y="569"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="85">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="86">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <association id="87">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="88" name="repository">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="89" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="90">    
+    <bendpoint x="1690" y="995"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="91">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="92">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="93">    
+    <bendpoint x="3254" y="569"/>    
+    <bendpoint x="3254" y="995"/>    
+    <bendpoint x="3254" y="1371"/>    
+    <bendpoint x="3254" y="1927"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="94">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="95">    
+    <bendpoint x="2275" y="569"/>    
+    <bendpoint x="2275" y="995"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <generalization id="96">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="97">    
+    <bendpoint x="699" y="1371"/>    
+    <bendpoint x="699" y="1927"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <generalization id="98">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="99">    
+    <bendpoint x="1669" y="995"/>    
+    <bendpoint x="1669" y="1371"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="100">    
+    <bendpoint x="2359" y="569"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="101">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="102">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="103">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="105">    
+    <bendpoint x="1606" y="1371"/>    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <association id="106">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="107" name="clientService">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="108" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="110" name="applicationContexte">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="111" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="112">    
+    <bendpoint x="1280" y="995"/>    
+    <bendpoint x="1280" y="1371"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="113">    
+    <bendpoint x="2340" y="995"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="114">    
+    <bendpoint x="2317" y="569"/>    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="115">    
+    <bendpoint x="720" y="1371"/>    
+    <bendpoint x="720" y="1927"/>    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="116">    
+    <bendpoint x="3005" y="569"/>    
+    <bendpoint x="2942" y="995"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="117">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="118" name="serviceInstance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="120">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <association id="121">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="122" name="crediteur">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="124">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="125">    
+    <bendpoint x="1238" y="995"/>    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="126" name="compteService">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="127" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="128">    
+    <end type="SOURCE" refId="24"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <association id="129">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="130" name="historiqueCredit">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="131" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="132">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="30"/>  
+  </realization>  
+  <dependency id="133">    
+    <bendpoint x="2338" y="569"/>    
+    <bendpoint x="2298" y="995"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="134">    
+    <bendpoint x="783" y="995"/>    
+    <bendpoint x="741" y="1371"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <generalization id="135">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <dependency id="136">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <association id="137">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="138" name="historiqueDebit">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="139" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="140">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="23"/>  
+  </dependency>  
+  <dependency id="141">    
+    <bendpoint x="2380" y="569"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="142">    
+    <bendpoint x="1606" y="995"/>    
+    <bendpoint x="1585" y="1371"/>    
+    <bendpoint x="1547" y="1927"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <dependency id="143">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="144">    
+    <bendpoint x="2254" y="569"/>    
+    <bendpoint x="2254" y="995"/>    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <generalization id="145">    
+    <bendpoint x="1301" y="1371"/>    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <generalization id="146">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="25"/>  
+  </generalization>  
+  <dependency id="147">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="148">    
+    <bendpoint x="2963" y="569"/>    
+    <bendpoint x="3005" y="995"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="149">    
+    <bendpoint x="2422" y="569"/>    
+    <bendpoint x="2361" y="995"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="150">    
+    <bendpoint x="1627" y="995"/>    
+    <bendpoint x="1627" y="1371"/>    
+    <bendpoint x="1627" y="1927"/>    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="151">    
+    <bendpoint x="2900" y="569"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="152">    
+    <end type="SOURCE" refId="18"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <association id="153">    
+    <end type="SOURCE" refId="29" navigable="false">      
+      <attribute id="154" name="serviceInstance">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="156">    
+    <bendpoint x="2794" y="569"/>    
+    <bendpoint x="2382" y="995"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="157">    
+    <bendpoint x="1259" y="569"/>    
+    <bendpoint x="1259" y="995"/>    
+    <bendpoint x="1259" y="1371"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="158">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="27"/>  
+  </dependency>  
+  <dependency id="159">    
+    <bendpoint x="3026" y="569"/>    
+    <bendpoint x="3026" y="995"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="24"/>  
+  </dependency>  
+  <dependency id="160">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="161">    
+    <bendpoint x="1198" y="1927"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="22"/>  
+  </dependency>  
+  <dependency id="162">    
+    <bendpoint x="2443" y="569"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="30"/>  
+  </dependency>  
+  <dependency id="163">    
+    <bendpoint x="1056" y="1927"/>    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="21"/>  
+  </dependency>  
+  <realization id="164">    
+    <end type="SOURCE" refId="26"/>    
+    <end type="TARGET" refId="28"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
