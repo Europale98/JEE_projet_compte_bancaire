@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Adresse {
+public class Adresse implements StringXml {
 
     @Column(name = "numero_rue")
     private String numeroRue;
@@ -29,6 +29,11 @@ public class Adresse {
     @Override
     public String toString() {
         return numeroRue + ", " + ville;
+    }
+
+    @Override
+    public String getString() {
+        return "Adresse " + numeroRue + " " + ville;
     }
 
 }

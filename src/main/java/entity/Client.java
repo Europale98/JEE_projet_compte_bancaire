@@ -21,7 +21,7 @@ import exception.AuMoinsUnCompteException;
 import exception.CompteInexistantException;
 
 @Entity
-public class Client {
+public class Client implements StringXml {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,6 +51,18 @@ public class Client {
      * inverseJoinColumns = { @JoinColumn(name = "numero_compte") })
      */
     private List<Compte> comptes;
+    
+    public Client() {
+        
+    }
+    public Client(String nom, String prenom, String motDePasse, Adresse adresse) {
+        super();
+        this.nom = nom;
+        this.prenom = prenom;
+        this.motDePasse = motDePasse;
+        this.adresse = adresse;
+    }
+
 
     public void addCompte(Compte c) {
         if (this.comptes == null) {
@@ -136,6 +148,11 @@ public class Client {
     public String toString() {
         return "Client [numeroClient=" + numeroClient + ", nom=" + nom + ", prenom=" + prenom + ", motDePasse="
                 + motDePasse + ", adresse=" + adresse + ", comptes=" + comptes + "]";
+    }
+
+    @Override
+    public String getString() {
+        return "Client " + nom + " " + prenom;
     }
 
 }

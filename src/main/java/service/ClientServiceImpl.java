@@ -77,16 +77,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client createClient(String nom, String prenom, String motDePasse, String numeroRue, String ville,
             double montant) throws DeficitImpossibleException {
-        Client c = new Client();
-        c.setNom(nom);
-        c.setPrenom(prenom);
-        c.setMotDePasse(motDePasse);
-
         Adresse a = new Adresse();
         a.setNumeroRue(numeroRue);
         a.setVille(ville);
-        c.setAdresse(a);
-
+        Client c = new Client(nom, prenom, motDePasse, a);
         Compte cm = new Compte();
         cm.setMontant(montant);
         c.addCompte(cm);

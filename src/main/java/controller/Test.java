@@ -1,7 +1,10 @@
 package controller;
 
+import java.util.ArrayList;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import drawUml.RenderToPng;
 import entity.Client;
 import exception.AuMoinsUnCompteException;
 import exception.ClientInexistantException;
@@ -11,6 +14,8 @@ import exception.MemeCompteException;
 import exception.MontantImpossibleException;
 import service.ApplicationContexte;
 import service.ClientService;
+import trace.TraceSequence;
+import trace.TraceSequenceAspect;
 
 public class Test {
 
@@ -161,6 +166,9 @@ public class Test {
         System.out.println(c);
         c = clientService.fermerCompteClient(c, c.getComptes().get(0));
         System.out.println(c);*/
+        
+        ApplicationContexte.close();
+        new RenderToPng().render(new ArrayList<TraceSequence>(TraceSequenceAspect.getTracesSequenceList()));
         
     }
 

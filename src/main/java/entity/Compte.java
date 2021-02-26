@@ -29,7 +29,7 @@ import exception.DeficitImpossibleException;
 import exception.MontantImpossibleException;
 
 @Entity
-public class Compte implements Serializable {
+public class Compte implements Serializable, StringXml {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -70,6 +70,7 @@ public class Compte implements Serializable {
     }
 
     public Virement effectuerVirement(double montant, Compte compte) throws DeficitImpossibleException, MontantImpossibleException {
+        System.out.println("METHOD HERE METHOD HERE");
         if (montant < 0) {
             throw new MontantImpossibleException();
         }
@@ -184,6 +185,15 @@ public class Compte implements Serializable {
     public String toString() {
         return "Compte [numero_compte=" + numeroCompte + ", montant=" + montant + ", historique_debit="
                 + historiqueDebit + ", historique_credit=" + historiqueCredit + "]";
+    }
+    
+    public String getStringNumeroCompte() {
+        return String.valueOf(this.numeroCompte);
+    }
+
+    @Override
+    public String getString() {
+        return "Compte " + numeroCompte;
     }
 
 }

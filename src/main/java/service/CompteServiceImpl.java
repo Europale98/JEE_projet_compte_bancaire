@@ -60,6 +60,7 @@ public class CompteServiceImpl implements CompteService {
             throws DeficitImpossibleException, CompteInexistantException, MontantImpossibleException {
         Compte c = this.getCompteByNumero(numeroCompte);
         Compte c2 = this.getCompteByNumero(numeroCompte2);
+        System.out.println("XDCFVGUBHIJWXDCFYVGUBHINJ?XTDCFYVGUBHINJ?");
         Virement v = c.effectuerVirement(montant, c2);
         c = repository.save(c);
         v = c.getVirementDebit(v);

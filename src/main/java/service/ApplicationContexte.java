@@ -4,14 +4,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class ApplicationContexte {
     private static ApplicationContexte applicationContexte = null;
+    AnnotationConfigApplicationContext appContext = null;
     private ClientService clientService = null;
 
     private ApplicationContexte() {
-        AnnotationConfigApplicationContext appContext = new AnnotationConfigApplicationContext();
+        appContext = new AnnotationConfigApplicationContext();
         appContext.scan("service");
         appContext.scan("dao");
         appContext.scan("entity");
         appContext.scan("controller");
+        appContext.scan("trace");
         appContext.refresh();
 
         clientService = (ClientService) appContext.getBean("clientService");
@@ -27,5 +29,9 @@ public class ApplicationContexte {
     
     public ClientService getClientService() {
         return clientService;
+    }
+    
+    public static void close() {
+        applicationContexte.appContext.close();
     }
 }

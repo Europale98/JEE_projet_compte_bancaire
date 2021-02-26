@@ -22,7 +22,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"date", "crediteur_numero_compte", "debiteur_numero_compte"}))
-public class Virement {
+public class Virement implements StringXml {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "numero_virement")
@@ -121,8 +121,13 @@ public class Virement {
     @Override
     public String toString() {
         return "Virement [numero_virement=" + numeroVirement + ", date=" + date + ", type=" + type + ", montant="
-                + montant + ", debiteur=" + ((debiteur != null) ? debiteur.getNumeroCompte() : "none") + ", crediteur="
-                + ((crediteur != null) ? crediteur.getNumeroCompte() : "none") + "]";
+                + montant + ", debiteur=" + ((debiteur != null) ? debiteur.getStringNumeroCompte() : "none") + ", crediteur="
+                + ((crediteur != null) ? crediteur.getStringNumeroCompte() : "none") + "]";
+    }
+
+    @Override
+    public String getString() {
+        return "Virement " + date;
     }
 
 }
