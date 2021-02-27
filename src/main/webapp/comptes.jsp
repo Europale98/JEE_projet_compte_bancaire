@@ -22,7 +22,12 @@
 	%>
 	<table>
 		<tr><td id="new">
-		<h2> Compte(s) de <%=client.getNom()%> <%=client.getPrenom()%></h2>
+		<%if (client.getComptes().size() > 1) {%>
+			<h2> Comptes de <%=client.getNom()%> <%=client.getPrenom()%></h2>
+		<%}else {%>
+			<h2> Compte de <%=client.getNom()%> <%=client.getPrenom()%></h2>
+		<%}%>
+		
 		<br/><br/>
 		<form action="creerCompte" method="post">
 			<fieldset>
@@ -57,7 +62,7 @@
 				</legend>
 				<input type="hidden" name="numeroCompte" value=<%=c.getNumeroCompte()%> />
 				<table>
-				<tr><td><h3 class="mb-0"><b>Solde :</b> <%=c.getMontant()%> </h3></td>
+				<tr><td><h3 class="mb-0"><b>Solde :</b> <%=c.getMontant()%>  &euro;</h3></td>
 				<td><input class="lf--submit" type="submit" value="Détails du compte" /></td>
 				</tr>
 				</table>
