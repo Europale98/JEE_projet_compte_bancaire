@@ -1,0 +1,33 @@
+@startuml
+skinparam maxMessageSize 100
+actor User
+control SuppressionClientServlet
+participant ClientService
+participant ClientRepository
+entity "Client num_client"
+database bdd_jee_projet 
+
+User -> SuppressionClientServlet ++ : client (num_client)
+SuppressionClientServlet -> ClientService ++ : deleteClientByNumero (num_client)
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> "Client num_client" **
+return Client num_client
+return Client num_client
+ClientService -> "Client num_client" ++ : changeVirementPourSupression()
+return
+ClientService -> ClientRepository ++ : save (Client num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+return
+ClientService -> ClientRepository ++ : deleteById (Client num_client)
+ClientRepository -> bdd_jee_projet ++
+return
+ClientRepository -> "Client num_client" !!
+return
+return
+SuppressionClientServlet -> SuppressionClientServlet : session.setAttribute (client, Client num_client)
+return /accueil.jsp
+@enduml

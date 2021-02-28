@@ -1,0 +1,59 @@
+@startuml
+skinparam maxMessageSize 100
+actor User
+control FermerCompteServlet
+participant ClientService
+participant ClientRepository
+entity "Client num_client"
+entity "Compte num_compte"
+database bdd_jee_projet 
+
+User -> FermerCompteServlet ++ : compte (num_client, montant)
+FermerCompteServlet -> ClientService ++ : fermerCompteClient (num_client (), numeroCompte)
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> "Client num_client" **
+"Client num_client" -> "Compte num_compte" **
+return Client num_client
+return Client num_client
+
+ClientService -> "Client num_client" ++ : getCompte (num_compte)
+"Client num_client" -> "Compte num_compte" ++ : get
+return Compte num_compte
+return Compte num_compte
+
+ClientService -> "Compte num_compte" ++ : changeVirementPourSupression () 
+return
+ClientService -> ClientRepository ++ : save (Client num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+return
+
+newpage
+
+ClientService -> "Client num_client" ++ : getCompte (num_compte)
+"Client num_client" -> "Compte num_compte" ++ : get
+return Compte num_compte
+return Compte num_compte
+ClientService -> "Client num_client" ++ : fermeCompte (Compte num_compte)
+"Client num_client" -> "Compte num_compte" !! : remove
+return
+ClientService -> ClientRepository ++ : save (Client num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+return
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> "Client num_client" ++ : new
+return Client num_client
+return Client num_client
+return Client num_client
+return Client num_client
+
+FermerCompteServlet -> FermerCompteServlet : session.setAttribute (client, Client num_client)
+return /comptes.jsp
+@enduml
