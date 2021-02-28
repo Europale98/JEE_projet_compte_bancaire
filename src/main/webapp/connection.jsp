@@ -30,7 +30,7 @@
 	      			</svg>
 				</label>
 				<input id="numeroClient" name="numeroClient" class='lf--input'
-					placeholder='Numéro du client' type='number'
+					placeholder='Numéro client' type='number'
 					required value="<%=(request.getParameter("numeroClient")==null?"":request.getParameter("numeroClient"))%>">
 			</div>
 			<div class="flex-row">
