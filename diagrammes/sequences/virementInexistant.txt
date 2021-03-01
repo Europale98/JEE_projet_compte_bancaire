@@ -53,6 +53,6 @@ destroy CompteService
 deactivate CompteService
 destroy ClientService
 deactivate ClientService
-VirementServlet -> VirementServlet : session .setAttribute ("client", Client num_client)
+VirementServlet -> VirementServlet : session .setAttribute ("erreur", "Compte inexistant")
 return /infosCompte.jsp
 @enduml
