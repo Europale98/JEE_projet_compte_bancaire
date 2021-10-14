@@ -1,0 +1,53 @@
+@startuml
+skinparam maxMessageSize 100
+actor User
+control InscriptionServlet
+participant ClientService
+participant ClientRepository
+entity "Client num_client"
+entity "Adresse adr"
+entity "Compte num_compte"
+database bdd_jee_projet 
+
+User -> InscriptionServlet ++ : client (nom, prenom, mdp, numeroRue, ville, montant)
+InscriptionServlet -> ClientService ++ : createClient (nom, prenom, mdp, numeroRue, ville, montant)
+ClientService -> "Client num_client" ** : new Client()
+ClientService -> "Client num_client" ++ : setNom (nom)
+return
+ClientService -> "Client num_client" ++ : setPrenom (prenom)
+return
+ClientService -> "Client num_client" ++ : setMotDePasse (motDePasse)
+return
+ClientService -> "Adresse adr" ** : new Adresse()
+ClientService -> "Adresse adr" ++ : setNumeroRue (numeroRue)
+return
+ClientService -> "Adresse adr" ++ : setVille(ville)
+return
+ClientService -> "Client num_client" ++ : setAdresse(adr)
+return
+ClientService -> "Compte num_compte" ** : new Compte()
+ClientService -> "Compte num_compte" ++ : setMontant (montant)
+return
+ClientService -> "Client num_client" ++ : addCompte (Compte num_compte)
+return
+
+newpage
+
+ClientService -> ClientRepository ++ : save (Client num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+return
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> "Client num_client" ++ : new
+return Client num_client
+return Client num_client
+return Client num_client
+return Client num_client
+
+
+InscriptionServlet -> InscriptionServlet : session.setAttribute (client, Client num_client)
+return /accueil.jsp
+@enduml

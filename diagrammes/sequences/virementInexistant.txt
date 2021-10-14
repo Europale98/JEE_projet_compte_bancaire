@@ -1,0 +1,58 @@
+@startuml
+skinparam maxMessageSize 100
+actor User
+control VirementServlet
+participant ClientService
+participant CompteService
+participant ClientRepository
+participant CompteRepository
+entity "Client num_client"
+entity C1 as "Compte\nnum_compte1"
+entity C2 as "Compte\nnum_compte2"
+database bdd_jee_projet
+
+User -> VirementServlet ++ : virement (num_client, num_compte1, num_compte2, montant)
+VirementServlet -> ClientService ++ : effectuer Virement Compte (num_client, num_compte1, num_compte2, montant)
+ClientService -> ClientService ++ : verification Appartenance (num_client, num_compte1)
+ClientService -> ClientService ++ : getClient ByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> "Client num_client" **
+"Client num_client" -> C1 **
+return Client num_client
+return Client num_client
+ClientService -> "Client num_client" ++ : getCompte (num_compte1)
+"Client num_client" -> C1 ++ : get
+return Compte num_compte1
+return Compte num_compte1
+return true
+
+newpage
+
+ClientService -> CompteService ++ : effectuer Virement Compte (num_compte1, num_compte2, montant)
+CompteService -> CompteService ++ : getCompte ByNumero (num_compte1)
+CompteService -> CompteRepository ++ : findById (num_compte1)
+CompteRepository -> bdd_jee_projet ++
+return Compte num_compte1
+CompteRepository -> C1 ++ : new
+return Compte num_compte1
+return Compte num_compte1
+return Compte num_compte1
+CompteService -> CompteService ++ : getCompte ByNumero (num_compte2)
+CompteService -> CompteRepository ++ : findById (num_compte2)
+CompteRepository -> bdd_jee_projet ++
+return null
+note right of CompteRepository #pink : Compte inexistant
+CompteRepository -[#deeppink]-> VirementServlet
+destroy CompteRepository
+deactivate CompteRepository
+destroy CompteService
+deactivate CompteService
+destroy CompteService
+deactivate CompteService
+destroy ClientService
+deactivate ClientService
+VirementServlet -> VirementServlet : session .setAttribute ("client", Client num_client)
+return /infosCompte.jsp
+@enduml

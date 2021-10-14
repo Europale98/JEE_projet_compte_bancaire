@@ -1,0 +1,59 @@
+@startuml
+skinparam maxMessageSize 100
+actor User
+control VirementServlet
+participant ClientService
+participant CompteService
+participant ClientRepository
+participant CompteRepository
+entity Cl as "Client\nnum_client"
+entity Co as "Compte\nnum_compte"
+database bdd_jee_projet
+
+User -> VirementServlet ++ : credit (num_client, num_compte, montant)
+VirementServlet -> ClientService ++ : effectuerCreditCompte (num_client, num_compte, montant)
+ClientService -> ClientService ++ : verificationAppartenance (num_client, num_compte)
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> Cl **
+return Client num_client
+return Client num_client
+ClientService -> Cl ++ : getCompte (num_compte)
+Cl -> Co **
+return Compte num_compte
+return true
+
+newpage
+
+ClientService -> CompteService ++ : effectuerCreditCompte (num_compte, montant)
+CompteService -> CompteService ++ : getCompteByNumero (num_compte)
+CompteService -> CompteRepository ++ : findById (num_compte)
+CompteRepository -> bdd_jee_projet ++
+return Compte num_compte
+CompteRepository -> Co ++ : new
+return Compte num_compte
+return Compte num_compte
+return Compte num_compte
+CompteService -> Co ++ : effectuerCredit (montant)
+Co -> Co : + montant
+Co -> Co : historiqueCredit add Virement
+return
+CompteService -> CompteRepository ++: save (Compte num_compte)
+CompteRepository -> bdd_jee_projet ++
+return Compte num_compte
+return
+return
+ClientService -> ClientService ++ : getClientByNumero (num_client)
+ClientService -> ClientRepository ++ : findById (num_client)
+ClientRepository -> bdd_jee_projet ++
+return Client num_client
+ClientRepository -> Cl ++ : new
+return Client num_client
+return Client num_client
+return Client num_client
+return Client num_client
+VirementServlet -> VirementServlet : session.setAttribute ("client", Client num_client)
+return /infosCompte.jsp
+@enduml
