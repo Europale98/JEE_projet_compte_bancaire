@@ -45,7 +45,7 @@
 
 				<label for="montant">Montant initial du compte :</label><br> <input
 					type="number" name="montant" step="0.01 min="
-					0"" placeholder="Montant initial" required
+					 placeholder="Montant initial" required
 					value="<%=(request.getParameter("montant") == null ? "" : request.getParameter("montant"))%>" /><br>
 				<input type="submit" value="Entrer" class="lf--submit">
 			</fieldset>

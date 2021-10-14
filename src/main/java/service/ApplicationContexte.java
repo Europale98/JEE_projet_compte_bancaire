@@ -13,7 +13,7 @@ public class ApplicationContexte {
         appContext.scan("entity");
         appContext.scan("controller");
         appContext.refresh();
-
+        
         clientService = (ClientService) appContext.getBean("clientService");
 
     }
